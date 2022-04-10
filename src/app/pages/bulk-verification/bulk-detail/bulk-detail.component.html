@@ -1,0 +1,90 @@
+<div class="detail-main">
+  <div class="detail-header">
+    <div class="close-icon" (click)="popupClose()">
+      <img src="assets/images/close-white.svg" alt="close">
+    </div>
+    <div class="detail-inner">
+      <div class="detail-left">
+        <span>{{'VERIFICATION_ID' | translate}}</span>
+        <p>{{allBulkRecord?.verificationId}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-content">
+    <div class="content-main">
+      <div class="detail-title">
+        <h2>{{'VERIFICATION INFORMATION' | translate}}</h2>
+      </div>
+      <div class="detail-blcok">
+
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/mail-icon.svg" alt="mail">
+          </div>
+          <div class="block-content">
+            <span>{{'VERIFICATION_ID' | translate}}</span>
+            <p>{{allBulkRecord?.verificationId}}</p>
+          </div>
+        </div>
+
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/cell-phone.svg" alt="phone">
+          </div>
+          <div class="block-content">
+            <span>{{'Serviceused' | translate}}</span>
+            <p>{{allBulkRecord?.serviceUsed}}</p>
+          </div>
+        </div>
+
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/cell-phone.svg" alt="phone">
+          </div>
+          <div class="block-content">
+            <span>{{'Trasactiondate' | translate}}</span>
+            <p>{{allBulkRecord?.transactionDate | tDateFormatPipe}}</p>
+          </div>
+        </div>
+
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/user-icon.svg" alt="user">
+          </div>
+          <div class="block-content">
+            <span>{{'Amount' | translate}}</span>
+            <p>₦{{allBulkRecord?.amount}}</p>
+          </div>
+        </div>
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/bookmark-icon.svg" alt="bookmark">
+          </div>
+          <div class="block-content">
+            <span> {{'Status' | translate}}</span>
+            <p class="tag"
+            [ngClass]="{'danger': (allBulkRecord?.transactionStatus === 'FAILED' || allBulkRecord?.transactionStatus === null), 'warning': allBulkRecord?.transactionStatus === 'PENDING'}">{{ ((allBulkRecord?.transactionStatus !== null) ? allBulkRecord?.transactionStatus : 'FALIED') | titlecase}}</p>
+           </div>
+        </div>
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/bookmark-icon.svg" alt="bookmark">
+          </div>
+          <div class="block-content">
+            <span>{{'Timecompleted' | translate}}</span>
+            <p>{{allBulkRecord?.responseTime | translate}}</p>
+          </div>
+        </div> 
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/close-round.svg" alt="close">
+          </div>
+          <div class="block-content">
+            <span>{{'Failurereson' | translate}}</span>
+            <p class="danger">{{(allBulkRecord?.failureReason !== null) ? allBulkRecord?.failureReason : '' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

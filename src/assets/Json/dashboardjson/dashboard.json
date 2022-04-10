@@ -1,0 +1,63 @@
+{
+    "services": [
+        {
+            "name": "Seamfix IDQR",
+            "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+        },
+        {
+            "name": "BVN Validity Service",
+            "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+        },
+        {
+            "name": "Seamfix VIN Service",
+            "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+        },
+        {
+            "name": "Seamfix IDQR",
+            "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+        },
+        {
+            "name": "Seamfix IDQR",
+            "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+        },
+        {
+            "name": "BVN Validity Service",
+            "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+        },
+        {
+            "name": "Seamfix VIN Service",
+            "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+        },
+        {
+            "name": "Seamfix IDQR",
+            "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+        }
+    ],
+
+    "serviceCalls":{
+        "total":500000,
+        "successful":500000,
+        "fail":50000
+    },
+
+    "totaluser": {
+        "noofusers": 1000
+    },
+
+    "serviceRequestLog": {
+        "successfulRequest": 750,
+        "failedRequest": 250
+    },
+
+    "wallet":{
+        "totalBalance":60000,
+        "totalTopup":260000,
+        "totalDebit":200000
+    },
+    
+    "bulkVerifications":{
+        "completed":105000,
+        "ongoing":86000,
+        "total":191000
+    }
+}

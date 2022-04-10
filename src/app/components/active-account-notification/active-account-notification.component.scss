@@ -1,0 +1,36 @@
+@import "color";
+@import "mixins";
+@import "break-points";
+
+.account-notification-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 50px;
+  color: $white;
+  text-align: center;
+  background: $blue;
+  z-index: 10;
+  @include bp("sm-max"){
+    padding: 12px 10px;
+    text-align: left;
+    font-size: 12px;
+    z-index: 111;
+  }
+  .close-icon {
+    position: absolute;
+    right: 25px;
+    top: calc(50% - 9px);
+    line-height: 1;
+    @include bp("sm-max"){
+      right: 15px;
+    }
+  }
+  p {
+    margin: 0;
+    @include bp(sm-max){
+      padding-right: 20px;
+    }
+  }
+}

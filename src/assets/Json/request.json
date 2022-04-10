@@ -1,0 +1,169 @@
+{
+  "dashboardRequest": {
+    "smallCards": [
+
+      {
+        "aggregateFn": "count",
+        "inclusiveTable": "invocations",
+        "inclusiveColumn": "pk",
+        "active": true,
+        "label": "Total number of service Calls",
+        "logo": "/logo.png",
+        "menuItems": [{
+          "label": "View details",
+          "redirectionPath": "/transactions/all"
+        }]
+        // "query": "select count(pk) from public.invocations"
+      },
+
+      {
+        "aggregateFn": "count",
+        "inclusiveTable": "invocations",
+        "inclusiveColumn": "transaction_status",
+        "whereCondition": "successful",
+        "active": true,
+        "label": "Number of successful service Calls",
+        "logo": "/logo.png",
+        "menuItems": [{
+          "label": "View details",
+          "redirectionPath": "/transactions/all"
+        }]
+        // "query": "select count(transaction_status) from public.invocations where transaction_status = 'SUCCESSFUL'"
+      },
+
+      {
+        "aggregateFn": "count",
+        "inclusiveTable": "invocations",
+        "inclusiveColumn": "transaction_status",
+        "whereCondition": "failed",
+        "active": true,
+        "label": "Number of successful service Calls",
+        "logo": "/logo.png",
+        "menuItems": [{
+          "label": "View details",
+          "redirectionPath": "/transactions/all"
+        }]
+        // "query": "select count(transaction_status) from public.invocations where transaction_status = 'FAILED'"
+      },
+
+      {
+        "aggregateFn": "count",
+        "inclusiveTable": "user",
+        "whereCondition": "true",
+        "active": true,
+        "label": "Number of users",
+        "logo": "/logo.png",
+        "menuItems": [{
+          "label": "View details",
+          "redirectionPath": "/user"
+        }]
+        // "query": "select count(pk) from public.user"
+      }
+    ],
+
+    "bigCards": [
+
+      {
+        "aggregateFn": "sum",
+        "inclusiveTable": "wallet",
+        "inclusiveColumn": "balance",
+        "active": true,
+        "label": "Total wallet balance",
+        "logo": "/logo.png",
+        "menuItems": []
+        // "query": "select sum(balance) from public.wallet"
+      },
+      {
+        "aggregateFn": "sum",
+        "inclusiveTable": "wallet_statement",
+        "inclusiveColumn": "amount",
+        "active": true,
+        "label": "Total Wallet Top-up",
+        "logo": "/logo.png",
+        "menuItems": [{
+          "label": "View details",
+          "redirectionPath": "/wallet"
+        }]
+        // "query": "select sum(amount) from public.wallet_statement"
+      },
+      {
+        "aggregateFn": "sum",
+        "inclusiveTable": "wallet_statement",
+        "inclusiveColumn": "amount",
+        "active": true,
+        "label": "Total Wallet Debit",
+        "logo": "/logo.png",
+        "menuItems": [{
+          "label": "View details",
+          "redirectionPath": "/wallet"
+        }]
+        // "query": "select sum(amount) from public.wallet_statement"
+      }
+    ],
+    "barChart": [{
+      "aggregateFn": "count",
+      "inclusiveTable": "invocations",
+      "inclusiveColumn": "wrapper_fk",
+      "active": true
+      // "query": "We will store the predefined query for the bar chart"
+    }],
+    "pieChart": [{
+      "label": "Service request log",
+      "inclusiveTable": "invocations",
+      "inclusiveColumn": "transaction_status",
+      "aggregateFn": "sum",
+      "whereConditions": ["SUCCESSFUL", "FAILED"],
+      "active": true
+      // "query": "select sum(case when transaction_status = 'SUCCESSFUL' then 1 else 0 end) SucessCount, sum(case when transaction_status = 'FAILED' then 1 else 0 end) FaildCount from public.invocations"
+    }],
+    "progressCharts": [{
+        "aggregateFn": "sum",
+        "inclusiveTable": "bulk-verifications",
+        "inclusiveColumn": "status",
+        "whereCondition": "Completed",
+        "isShowProgress": true,
+        "chartLabel": "percentage of completed verifications",
+        "link": {
+          "label": "View Details",
+          "redirectionPath": "/bulk-verification/bulk-record"
+        },
+        "logo": "/logo.png",
+        "label": "Number of completed bulk verifications",
+        "active": true
+        // "query": "select sum(case when status = 'Completed' then 1 else 0 end) as CompletedCount, count(*) as TotalCount from public.bulk_verifications"
+      },
+
+      {
+        "aggregateFn": "sum",
+        "inclusiveTable": "bulk-verifications",
+        "inclusiveColumn": "status",
+        "whereCondition": "Running",
+        "isShowProgress": true,
+        "chartLabel": "percentage of ongoing verifications",
+        "link": {
+          "label": "View Details",
+          "redirectionPath": "/bulk-verification/bulk-record"
+        },
+        "logo": "/logo.png",
+        "label": "Number of ongoing bulk verifications",
+        "active": true
+        // "query": "select sum(case when status = 'Running' then 1 else 0 end) as OnGoingCount, count(*) as TotalCount from public.bulk_verifications"
+      },
+
+      {
+        "aggregateFn": "count",
+        "inclusiveTable": "bulk-verifications",
+        "inclusiveColumn": "pk",
+        "isShowProgress": false,
+        "link": {
+          "label": "View Details",
+          "redirectionPath": "/bulk-verification/bulk-record"
+        },
+        "logo": "/logo.png",
+        "label": "Number of total bulk verifications",
+        "active": true
+        // "query": "select count(*) from public.bulk_verifications"
+      }
+    ]
+  }
+}

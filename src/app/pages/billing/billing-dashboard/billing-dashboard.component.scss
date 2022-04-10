@@ -1,0 +1,249 @@
+@import "color";
+@import "break-points";
+@import "form-elements";
+
+.view-all {
+  margin: 50px;
+}
+
+@include bp("xs-max") {
+  .view-all {
+    margin: 150px 10px 50px 10px;
+  }
+}
+
+.bfc-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: $white;
+  border-bottom: 1px solid $lightGrey;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 395px 295px 295px 295px;
+  grid-gap: 20px;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+  & > div {
+    border-radius: 10px;
+    height: 234px;
+  }
+  .card__header {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    height: 30px;
+    margin-top: 10px;
+  }
+
+  a {
+    padding: 5px 10px;
+    font-size: 0.7em;
+    border-radius: 16px;
+    background-color: #dbe3ee;
+    margin-right: 5px;
+    color: $offBlack;
+  }
+
+  .card__content {
+    margin-left: 30px;
+    margin-top: 40px;
+    & img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: rgba(0, 204, 255, 0.116);
+    }
+    & p {
+      font-size: 1.5em;
+      font-weight: bolder;
+    }
+    & sub {
+      font-weight: bold;
+      color: $darkGrey5;
+    }
+  }
+  .first-card {
+    .v-line {
+      border-left: 2px solid $lightGreen;
+      height: 50px;
+    }
+    & .low-bal {
+      margin-top: 110px;
+      margin-right: 20px;
+      & p {
+        font-size: 1.5em;
+        color:$lightGreen;
+        font-weight: bolder;
+      }
+      & sub {
+        font-weight: bold;
+        color: $lightGreen;
+      }
+    }
+  }
+
+  .card.no__header {
+    padding-top: 40px;
+  }
+
+  .card {
+    background-color: $white;
+    p {
+      color: #001a03;
+    }
+  }
+
+  .card__black {
+    background-color: $offBlack2;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    &.bg-img {
+      // background-image: url("/assets/images/bi lling-wallet.svg");
+    }
+    .card__header {
+      & :nth-child(1) {
+        background-color: $offOrange;
+        color: $orange;
+        border: 1px solid $lightOrange;
+      }
+      & :nth-child(2) {
+        color: $white;
+        background-color: rgba(0, 204, 255, 0.116);
+      }
+    }
+
+    .card__content {
+      color: $white;
+      & img {
+        background-color: rgba(0, 204, 255, 0.116);
+      }
+      & sub {
+        color: $lightGreen;
+      }
+    }
+  }
+}
+
+@include bp("smd-max") {
+  .card-container {
+    grid-template-columns: 300px 300px;
+  }
+}
+
+@include bp("xs-max") {
+  .card-container {
+    grid-template-columns: auto;
+  }
+}
+
+.wallet-filter {
+  display: flex;
+  justify-content: flex-end;
+  margin: -30px 5px 30px 0;
+}
+
+.table-wrapper {
+  .table-body {
+    padding: 0;
+    @include bp(sm-max) {
+      padding: 50px 0px;
+    }
+  }
+}
+
+table {
+  &.mat-table {
+    .mat-cell {
+      &.td-first,
+      &.td-two,
+      &.td-three {
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.mobile-table {
+  @include bp(sm-max) {
+    &.mat-table {
+      border-spacing: 0 16px;
+      border-collapse: separate;
+    }
+
+    tr {
+      &.mat-header-row {
+        @include bp(sm-max) {
+          height: 16px;
+        }
+      }
+    }
+
+    .mat-row {
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.062);
+
+      .mat-cell {
+        font-size: 14px;
+        font-weight: 400;
+        color: $lightGrey1;
+        @include border-radius(4px);
+
+        @include bp(sm-max) {
+          border: 0.4px solid rgba(5, 92, 193, 0.231);
+        }
+
+        &.td-first {
+          border-right: hidden;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          color: $lightGrey2;
+          pointer-events: all;
+        }
+
+        &.td-two {
+          border-right: hidden;
+          border-left: hidden;
+          @include border-radius(0);
+          color: $black;
+          font-weight: 500;
+          pointer-events: all;
+        }
+
+        &.td-three {
+          border-left: hidden;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          font-weight: 500;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .custom-menu {
+  background-color: $black;
+  color: $white;
+  border: none;
+  padding: 0 3px;
+  button.mat-menu-item {
+    color: $white;
+  }
+
+  button.mat-menu-item:hover {
+    color: #fff !important;
+  }
+}
+
+::ng-deep .md-drppicker td.active,
+.md-drppicker td.active:hover {
+  background-color: $black !important;
+  border-color: transparent;
+  color: $white;
+}

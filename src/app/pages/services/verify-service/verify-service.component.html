@@ -1,0 +1,5 @@
+<div class="wrapper">
+    <div class="page-wrapper" [ngClass]="{'whiteBG': localData.responseData.verificationType == 'BVN-FULL-DETAILS'}">
+      <app-response-card [responseJson]="localData" (tryAgain)="retry()"></app-response-card>
+  </div>
+</div>

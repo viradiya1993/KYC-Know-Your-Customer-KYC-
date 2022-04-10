@@ -1,0 +1,120 @@
+<base-config #baseConfigRef></base-config>
+<bfc-lazy-loader *ngIf="showLazyloader"></bfc-lazy-loader>
+<ng-container *ngIf="signupConfig && !showLazyloader">
+  <auth-module (translation-changed)="languageChangeEvent($event)" [appTranslation]="translation" [logo]="logo"
+    [logoUrl]="logoUrl" [landingConfig]="landingPageConfig" (nav-router-event)="handleComponentRoute($event)">
+    <slot>
+      <!-- <div class="col-md-12 col-lg-6 py-3 px-5 d-flex flex-column" *ngIf="showUserCategoryPage" style="height: 100vh">
+        <form-top-nav [linkText]="'Got an Account?'" [linkHyperText]="'Sign in'" [linkType]="'LOGIN'"></form-top-nav>
+        <div class="signup justify-content-center col-lg-10 col-md-12 col-sm-12 mt-5">
+          <base-signup-user-choice (selected-user-category)="selectUserCategory($event)" [config]="{
+              title: {
+                heading: signupConfig.pageConfig?.rightSideTitleText,
+                subHeading: signupConfig.pageConfig?.rightSideTitleSubText
+              },
+              userCategory: signupConfig.userCategoryInfo
+            }"></base-signup-user-choice>
+        </div>
+        <footer-tag></footer-tag>
+      </div> -->
+
+      <div class="col-md-12 col-lg-6 justify-content-center d-flex justify-content-center signup" *ngIf="showOtherForm">
+        <div class="d-flex h-100 align-items-center justify-content-center w-100" *ngIf="!formStructure">
+          <loader-component></loader-component>
+        </div>
+        <ng-container *ngIf="formStructure">
+          <base-signup (login-router-event)="handleComponentRoute($event)"
+            (translation-changed)="languageChangeEvent($event)" [appTranslation]="translation"
+            [socialButtons]="socialButtons">
+            <div slot="signup-form" [ngClass]="!formStructure ? 'mb-5 mt-5' : ''">
+              <!-- <div class="py-4">
+                <button class="back-button font-weight-bold medium-text" (click)="goBack()">
+                  &#8592;<span class="pl-1">Go Back</span>
+                </button>
+              </div> -->
+              <sfx-form-preview #formPreview *ngIf="formStructure" [language]="translate.currentLang"
+                [formStructure]="formStructure" [customCol]="'col-md-12 p-0'"
+                [customRow]="'row pb-3 justify-content-center'" [customClass]="'section d-flex align-items-center'"
+                [customCardBody]="'col-md-12 mb-5 p-0'" [containerCard]="'card h-100 shadow-none border-0'"
+                [mainContainer]="'container'" (formValues)="getFormValueAndSignup($event)" [primaryColor]="primaryColor"
+                [submitBtnClass]="'btn px-4 py-2 btn-primary btn-block'" [hideActionButtons]="false"
+                [allowTopErrorMessage]="false" [allowBtnDisabled]="false" [btnDisabledClass]="'disabled-btn disabled'"
+                [submitBtnText]="submitText" [preFilledValues]="preFilledValues" [submitted]="submitted"
+                [showSuccessVerrification]="showSuccessVerrification" [language]="lang"></sfx-form-preview>
+            </div>
+          </base-signup>
+        </ng-container>
+      </div>
+      <!-- <ng-container *ngIf="showVerificationAlert">
+        <div class="row justify-content-center">
+          <div class="d-flex flex-column align-items-center col-lg-8 col-sm-12">
+            <img src="assets/Group 36835.svg" alt="" height="110" width="110" />
+            <div class="d-flex flex-column align-items-center mt-3">
+              <div class="font-weight-bold large-text text-center text-wrap">
+                We found your Company!
+              </div>
+              <div class="xsmall-text text-center text-wrap" style="color: #486973">
+                Your company verification was successful. See details below.
+              </div>
+            </div>
+            <div class="w-100 d-flex flex-column my-4">
+              <div class="d-flex w-100 justify-content-between my-1">
+                <span class="d-inline small-text" style="color: #486973">
+                  Company Name:
+                </span>
+                <span class="d-inline small-text">
+                  {{ verifiedOrganisationDetails.name || "" }}
+                </span>
+              </div>
+              <div class="d-flex w-100 justify-content-between my-1">
+                <span class="d-inline small-text" style="color: #486973">
+                  Company RC No:
+                </span>
+                <span class="d-inline small-text">
+                  {{ verifiedOrganisationDetails.rcNumber || "" }}
+                </span>
+              </div>
+              <div class="d-flex w-100 justify-content-between my-1">
+                <span class="d-inline small-text" style="color: #486973">
+                  Company Address
+                </span>
+                <span class="d-inline small-text">
+                  {{ verifiedOrganisationDetails.address || "" }}
+                </span>
+              </div>
+              <div class="d-flex w-100 justify-content-between my-1">
+                <span class="d-inline small-text" style="color: #486973">
+                  Year Established
+                </span>
+                <span class="d-inline small-text">
+                  {{ verifiedOrganisationDetails.yearEstablished || "" }}
+                </span>
+              </div>
+            </div>
+            <div class="d-flex flex-column align-items-start outline-none w-100">
+              <button type="button" class="btn btn-primary btn-block px-5 py-3 xsmall-text"
+                (click)="showVerificationAlert = false; step = step + 1">
+                Proceed
+              </button>
+              <button class="back-button outline-none pointer mt-3"
+                (click)="showVerificationAlert = false; formPreview.prev()">
+                Go Back
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container> -->
+      <!-- <div style="width: 40%" *ngIf="showVerrificationPage">
+        <bf-verrified-component [verificationList]="verifiedOrgData" [headerText]="verifiedOrgHederText"
+          [subHeaderText]="verifiedOrgSubHederText"></bf-verrified-component>
+      </div> -->
+
+      <div class="col-lg-6 col-md-12 col-sm-12 mt-4 px-3" *ngIf="showEmailVerification" style="height: 100vh">
+        <base-signup-email-verification [verificationEmail]="verificationEmail"
+          [verificationPayload]="emailVerificationPayload"></base-signup-email-verification>
+        <button class="back-button pt-3" style="color: var(--primary-color);" (click)="goToSignIn()">Go back to Sign
+          in</button>
+      </div>
+    </slot>
+  </auth-module>
+</ng-container>

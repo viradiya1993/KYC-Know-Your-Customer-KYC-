@@ -1,0 +1,140 @@
+<div class="wrapper">
+  <div class="page-wrapper onboarding-wrapper">
+    <div class="onboarding-inner">
+      <div class="inner-left">
+        <div class="page-banner" style="background-image: url(assets/images/dashboard-back.svg);">
+          <div class="page-content">
+            <h2>{{'Welcome to Verified Onboarding' | translate}}</h2>
+            <p>{{'Welcome to the your Verified account' | translate}}</p>
+          </div>
+        </div>
+        <div class="onboard-stepper">
+          <ul class="stepper-inner">
+
+            <li [ngClass] = "{'step-done': onBorading?.companyVerified === true}">
+              <span>1</span>
+              <p>{{'Verify your Company' | translate}}</p>
+            </li>
+
+            <li [ngClass] = "{'step-done': onBorading?.modeTest === true}">
+              <span>2</span>
+               <p>{{'Use a service in test mode' | translate}}</p>
+            </li>
+           
+            <li [ngClass] = "{'step-done': onBorading?.wallet === true}">
+              <span>2</span>
+              <p>{{'Top up your Wallet' | translate}}</p>
+            </li>
+            
+            <!-- <li [ngClass] = "{'step-done': onBorading?.invitedUser === true}">
+              <span>4</span>
+             <p>{{'Invite other users' | translate}}</p>
+            </li> -->
+
+            <li [ngClass] = "{'step-done': onBorading?.modeLive === true}">
+              <span>3</span>
+              <p>{{'Use a service in live mode' | translate}}</p>
+            </li>
+
+           
+          </ul>
+        </div>
+        
+        <div class="onboard-card">
+
+          <div class="card-main" [ngClass]="{'card-verify': onBorading?.companyVerified === true}" (click)="openRCVerification()" id="step2_element_id">
+            <div class="card-image">
+              <em><img src="assets/images/wallet.svg" alt="wallet"></em>
+            </div>
+
+            <div class="card-content">
+              <h3>{{'Verify your Company' | translate}}</h3>
+              <p>{{'verify_company_text' | translate}}</p>
+            </div>
+            <em class="verify"><img src="assets/images/verify-checkmark.svg" alt="check"></em>
+          </div>
+
+          <div class="card-main" [ngClass]="{'card-verify': onBorading?.modeTest === true}" [routerLink]="['/services']" id="modeTest_id">
+            <div class="card-image">
+              <em><img src="assets/images/tetsmodesvg.svg" alt="useservicetest"></em>
+            </div>
+            <div class="card-content">
+              <h3>{{'Use a service in test mode' | translate}}</h3>
+              <p>{{'Use any of the available verification services in test mode' | translate}}</p>
+            </div>
+            <em class="verify"><img src="assets/images/verify-checkmark.svg" alt="check"></em>
+          </div>
+          
+          <div class="card-main" id="wallet_id" [ngClass]="{'card-verify': onBorading?.wallet === true}" [routerLink]="['/billing/topup']">
+            <div class="card-image">
+              <em><img src="assets/images/wallet.svg" alt="wallet"></em>
+            </div>
+
+            <div class="card-content">
+              <h3>{{'Top up your Wallet' | translate}}</h3>
+              <p>{{'Top up your wallet using the Verified wallet portal' | translate}}</p>
+            </div>
+            <em class="verify"><img src="assets/images/verify-checkmark.svg" alt="check"></em>
+          </div>
+
+          <!-- <div class="card-main" [ngClass]="{'card-verify':  onBorading?.invitedUser === true}" [routerLink]="['/users']" id="invitedUser_id">
+            <div class="card-image">
+              <em><img src="assets/images/inviteuser.svg" alt="inviteuser"></em>
+            </div>
+            <div class="card-content">
+              <h3>{{'Invite other users' | translate}}</h3>
+              <p>{{'Access the transaction portal to view your transactions' | translate}}</p>
+            </div>
+            <em class="verify"><img src="assets/images/verify-checkmark.svg" alt="check"></em>
+          </div> -->
+
+          <div class="card-main" [ngClass]="{'card-verify': onBorading?.modeLive === true}" id="modeLive_id" [routerLink]="['/services']"> 
+            <div class="card-image">
+              <em><img src="assets/images/livemodesvg.svg" alt="userservicelive"></em>
+            </div>
+            <div class="card-content">
+              <h3>{{'Use a service in live mode' | translate}}</h3>
+              <p>{{'Use any of the available verification services in live mode' | translate}}</p>
+            </div>
+            <em class="verify"><img src="assets/images/verify-checkmark.svg" alt="check"></em>
+          </div>
+
+          <div class="card-btn">
+            <!-- <button type="button" class="btn btn-success"><span>Continue</span></button> -->
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div class="inner-right">
+        <div class="card-container">
+
+          <!-- <div class="card-block">
+            <h4>{{'Topup your Wallet' | translate}}</h4>
+            <p>{{'You need to fund your wallet before you can have access to live verification services' | translate}}</p>
+            <button type="button" class="btn btn-success"><span>{{'Top up Wallet' | translate}}</span></button>
+          </div> -->
+          <div class="card-block">
+            <h4>{{'Need a quick tour?' | translate}}</h4>
+            <p>{{'Need help navigating around Verified? Click the button below to get a quick tour of the platform' | translate}}</p>
+            <button type="button" (click)="gotoTour()" class="btn btn-success"><span>{{'Get started' | translate}}</span></button>
+          </div>
+
+          <div class="card-block">
+            <h4>{{'API Documentation' | translate}}</h4>
+            <p>{{'Click on the link below to understand our available APIs and how to use them' | translate}}</p>
+            <a href="{{apiDocUrl}}" id="doc_id" target="_blank" class="btn btn-success secondary"><span>{{'View documentation' | translate}}</span></a>
+          </div>
+
+          <!-- <div class="card-block">
+            <h4>{{'Help and Support' | translate}}</h4>
+            <p>{{'Visit our help and support centre to resolve any issue or challenge while using Backcheq' | translate}}</p>
+            <button type="button" class="btn btn-success secondary"><span>{{'Chat with Support' | translate}}</span></button>
+          </div> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

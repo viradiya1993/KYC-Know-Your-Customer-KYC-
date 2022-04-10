@@ -1,0 +1,463 @@
+@import "color";
+@import "fonts";
+@import "mixins";
+@import "break-points";
+
+.mat-icon-button {
+  &.transparent-bg {
+    background: transparent;
+  }
+
+  &.mat-green {
+    background: $primaryGreen;
+  }
+
+  &.mat-grey {
+    background: $lightGrey3;
+  }
+
+  &.sm {
+    width: 30px;
+    min-width: 30px;
+    line-height: 30px;
+    border-radius: 6px;
+    height: 30px;
+  }
+}
+
+.mat-stroked-button {
+  height: 40px;
+  line-height: 39px !important;
+  color: $darkGrey !important;
+  background: $lightGrey7 !important;
+
+  &.has-arrow {
+    padding-right: 30px;
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid;
+      margin: 0 4px;
+      color: $offBlack2;
+      position: absolute;
+      right: 5px;
+      top: 16px;
+    }
+
+    &[aria-expanded="true"] {
+      &:after {
+        @include rotate(180deg);
+      }
+    }
+  }
+
+  &.mat-green {
+    border-color: $primaryGreen;
+    background: $white !important;
+
+    &:hover {
+      background: $primaryGreen !important;
+      color: $white !important;
+    }
+  }
+}
+
+.file-upload {
+  text-align: center;
+  margin-bottom: 28px;
+
+  .mat-stroked-button {
+    &.mat-green {
+      height: 56px;
+      line-height: 54px !important;
+      width: 100%;
+      font-size: 15px;
+      font-weight: 400;
+      color: $darkGrey6 !important;
+
+      &:hover {
+        color: $white !important;
+      }
+    }
+  }
+
+  .is-upload {
+    .file-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      cursor: pointer;
+      opacity: 0;
+    }
+  }
+
+  p {
+    font-size: 12px;
+    color: $lightGrey8;
+    font-style: italic;
+    margin-top: 2px;
+  }
+}
+
+.material-icons {
+  font-family: $materialIcons !important;
+  font-size: 16px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-menu-panel {
+  min-width: 188px;
+  border: 1px solid $primaryGreen;
+  box-shadow: 0px 3px 56px rgba($black, 0.12);
+
+  &.dark-menu {
+    background: $offBlack2;
+    border: 1px solid $darkGrey2;
+    padding: 3px 7px;
+
+    .mat-menu-item {
+      font-size: 15px;
+      color: $white;
+      font-weight: 500;
+      border-radius: 4px;
+      margin: 0;
+
+      &:hover:not([disabled]) {
+        background: $white;
+        color: $offBlack2;
+      }
+    }
+  }
+
+  &.light-menu {
+    background-color: $offBlack3;
+    border: 0;
+    box-shadow: 0 6px 20px rgba(85, 85, 85, 0.078);
+
+    .mat-menu-item {
+      color: #F5FFF8;
+      font-size: 16px;
+      font-weight: 500;
+      @include transition(all 0.5s);
+
+      &:hover:not([disabled]) {
+        background: $white;
+        color: $offBlack2;
+      }  
+    }
+    .mat-menu-item[disabled] {
+      color: gray;
+      opacity: .5;
+      cursor: not-allowed;
+      pointer-events: unset;
+    }
+  }
+
+  .mat-menu-content:not(:empty) {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .mat-menu-item {
+    line-height: 35px;
+    height: 35px;
+    color: $offBlack2;
+
+    em.icon {
+      display: inline-block;
+      min-width: 20px;
+    }
+  }
+  .mat-menu-item[disabled] {
+    color: gray;
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: unset;
+  }
+}
+
+.text-switch {
+  &.mat-slide-toggle {
+    position: relative;
+
+    &.mat-checked {
+      .mat-slide-toggle-thumb {
+        background-color: $white;
+      }
+
+      .mat-slide-toggle-thumb-container {
+        transform: translate3d(37px, 0, 0);
+      }
+
+      .mat-slide-toggle-bar {
+        background-color: $sky;
+
+        &:after {
+          content: "Live";
+          right: auto;
+          left: 7px;
+          color: $green1;
+        }
+      }
+    }
+  }
+
+  .mat-slide-toggle-bar {
+    height: 30px;
+    width: 67px;
+    border-radius: 30px;
+    background: $offRed;
+    position: relative;
+
+    &:after {
+      content: "Test";
+      position: absolute;
+      right: 7px;
+      top: 3px;
+      font-weight: 700;
+      font-size: 12px;
+      color: $red;
+      text-transform: uppercase;
+      @include transition(all 80ms linear);
+    }
+  }
+
+  .mat-slide-toggle-thumb {
+    box-shadow: none;
+  }
+
+  .mat-slide-toggle-thumb-container {
+    width: 22px;
+    height: 22px;
+    box-shadow: 0px 0px 2px rgba($black, 0.12);
+    border-radius: 50%;
+    top: 4px;
+    left: 5px;
+  }
+}
+
+.mat-raised-button {
+  line-height: 32px;
+  font-weight: 600;
+  box-shadow: none !important;
+  padding: 0 10px;
+
+  &.mat-green {
+    background-color: $primaryGreen;
+    color: $white;
+
+    &.light-green {
+      color: $green2;
+      background: rgba($primaryGreen, 0.12);
+      font-size: 12px;
+      font-weight: 600;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 17px;
+
+      &:hover {
+        background: $green2;
+        color: $white;
+      }
+    }
+  }
+}
+
+.mat-form-field-appearance-outline {
+  &.mat-focused {
+    .mat-form-field-outline-thick {
+      color: $primaryGreen;
+    }
+
+    .mat-form-field-label {
+      color: $primaryGreen;
+    }
+  }
+
+  .mat-form-field-label {
+    color: $darkGrey;
+  }
+
+  .mat-form-field-outline-thick {
+
+    .mat-form-field-outline-start,
+    .mat-form-field-outline-end,
+    .mat-form-field-outline-gap {
+      border-width: 1px;
+    }
+  }
+
+  &.filled-input {
+    .mat-form-field-outline {
+      background: $lightGrey3;
+    }
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+      margin: 0;
+    }
+
+    .mat-form-field-infix {
+      padding: 7px 0px;
+      border-top-width: 9px;
+    }
+
+    .mat-form-field-label {
+      top: 23px;
+      margin-top: -7px;
+    }
+
+    &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    &.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+      transform: translateY(-16px) scale(0.75);
+    }
+
+    .mat-form-field-prefix,
+    .mat-form-field-suffix {
+      top: 0;
+
+      .mat-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .mat-select-trigger {
+    height: 16px;
+    top: -3px;
+
+    .mat-select-arrow {
+      color: $offBlack2;
+    }
+
+    .mat-select-arrow-wrapper {
+      @include translateY(-5%);
+    }
+  }
+}
+
+input.mat-input-element {
+  line-height: 17px;
+}
+
+.mat-select-panel-wrap {
+  .mat-select-panel {
+    border: 1px solid $primaryGreen;
+    padding: 8px 0;
+    min-width: calc(100% + 50px) !important;
+    .mat-optgroup-label,
+    .mat-option {
+      line-height: 28px;
+      height: 28px;
+      .mat-pseudo-checkbox{
+        border-color: $primaryGreen;
+        &.mat-pseudo-checkbox-checked{
+          background-color: $primaryGreen;
+        }
+      }
+    }
+  }
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $primaryGreen;
+}
+
+.mat-datepicker-content {
+  .mat-calendar-body-selected {
+    background-color: $primaryGreen;
+  }
+
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+  .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+  .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    background-color: rgba($primaryGreen, 0.5);
+    color: $white;
+  }
+
+  .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    border-color: rgba($primaryGreen, 0.5);
+  }
+}
+
+// Datepicker custom range
+::ng-deep .md-drppicker.drops-down-auto.ltr.shown.double.show-ranges {
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  left: auto !important;
+  right: 0 !important;
+  padding-right: 0;
+  @include bp(lg-max){
+    width: 265px;
+  }
+  @include bp(sm-max){
+    max-height: 420px;
+    overflow: hidden auto;
+  }
+  .ranges {
+      width: 100%;
+      margin-bottom: 15px;
+      > ul {
+          max-width: 109px;
+          margin-left: 0;
+      }
+  }
+
+  .calendar.right {
+    +.buttons {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+}
+
+
+// dashboard css start 
+.dropdown-simple {
+  &.mat-form-field{
+    max-width: 100px;
+  }
+  &.mat-form-field-appearance-outline {
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+      margin: 0;
+    }
+
+    .mat-form-field-flex {
+      padding: 0;
+      margin: 0;
+    }
+    .mat-form-field-outline-start{
+      border: 0;
+      border-radius: 0;
+    }
+    .mat-form-field-outline-gap{
+      border: 0;
+      border-radius: 0;
+    }
+    .mat-form-field-outline-end{
+      border: 0;
+      border-radius: 0;
+    }
+  }
+  .mat-form-field-infix{
+    border: 0;
+    padding: 0;
+  }
+}

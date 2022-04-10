@@ -1,0 +1,153 @@
+<div class="wrapper">
+  <div class="page-wrapper verify-wrapper">
+    <div class="verify-inner">
+      <div *ngIf="bulkStep === 'initialStep'">
+        <div class="bulk-title">
+          <h1>{{'select_options' | translate}}</h1>
+          <p>{{'select_options_descriptions' | translate}}</p>
+        </div>
+        <div class="verify-box">
+          <div class="box-left" (click)="goToSecondStep('download')">
+            <div class="image-block">
+              <img src="assets/images/download-icon.svg" alt="downlload">
+            </div>
+            <p id="downlloadexcel">{{'download_excel_template' | translate}}</p>
+          </div>
+          <div class="box-right" (click)="goToSecondStep('upload')">
+            <div class="image-block">
+              <img src="assets/images/upload-icon.svg" alt="upload">
+            </div>
+            <p id="uploadexcel">{{'upload_excel_sheet' | translate}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- verify 2nd step HTML start -->
+      <div class="verify-stepper" *ngIf="bulkStep === 'download'">
+        <ul>
+          <li>
+            <span class="progress-active"></span>
+            <p>{{'select_services' | translate}}</p>
+          </li>
+          <li>
+            <span class="round"></span>
+            <p>{{ 'download_excel_template_caps' | translate }}</p>
+          </li>
+          <li>
+            <span class="round"></span>
+            <p>{{'upload_excel_template' | translate}}</p>
+          </li>
+        </ul>
+        <div class="service-inner">
+          <div class="bulk-title">
+            <h1>{{ 'select_a_services' | translate }}</h1>
+            <p>{{'bulk_verification_service_msg' | translate}}</p>
+          </div>
+          <div class="download-wrapper">
+            <div class="download-option">
+              <div class="transaction-filter">
+                <button mat-stroked-button [matMenuTriggerFor]="transactionDuration" class="has-arrow" id="filesdown">{{ (selectedService !== undefined && selectedService.name !== null ) ? selectedService.name : 'select_a_service' | translate}}</button>
+                <mat-menu #transactionDuration="matMenu" class="light-menu">
+                  <menu mat-menu-item *ngFor="let service of bulkServices" (click)="selectBulkService(service)" title="{{service.isLive === false ? 'Please enabled live mode for this service' : '' }}" [disabled]="service.isLive === false">
+                      {{service.name}}
+                  </menu>
+                  <!-- <menu mat-menu-item>Seamfix IDQR</menu>
+                  <menu mat-menu-item>BVN Validity Service</menu>
+                  <menu mat-menu-item>Bank Account Validation Service</menu>
+                  <menu mat-menu-item>Seamfix VIN service</menu>
+                  <menu mat-menu-item>Seamfix Address Verification</menu> -->
+                </mat-menu>
+              </div>
+            </div>
+            <div class="download-button">
+              <button type="button" class="btn-success" id="downexceltem" [disabled]="(selectedService === undefined || (selectedService !== undefined && selectedService.name === undefined) || (selectedService.name !== undefined && selectedService.name === null))" (click)="downloadTemplate()">
+                <span>{{'download_template'| translate}}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- verify 2nd step for the when select the upload button -->      
+      <div class="verify-stepper" *ngIf="bulkStep === 'upload' && (selectedService === undefined || (selectedService !== undefined && selectedService.name === undefined) || (selectedService.name !== undefined && selectedService.name === null))">
+        <ul>
+          <li>
+            <span class="progress-active round"></span>
+            <p>{{'select_services' | translate}}</p>
+          </li>
+          <li>
+            <span class="round"></span>
+            <p>{{'upload_excel_template' | translate}}</p>
+          </li>
+        </ul>
+        <div class="service-inner">
+          <div class="bulk-title">
+            <h1>{{ 'select_a_services' | translate }}</h1>
+            <p>{{'bulk_verification_service_msg' | translate}}</p>
+          </div>
+          <div class="download-wrapper">
+            <div class="download-option">
+              <div class="transaction-filter">
+                <button mat-stroked-button [matMenuTriggerFor]="transactionDuration" class="has-arrow" id="filesup">{{ (selectedService !== undefined && selectedService.name !== null ) ? selectedService.name : 'select_a_service' | translate}}</button>
+                <mat-menu #transactionDuration="matMenu" class="light-menu">
+                  <menu mat-menu-item *ngFor="let service of bulkServices" (click)="selectBulkService(service)">
+                      {{service.name}}
+                  </menu>
+                  <!-- <menu mat-menu-item>Seamfix IDQR</menu>
+                  <menu mat-menu-item>BVN Validity Service</menu>
+                  <menu mat-menu-item>Bank Account Validation Service</menu>
+                  <menu mat-menu-item>Seamfix VIN service</menu>
+                  <menu mat-menu-item>Seamfix Address Verification</menu> -->
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- verify 3rd step HTML start -->
+      <div class="verify-file" *ngIf="bulkStep === 'upload' && selectedService !== undefined && selectedService.name !== undefined && selectedService.name !== null">
+        <div class="bulk-title">
+          <h1>{{'upload_excel_sheet' | translate}}</h1>
+          <p>{{'excel_upload_template_msg' | translate}}</p>
+        </div>
+        <div class="file-upload-main" appDnd (fileDropped)="onFileDropped($event)">
+          <input type="file" #fileDropRef id="fileDropRef" [multiple]="false" id="selectfile" (change)="fileBrowseHandler($event.target.files)" accept="{{allowedExtenssion}}">
+          <div class="upload-icon">
+            <img src="assets/images/file-upload.svg" alt="upload">
+          </div>
+          <div class="upload-content">
+            <h3>{{'drop_your_file_msg' | translate}} <label for="fileDropRef">{{'browse' | translate}}</label></h3>
+            <span>{{'supported_formate_type_for_bulk' | translate}}</span>
+          </div>
+        </div>
+        <div class="skip-button">
+          <a href="javascript:void(0)" [routerLink]="['/bulk-verification']" routerLinkActive="router-link-active" >{{'skip_for_now' | translate}}</a>
+        </div>
+        <div *ngFor="let file of files; let i = index" >
+          <div class="files-list" *ngIf="isAllowed">
+            <div class="single-file">
+              <div class="file-icon">
+                <img src="assets/images/pdf-file-icon.svg" alt="file-icon">
+              </div>
+              <div class="info">
+                <h4 class="name">{{ file?.name }}</h4>
+                <p class="size">{{ formatBytes(file?.size) }} <span class="text-success" *ngIf="file?.progress === 100">Done</span></p>
+                <app-progress [progress]="file?.progress"></app-progress>
+              </div>
+              <div class="delete" *ngIf="file?.progress === 100" (click)="deleteFile(i)">
+                <img src="assets/images/file-delete.svg" alt="delete">
+              </div>
+            </div>
+          </div>
+          <div class="button-combo" *ngIf="file?.progress === 100">
+            <button type="button" class="btn btn-success" (click)="bulkVerificationIdService()" id="verifyuser"><span>{{'verify' | translate}}</span></button>
+            <a href="javascript:void(0)" [routerLink]="['/bulk-verification']" routerLinkActive="router-link-active" >{{'Cancel' | translate}}</a>
+          </div>
+        </div>
+        <div *ngIf="isAllowed !== undefined && isAllowed === false">
+          File type not allowed.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

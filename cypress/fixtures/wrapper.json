@@ -1,0 +1,338 @@
+{
+  "services": [
+    {
+      "pk": "940",
+      "charge": "10.00",
+      "description": "This service responds with facial details (Picture) and textual details (Full Name (first, middle and last), Date of birth, Phone number, Sex, etc.) of an individual when supplied with a BVN.",
+      "failureBaseCharge": "50.00",
+      "lastInvocation": "2020-02-28T13:11:09.215Z",
+      "biometricEnabled": true,
+      "name": "BVN Full Details Service",
+      "published": true,
+      "successBaseCharge": "100.00",
+      "wrapperRef": "BVN|VAL|NIBBS|0001",
+      "apiDocUrl": "https://verifiedng.readme.io/docs/bvn-full-details",
+      "verification_type": "BVN-FULL-DETAILS",
+      "wrapperServiceProviders": [],
+      "wrapperDetails": {
+        "id": "2",
+        "active": true,
+        "live_mode_endpoint": null,
+        "test_mode_endpoint": "/v3/id-service/",
+        "form_json": [
+          {
+            "pageName": "BVN Full Details",
+            "key": "first_name_label",
+            "layouts": [
+              {
+                "label": "Email",
+                "id": "email_control",
+                "layoutLocked": true,
+                "icon": "email",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [
+                  {
+                    "grid": 12,
+                    "offset": 0,
+                    "order": 0,
+                    "children": [
+                      {
+                        "type": "email",
+                        "label": "Email",
+                        "i18n_label": "email_label",
+                        "icon": "email",
+                        "minlength": "1",
+                        "maxlength": "500",
+                        "subtype": "email",
+                        "labelPosition": "Left",
+                        "name": "email-2e125a8a-34d2-40ed-9320-af5a546073b1",
+                        "pushFieldLink": "",
+                        "placeholder": "Enter your email address",
+                        "dataKey": "email",
+                        "required": true
+                      }
+                    ]
+                  }
+                ],
+                "name": "layout-8450bfde-6356-4afe-bd62-94b4a1450320"
+              },
+              {
+                "label": "Number",
+                "id": "number_control",
+                "layoutLocked": true,
+                "icon": "exposure",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [
+                  {
+                    "grid": 12,
+                    "offset": 0,
+                    "order": 0,
+                    "children": [
+                      {
+                        "type": "number",
+                        "label": "BVN",
+                        "i18n_label": "number_label",
+                        "minlength": "1",
+                        "icon": "exposure",
+                        "maxlength": "11",
+                        "subtype": "number",
+                        "labelPosition": "Left",
+                        "name": "number-1f3f0dff-e08a-405a-b8c1-719859c33097",
+                        "pushFieldLink": "",
+                        "dataKey": "searchParameter",
+                        "required": true,
+                        "placeholder": "Enter your 11 digit BVN"
+                      }
+                    ]
+                  }
+                ],
+                "name": "layout-ebfdcc91-67ea-4aa8-b3b8-885f3e9090df"
+              }
+            ]
+          }
+        ]
+      },
+      "clientKeys": [
+        {
+          "pk": "179775",
+          "key": "f5xJdVH3rezkNdY0Cj4a",
+          "isLive": false
+        }
+      ]
+    },
+    {
+      "pk": "990",
+      "charge": "10.00",
+      "description": "This service responds with ...",
+      "failureBaseCharge": "50.00",
+      "lastInvocation": "2019-11-18T04:05:39.668Z",
+      "biometricEnabled": true,
+      "name": "NIN Full Details",
+      "published": true,
+      "successBaseCharge": "100.00",
+      "wrapperRef": "VER|NIN|FD|0001",
+      "apiDocUrl": null,
+      "verification_type": null,
+      "wrapperServiceProviders": [],
+      "wrapperDetails": {
+        "id": "4",
+        "active": true,
+        "live_mode_endpoint": null,
+        "test_mode_endpoint": "/sfx-verify/v3/nimc/search-by-nin",
+        "form_json": {
+          "_id": {
+            "$oid": "6059bb1e0c6c4242ea888005"
+          },
+          "baseId": "d2d21c8c-41a7-4987-88eb-a58ca6aa8536",
+          "config": "[{\"pageName\":\"First Name\",\"key\":\"first_name_label\",\"layouts\":[{\"label\":\"Number\",\"id\":\"number_control\",\"layoutLocked\":true,\"icon\":\"exposure\",\"type\":\"layout\",\"subtype\":\"layout\",\"columns\":[{\"grid\":12,\"offset\":0,\"order\":0,\"children\":[{\"type\":\"number\",\"label\":\"NIN\",\"i18n_label\":\"number_label\",\"minlength\":\"10\",\"icon\":\"exposure\",\"maxlength\":\"11\",\"subtype\":\"number\",\"labelPosition\":\"Left\",\"name\":\"number-266f3b43-571f-46a0-9416-d804ee222206\",\"pushFieldLink\":\"\",\"placeholder\":\"NIN/ Document Number\",\"dataKey\":\"nin\",\"required\":true}]}],\"name\":\"layout-d65b0394-e064-4b0f-806c-68f1268e8173\"}]}]",
+          "formType": "NinSearchByPhone",
+          "productBaseId": "6b4cf441-f495-4390-8c88-014b3e193972"
+        }
+      },
+      "clientKeys": [
+        {
+          "pk": "40000009",
+          "key": "oJ62yFnKeYnygE6kPyUi",
+          "isLive": false
+        }
+      ]
+    },
+    {
+      "pk": "960",
+      "charge": "10.00",
+      "description": "This service determines the validity of a BVN. This service responds with Valid or Invalid when a BVN and name or phone number is supplied.",
+      "failureBaseCharge": "50.00",
+      "lastInvocation": "2019-01-08T01:33:14.890Z",
+      "biometricEnabled": true,
+      "name": "Seamfix BVN Service",
+      "published": true,
+      "successBaseCharge": "100.00",
+      "wrapperRef": "VER|UVERIFY|BVN|0001",
+      "apiDocUrl": "https://verifiedng.readme.io/docs/seamfix-bvn-service",
+      "verification_type": "BVN-VERIFICATION",
+      "wrapperServiceProviders": [
+        {
+          "wrapperFk": "960",
+          "serviceProviderFk2": {
+            "pk": "3",
+            "logo": null
+          }
+        }
+      ],
+      "wrapperDetails": {
+        "id": "3",
+        "active": true,
+        "live_mode_endpoint": null,
+        "test_mode_endpoint": "/sfx-verify/v3/bvn",
+        "form_json": {
+          "_id": {
+            "$oid": "6041fcb71f2876243c4d66b9"
+          },
+          "baseId": "8d06a817-ddf5-41dc-adf0-837d73a50f99",
+          "config": "[{\"pageName\":\"First Name\",\"key\":\"first_name_label\",\"layouts\":[{\"label\":\"Name\",\"labelPosition\":\"Top\",\"id\":\"name_control\",\"i18n_label\":\"name_label\",\"i18n_desc\":\"name_desc\",\"layoutLocked\":false,\"group\":true,\"icon\":\"people_outline\",\"type\":\"layout\",\"subtype\":\"layout\",\"description\":\"Help text should be displayed here like this\",\"columns\":[{\"grid\":null,\"cssClasses\":\"col-6 col-sm-6 col-md-6\",\"offset\":0,\"order\":0,\"visibility\":true,\"children\":[{\"type\":\"text\",\"label\":\"First Name\",\"i18n_label\":\"first_name_label\",\"minlength\":\"2\",\"maxlength\":\"70\",\"subtype\":\"text\",\"regex\":{\"pattern\":\"^[a-zA-Z]+$\",\"message\":\"First Name should contain only alphabets and hyphen\"},\"name\":\"text-70c8ec06-81fe-4992-9b15-060e43f31d28\",\"pushFieldLink\":\"\",\"dataKey\":\"firstname\",\"required\":true,\"isRegex\":true}]},{\"grid\":null,\"cssClasses\":\"col-6 col-sm-6 col-md-6\",\"offset\":0,\"order\":0,\"visibility\":true,\"children\":[{\"type\":\"text\",\"label\":\"Surname\",\"i18n_label\":\"last_name_label\",\"minlength\":\"2\",\"maxlength\":\"70\",\"subtype\":\"text\",\"regex\":{\"pattern\":\"^[a-zA-Z]+$\",\"message\":\"Surname should contain only alphabets and hyphen\"},\"name\":\"text-7e89a37f-fa3d-4ee3-8b4c-8c52dccd69c3\",\"pushFieldLink\":\"\",\"dataKey\":\"surname\",\"required\":true,\"isRegex\":true}]}],\"name\":\"layout-b5d1c4a1-c9ac-4b78-9a3b-24d66a8f0b8d\",\"required\":true,\"isRegex\":false,\"regex\":{\"pattern\":\"^[a-zA-Z]+$\"}},{\"label\":\"Phone Number\",\"id\":\"phone_control\",\"layoutLocked\":true,\"icon\":\"local_phone\",\"type\":\"layout\",\"subtype\":\"layout\",\"columns\":[{\"grid\":12,\"offset\":0,\"order\":0,\"children\":[{\"type\":\"phone\",\"label\":\"Phone\",\"i18n_label\":\"phone_label\",\"minlength\":\"1\",\"maxlength\":\"14\",\"subtype\":\"tel\",\"name\":\"phone-05afec2a-b592-4fcb-8228-cd4d2db0db61\",\"pushFieldLink\":\"\",\"defaultCode\":\"+234\",\"dataKey\":\"phone\",\"isRegex\":false,\"regex\":{\"pattern\":\"^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\\\s\\\\./0-9]*$\",\"message\":\"Phone Number should contain only digits\"},\"required\":true}]}],\"name\":\"layout-4de23dbb-fba6-4c00-a58b-a205125b8658\"},{\"label\":\"Email\",\"id\":\"email_control\",\"layoutLocked\":true,\"icon\":\"email\",\"type\":\"layout\",\"subtype\":\"layout\",\"columns\":[{\"grid\":12,\"offset\":0,\"order\":0,\"children\":[{\"type\":\"email\",\"label\":\"Email\",\"i18n_label\":\"email_label\",\"icon\":\"email\",\"minlength\":\"1\",\"maxlength\":\"500\",\"subtype\":\"email\",\"labelPosition\":\"Left\",\"name\":\"email-6caeb04d-a843-42fe-8443-1f50c381da9e\",\"pushFieldLink\":\"\",\"dataKey\":\"email\",\"required\":false}]}],\"name\":\"layout-aedf8b0c-b970-4626-9c2f-b72d3819cc07\"},{\"label\":\"Number\",\"id\":\"number_control\",\"layoutLocked\":true,\"icon\":\"exposure\",\"type\":\"layout\",\"subtype\":\"layout\",\"columns\":[{\"grid\":12,\"offset\":0,\"order\":0,\"children\":[{\"type\":\"number\",\"label\":\"BVN\",\"i18n_label\":\"number_label\",\"minlength\":\"11\",\"icon\":\"exposure\",\"maxlength\":\"11\",\"subtype\":\"number\",\"labelPosition\":\"Left\",\"name\":\"number-35ea56bf-0e66-4f96-adde-0a7ac13c0e5f\",\"pushFieldLink\":\"\",\"dataKey\":\"bvn\",\"required\":true}]}],\"name\":\"layout-52bef536-a6c8-44f6-bf94-842847d2161b\"},{\"label\":\"Date Picker\",\"id\":\"date_control\",\"layoutLocked\":true,\"icon\":\"date_range\",\"type\":\"layout\",\"subtype\":\"layout\",\"columns\":[{\"grid\":12,\"offset\":0,\"order\":0,\"children\":[{\"type\":\"date\",\"label\":\"Date of Birth\",\"i18n_label\":\"date_label\",\"minlength\":\"1\",\"maxlength\":\"500\",\"subtype\":\"date\",\"labelPosition\":\"Left\",\"divider\":\"-\",\"dateFormat\":\"YYYYMMDD\",\"startDate\":{},\"endDate\":{},\"setPastDate\":true,\"setFutureDate\":true,\"name\":\"date-96745269-2820-42ca-8db9-f7b635348436\",\"pushFieldLink\":\"\",\"required\":true,\"dataKey\":\"dob\"}]}],\"name\":\"layout-7952f5c2-67de-4545-b121-659a078e14ec\"}]}]",
+          "formType": "bvnboolmock",
+          "productBaseId": "6b4cf441-f495-4390-8c88-014b3e193972"
+        }
+      },
+      "clientKeys": [
+        {
+          "pk": "143126",
+          "key": "g6kBq0dkZYKaX1OCljlc",
+          "isLive": true
+        }
+      ]
+    },
+    {
+      "pk": "39",
+      "charge": "10.00",
+      "description": "This service determines the\r\nvalidity of a BVN.\r\nThis service reponds with\r\n“Valid” or “Invalid” when a\r\nBVN and name or phone\r\nnumber is supplied.",
+      "failureBaseCharge": "50.00",
+      "lastInvocation": "2017-05-30T05:48:12.883Z",
+      "biometricEnabled": true,
+      "name": "BVN Boolean Match (Single)",
+      "published": true,
+      "successBaseCharge": "100.00",
+      "wrapperRef": "BVN|SBOOL|NIBBS|0001",
+      "apiDocUrl": null,
+      "verification_type": "BVN-BOOLEAN-MATCH",
+      "wrapperServiceProviders": [],
+      "wrapperDetails": null,
+      "clientKeys": [
+        {
+          "pk": "143407",
+          "key": "Sy41ffoGhHROTagu8iOM",
+          "isLive": false
+        }
+      ]
+    },
+    {
+      "pk": "1003",
+      "charge": "200.00",
+      "description": null,
+      "failureBaseCharge": "0.00",
+      "lastInvocation": null,
+      "biometricEnabled": true,
+      "name": "NIMC NIN Search",
+      "published": true,
+      "successBaseCharge": "200.00",
+      "wrapperRef": "VER|UVERIFY|NNIN|0001",
+      "apiDocUrl": null,
+      "verification_type": "NIN-SEARCH",
+      "wrapperServiceProviders": [],
+      "wrapperDetails": null,
+      "clientKeys": [
+        {
+          "pk": "143056",
+          "key": "ycvXsAZLJ6leuxQ9mLd6",
+          "isLive": false
+        }
+      ]
+    },
+    {
+      "pk": "939",
+      "charge": "10.00",
+      "description": "This service determines the validity of a BVN. This service responds with Valid or Invalid when a BVN and name or phone number is supplied.",
+      "failureBaseCharge": "50.00",
+      "lastInvocation": "2019-11-22T06:41:35.843Z",
+      "biometricEnabled": true,
+      "name": "BVN Validity Service",
+      "published": true,
+      "successBaseCharge": "100.00",
+      "wrapperRef": "BVN|BOOL|NIBBS|0001",
+      "apiDocUrl": "https://verifiedng.readme.io/docs/seamfix-bvn-service",
+      "verification_type": null,
+      "wrapperServiceProviders": [],
+      "wrapperDetails": null,
+      "clientKeys": []
+    },
+    {
+      "pk": "1006",
+      "charge": "200.00",
+      "description": null,
+      "failureBaseCharge": "0.00",
+      "lastInvocation": null,
+      "biometricEnabled": true,
+      "name": "NIMC NIN BOOLEAN MATCH",
+      "published": true,
+      "successBaseCharge": "200.00",
+      "wrapperRef": "VER|UVERIFY|NNINBOOL|0001",
+      "apiDocUrl": null,
+      "verification_type": "NIN-BOOLEAN-MATCH",
+      "wrapperServiceProviders": [],
+      "wrapperDetails": null,
+      "clientKeys": []
+    },
+    {
+      "pk": "1005",
+      "charge": "200.00",
+      "description": null,
+      "failureBaseCharge": "0.00",
+      "lastInvocation": null,
+      "biometricEnabled": true,
+      "name": "NIMC NIN+FINGERPRINT Search",
+      "published": true,
+      "successBaseCharge": "200.00",
+      "wrapperRef": "VER|UVERIFY|NNINFINGER|0001",
+      "apiDocUrl": null,
+      "verification_type": "NIN-FINGER-SEARCH",
+      "wrapperServiceProviders": [
+        {
+          "wrapperFk": "1005",
+          "serviceProviderFk2": {
+            "pk": "1",
+            "logo": null
+          }
+        }
+      ],
+      "wrapperDetails": null,
+      "clientKeys": [
+        {
+          "pk": "40000147",
+          "key": "V8pQDSpeIveT2WjKBMiu",
+          "isLive": true
+        }
+      ]
+    },
+    {
+      "pk": "1004",
+      "charge": "10.00",
+      "description": null,
+      "failureBaseCharge": "0.00",
+      "lastInvocation": null,
+      "biometricEnabled": true,
+      "name": "NIMC DEMO Search",
+      "published": true,
+      "successBaseCharge": "10.00",
+      "wrapperRef": "VER|UVERIFY|NDEMO|0001",
+      "apiDocUrl": null,
+      "verification_type": "NIN-DEMO-SEARCH",
+      "wrapperServiceProviders": [],
+      "wrapperDetails": null,
+      "clientKeys": []
+    },
+    {
+      "pk": "955",
+      "charge": "10.00",
+      "description": "This service responds with Account name when supplied with an Account number helping you validate an account owner.",
+      "failureBaseCharge": "50.00",
+      "lastInvocation": null,
+      "biometricEnabled": true,
+      "name": "Bank Account Validation Service",
+      "published": true,
+      "successBaseCharge": "100.00",
+      "wrapperRef": "ACCTINQ|NIBSS|ICAD|0001",
+      "apiDocUrl": "https://verifiedng.readme.io/docs/bank-account",
+      "verification_type": null,
+      "wrapperServiceProviders": [],
+      "wrapperDetails": null,
+      "clientKeys": []
+    }
+  ],
+  "totalCount": 11,
+  "email": "schemeaccnt@gmail.com",
+  "userId": "17047e0f-918c-4abf-aec3-90c06a3a80f7",
+  "code": 0,
+  "description": "All wrapper services"
+}

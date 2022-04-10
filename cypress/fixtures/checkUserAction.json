@@ -1,0 +1,12 @@
+{
+    "userActions": {
+        "wallet": false,
+        "invitedUser": false,
+        "modeTest": false,
+        "modeLive": false
+    },
+    "email": "schemeaccnt@gmail.com",
+    "userId": "17047e0f-918c-4abf-aec3-90c06a3a80f7",
+    "code": 0,
+    "description": "Get user actions successfully"
+}

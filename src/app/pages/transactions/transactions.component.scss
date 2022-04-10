@@ -1,0 +1,153 @@
+@import "color";
+@import "mixins";
+@import "fonts";
+@import "break-points";
+
+::ng-deep .transaction-dashboard,
+.transaction-dashboard {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -14px;
+
+  .transaction-filter {
+    width: 100%;
+    margin: -34px 14px 18px;
+    display: flex;
+    justify-content: flex-end;
+
+    @include bp(sm-max) {
+      flex-direction: column;
+    }
+
+    @include bp(sm-max) {
+      display: none;
+    }
+
+    .mat-form-field {
+      max-width: 310px;
+    }
+  }
+
+  .pad-0 {
+    padding: 0 !important;
+  }
+
+  .transaction-charts {
+    padding: 0 14px;
+    width: 35%;
+
+    @include bp(sm-max) {
+      width: 100%;
+    }
+
+    .transaction-info {
+      border-radius: 4px;
+      background: $white;
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      background-size: initial;
+
+      +.transaction-info {
+        margin-top: 63px;
+
+        @include bp(smd-max) {
+          margin-top: 35px;
+        }
+
+        @include bp(sm-max) {
+          margin-top: 20px;
+        }
+      }
+
+      &.secondary {
+        background-color: $offBlack2;
+        border-radius: 10px;
+        background-image: url('/assets/images/bank.svg');
+
+        .payment-total {
+          color: $white;
+
+          .thumb {
+            height: 69px;
+            width: 69px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            // background-color: rgba($lightGrey, 0.3);
+            margin-bottom: 26px;
+
+            @include bp(md-max) {
+              height: 50px;
+              width: 50px;
+              margin-bottom: 15px;
+            }
+          }
+
+          .count {
+            font-size: 32px;
+            line-height: 38px;
+            font-weight: 700;
+            display: block;
+
+            @include bp(md-max) {
+              font-size: 25px;
+            }
+          }
+
+          p {
+            font-size: 15px;
+            color: $lightGreen;
+
+            @include bp(md-max) {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .info-header {
+        display: flex;
+        align-items: center;
+        padding: 24px 21px;
+        border-bottom: 1px solid $lightGrey5;
+
+        @include bp(smd-max) {
+          padding: 15px;
+        }
+
+        p {
+          font-size: 15px;
+          color: $darkGrey5;
+          margin-left: 15px;
+
+          @include bp(lg-max) {
+            font-size: 13px;
+            margin-left: 8px;
+          }
+        }
+      }
+
+      .info-body {
+        padding: 48px 33px 29px;
+        display: block;
+
+        @include bp(md-max) {
+          padding: 25px 15px;
+        }
+      }
+    }
+  }
+
+  .transaction-table {
+    padding: 0 14px;
+    width: 65%;
+
+    @include bp(sm-max) {
+      width: 100%;
+      padding: 0;
+      margin-top: 20px;
+    }
+  }
+}

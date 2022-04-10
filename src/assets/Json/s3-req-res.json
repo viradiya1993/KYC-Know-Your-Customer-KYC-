@@ -1,0 +1,44 @@
+{
+    "requestData": {
+        "userId": "1596025751418",
+        "apiKey": "SdS*A14Hk+tX4ZSP",
+        "wrapperRef": "VER|UVERIFY|BADDR|0001",
+        "eventType": "RECEIVED",
+        "businessName": "Johnson and Sons",
+        "idType": "BUSINESS_ADDRESS",
+        "serviceProvider": "VERIFY_ME",
+        "mobile": "09023456789",
+        "transactionRef": "VERNG|SFX|BADDR|1615578683500",
+        "registrationNumber": "TU-898-9094",
+        "country": "Nigeria",
+        "landmark": "Agungui bustop 1",
+        "buildingNumber": "12",
+        "street": "12 Somakari ajegunle street",
+        "state": "Lagos",
+        "city": "Lagos",
+        "dateOfIncorporation": "1990-12-10",
+        "postCode": "NULL",
+        "email": "mokoye@seamfix.com",
+        "subStreet": "NULL",
+        "flatNumber": "NULL",
+        "buildingName": "",
+        "nipostAddress": "NULL",
+        "digitalAddressCode": "NULL",
+        "callbackUrl": "http://www.seamfix.com"
+    },
+    
+    "responseData": {
+        "userId": "1596025751418",
+        "apiKey": "SdS*A14Hk+tX4ZSP",
+        "status": "PENDING",
+        "eventType": "PROCESSED",
+        "idType": "BUSINESS_ADDRESS",
+        "serviceProvider": "VERIFY_ME",
+        "providerParams": {
+            "reportId": "reports_bfa3440f-d27c-4c4c-b93b-ebde733399de",
+            "reportRef": "604bc67e4a095",
+            "candidateReportId": "210f808c-afd7-4fcf-b48f-b561f82da8a1"
+        },
+        "transactionRef": "VERNG|SFX|BADDR|1615578683500"
+    }
+}

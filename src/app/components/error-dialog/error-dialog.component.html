@@ -1,0 +1,13 @@
+<div class="custom-modal">
+  <div class="modal-body">
+    <div class="golive-popup">
+      <h3>{{title ||'Something went wrong'}}</h3>
+      <ng-container *ngIf="data!==undefined">
+          <p *ngFor="let error of data">{{ error }}</p>
+      </ng-container>
+      <div class="btn-block">
+        <button style="width: 100%;" mat-raised-button mat-dialog-close color="green">{{ 'Close' }}</button>
+      </div>
+    </div>
+  </div>
+</div>

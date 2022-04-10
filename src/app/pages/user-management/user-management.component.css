@@ -1,0 +1,110 @@
+.modal-container {
+  display: block;
+  overflow: hidden;
+}
+
+div.popup-container {
+  background: #000000b3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+div.popup-container.open {
+  display: flex;
+}
+
+div.popup-container.close {
+  display: none;
+}
+
+.content-container {
+  margin: auto;
+  position: relative;
+}
+
+.close-container {
+  position: absolute;
+  /* right: -30px; */
+  right: 100px;
+  top: 15px;
+}
+
+.close-container > .close-icon {
+  margin: auto;
+  text-align: center;
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.close-container > .close-icon::before,
+.close-icon::after {
+  content: "";
+  background: var(--main-border-color, var(--main-bg-color));
+  position: absolute;
+  height: 100%;
+  width: 2px;
+}
+
+.close-container > .close-icon::before {
+  transform: rotate(45deg);
+}
+
+.close-container > .close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.popup-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-user   .modal-header{
+  width: 100%;
+  -webkit-border-top-left-radius: var(--base-modal-border, 2rem);
+  -webkit-border-top-right-radius: var(--base-modal-border, 2rem);
+  -moz-border-radius-topleft: var(--base-modal-border, 2rem);
+  -moz-border-radius-topright: var(--base-modal-border, 2rem);
+  background-color: #F4F6FA !important;
+   border-top-left-radius: var(--base-modal-border, 2rem);
+   border-top-right-radius: var(--base-modal-border, 2rem);
+
+   
+}
+
+@media (min-width: 768px){
+ .create-user .modal-header .close{
+    margin: -2rem -3.5rem -1rem auto !important;
+ }
+}
+@media (max-width: 768px){
+  .user__wrapper {
+    margin: 100px 5px 0 5px;
+    height: 100%
+  }
+}
+
+.create-user__body{
+  padding:2.7rem 2rem;
+  max-height: 750px;
+  margin-bottom: 2.5rem;
+  overflow-y: auto;
+}
+
+.user__wrapper {
+  margin: 100px 5px 0 100px;
+  height: 100%
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 99999 !important;
+}

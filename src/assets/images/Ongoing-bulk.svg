@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61">
+  <g id="Group_44549" data-name="Group 44549" transform="translate(-0.151)">
+    <circle id="Ellipse_2308" data-name="Ellipse 2308" cx="30.5" cy="30.5" r="30.5" transform="translate(0.151)" fill="#1275e8" opacity="0.1"/>
+    <g id="Tools_Instruments_box_32" data-name="Tools / Instruments / box / 32" transform="translate(17.151 17)">
+      <path id="Fill" d="M20.572,23H3.428a1.744,1.744,0,0,1-1.714-1.769V7.077A1.745,1.745,0,0,1,0,5.308V1.769A1.744,1.744,0,0,1,1.714,0H22.286A1.744,1.744,0,0,1,24,1.769V5.308a1.744,1.744,0,0,1-1.714,1.769V21.231A1.744,1.744,0,0,1,20.572,23ZM3.428,7.077V21.231H20.572V7.077ZM1.714,1.769V5.308H22.286V1.769Zm13.715,13.27H8.571a1.745,1.745,0,0,1-1.714-1.77V11.5A1.744,1.744,0,0,1,8.571,9.731h6.857A1.744,1.744,0,0,1,17.143,11.5v1.769A1.745,1.745,0,0,1,15.429,15.039ZM8.571,11.5v1.769h6.857V11.5Z" transform="translate(2 3)" fill="#1275e8"/>
+    </g>
+  </g>
+</svg>

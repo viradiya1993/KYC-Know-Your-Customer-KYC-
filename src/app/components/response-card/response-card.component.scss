@@ -1,0 +1,352 @@
+@import "color";
+@import "mixins";
+@import "break-points";
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 891px;
+  max-width: 100%;
+  margin: 0 auto;
+  @include bp(sm-max){
+      padding: 0 15px;
+  }
+
+  // Double card css start
+  .card-inner{
+      display: flex;
+      width: 100%;
+      border-radius: 29px;
+      .card-left,.card-right{
+          width: 50%;
+          min-height: 500px;
+      }
+      .card-left{
+          background-color: $white;
+          .response-content{
+              text-align: center;
+              margin-top: 85px;
+              .content-small{
+                  margin-bottom: 29px;
+                  p{
+                      color: $lightGrey4;
+                      font-size: 15px;
+                      font-weight: 400;
+                      .text-success{
+                          font-weight: 700;
+                      }
+                  }
+                    &.verified-message{
+                        .strong{
+                            color: $offBlack2;
+                        }
+                    }
+              }
+              .match-score{
+                  p{
+                      font-size: 15px;
+                      font-weight: 400;
+                      color: $menuColor;
+                      span{
+                          color: $offBlack2;
+                          font-weight: 600;
+                          padding-left: 17px;
+                      }
+                  }
+              }
+              .match-score{
+                  margin-bottom: 42px;
+              }
+          }
+      }
+      .card-right{
+          background-color: $offWhite;
+          padding: 33px 51px 0 34px;
+          .result-label{
+              margin-bottom: 29px;
+              p{
+                  color: $lightGrey2;
+                  font-size: 17px;
+                  font-weight: 500;
+              }
+          }
+          .result-status{
+              ul{
+                  margin: 0;
+                  padding: 0;
+                  li{
+                      margin-bottom: 12px;
+                      &:last-child{
+                          margin-bottom: 0;
+                      }
+                      .main-status{
+                          background-color: $white;
+                          border-radius: 23px;
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 15px;
+                          .status-label{
+                              p{
+                                  color: $lightGrey4;
+                                  font-size: 15px;
+                                  font-weight: 400;
+                                  .value{
+                                      font-weight: 500;
+                                      color: $offBlack2;
+                                      padding-left: 15px;
+                                  }
+                              }
+                          }
+                          .status-tag{
+                              .response-message{
+                              border-radius: 15px;
+                              padding: 7px 15px;
+                              font-size: 13px;
+                              font-weight: 600;
+                              &.success{
+                                  background-color: rgba(53,245,142,0.149);
+                                  color: $primaryGreen;
+                              }
+                              &.error{
+                                  background-color: rgba(218,65,103,0.149);
+                                  color: $red-light;
+                              }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+  .card-single {
+    background-color: $white;
+    @include border-radius(29px);
+    width: 580px;
+    max-width: 100%;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.05);
+    .response-content {
+        text-align: center;
+        padding: 14px 0 78px;
+      .response-title {
+        margin-bottom: 14px;
+      }
+
+      .content-small {
+        margin-bottom: 39px;
+        p{
+          color: $lightGrey4;
+          font-size: 15px;
+          font-weight: 400;
+
+          .text-success {
+            font-weight: 700;
+          }
+        }
+        &.verified-message{
+            .strong{
+                color: $offBlack2;
+            }
+        }
+      }
+      .transition-block{
+        width: 300px;
+        margin: 0 auto;
+        max-width: 100%;
+        text-align: left;
+        margin-bottom: 84px;
+          .transtion-history{
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 1px solid rgba(0,0,0,0.101);
+              padding-bottom: 14px;
+              .history-left,.history-right{
+                  p{
+                      color: $darkGrey;
+                      font-size: 16px;
+                      font-weight: 400;
+                      margin-bottom: 5px;
+                  }
+                  .text-success{
+                      font-weight: 500;
+                  }
+              }
+              .history-left{
+                .transition-status{
+                    &:after{
+                      background-image: url("../../../assets/images/checked-icon.svg");
+                  }
+              }
+                .status-error{
+                  &:after{
+                  background-image: url("../../../assets/images/cancel-icon.svg");
+                }
+              }
+                  .transition-status, .status-error{
+                      position: relative;
+                      &:after{
+                          content: '';
+                          position: absolute;
+                          width: 22px;
+                          height: 22px;
+                          @include border-radius(50px);
+                          line-height: 22px;
+                          background-color: rgba(219,252,204,0.501);
+                          text-align: center;
+                          background-repeat: no-repeat;
+                          background-size: 10px;
+                          left: 0;
+                            top: 0;
+                            background-position: center;
+                      }
+                      .text-success{
+                          display: inline-block;
+                          margin-left: 30px;
+                      }
+                  }
+              }
+          }
+          .transition-message{
+            padding-top: 15px;
+            P{
+                color: $darkGrey;
+                font-size: 16px;
+                font-weight: 400;
+                &.text-strong{
+                    font-weight: 600;
+                }
+            }
+        }
+      }
+    }
+    &.verification-done{
+        padding: 73px 0 57px;
+        @include bp(sm-max){
+            padding: 40px 15px;
+        }
+        .verify-icon{
+            margin-bottom: 45px;
+            text-align: center;
+            @include bp(sm-max){
+                margin-bottom: 30px;
+            }
+        }
+        .verify-content{
+            width: 367px;
+            max-width: 100%;
+            margin: 0 auto;
+            margin-bottom: 41px;
+            text-align: center;
+            @include bp(sm-max){
+                margin-bottom: 30px;
+            }
+            h1{
+                font-size: 24px;
+                font-weight: 600;
+                color: $menuColor;
+                margin-bottom: 13px;
+                @include bp(sm-max){
+                    font-size: 20px;
+                    margin-bottom: 6px;
+                }
+            }
+            p{
+                margin-bottom: 0;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                color: $silver1;
+                &.strong-text{
+                    color: $offBlack2;
+                }
+            }
+        }
+        .verify-close{
+            text-align: center;
+        }
+    }
+  }
+}
+
+.user-card{
+    background-color: $white;
+    width: 496px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: rgba(0,0,0,0.05);
+    @include border-radius(4px);
+    .user-profile{
+        padding: 22px 22px 0;
+        display: flex;
+        align-items: center;
+        .user-dp.bvn-full {
+            margin-left: 13px;
+        }
+        .user-info{
+            margin-left: 20px;
+            p{
+                color: $offBlack3;
+                font-size: 17px;
+                font-weight: 700;
+            }
+            .user-gender{
+                font-size: 15px;
+                span{
+                    color: $lightGrey4;
+                    font-weight: 400;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+    .user-detail.bvn-full {
+        padding: 22px 22px 0;
+        padding-top: 0;
+    }
+    .user-detail{
+        padding: 22px 22px 0;
+        ul{
+            margin: 0;
+            padding: 0;
+            li{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 0.5px solid rgba(116, 116, 116, 0.5);
+                padding-bottom: 15.5px;
+                padding-top: 14.5px;
+                &:last-child{
+                    border: 0;
+                }
+                .ineer-left{
+                    p{
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: rgba(6, 35, 44, 0.5);
+                    }
+                }
+                .inner-right{
+                    text-align: right;
+                    p{
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: $offBlack3;
+                    }
+                }
+            }
+        }
+    }
+    .user-action{
+        padding-top: 47.5px;
+        padding-bottom: 49px;
+        text-align: center;
+    }
+}
+
+.user-card.full-details {
+    width: 800px;
+}
+.error-msg {
+    color: $red !important;
+}

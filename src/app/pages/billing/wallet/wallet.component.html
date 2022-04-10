@@ -1,0 +1,74 @@
+<div class="wrapper">
+
+    <ng-template #filterNav>
+        <app-page-filters (bioMetricEvent)="changeBioMetric($event)" (idProviderEvent)="changeIdprovider($event)"
+            (searchEvent)="receiveSearchValue($event)" (serviceListing)="onPagination($event)">
+        </app-page-filters>
+    </ng-template>
+
+    <div [ngClass]="{'page-wrapper': showAll}">
+        <div *ngIf="showAll" class="wallet-filter">
+            <button mat-stroked-button [matMenuTriggerFor]="transactionDuration" class="has-arrow">January 24, 2020 - January 24, 2020</button>
+            <mat-menu #transactionDuration="matMenu" class="dark-menu">
+              <menu mat-menu-item>Today</menu>
+                <menu mat-menu-item>Yesterday</menu>
+                <menu mat-menu-item>Last 7 days</menu>
+                <menu mat-menu-item>Last 30 days</menu>
+                <menu mat-menu-item>This Month</menu>
+                <menu mat-menu-item>Last Month</menu>
+                <menu mat-menu-item>Custom Range</menu>
+            </mat-menu>
+          </div>
+        <!-- CARD CONTAINER -->
+        <div *ngIf="showAll; else filterNav" class="card-container">
+            <div class="card__black" id="main_card">
+                <div class="card__header">
+                    <a (click)="openDialog()" id="main_card_balance">Set Low Balance Alert</a>
+                    <a id="main_card_topup">+ Top-up Wallet</a>
+                </div>
+                <div class="card__content">
+                    <p>₦ 60,000.00</p>
+                    <sub>Total wallet balance</sub>
+                </div>
+            </div>
+            <div class="card no__header bg-img1">
+                <div class="card__content">
+                    <p>₦ 260,000.00</p>
+                    <sub>Total Wallet Top-up</sub>
+                </div>
+            </div>
+            <div class="card no__header bg-img2">
+                <div class="card__content">
+                    <p>₦ 200,000.00</p>
+                    <sub>Total Wallet Debit</sub>
+                </div>
+            </div>
+        </div>
+        <!-- END OF CARD CONTAINER -->
+
+        <!-- TABLE CONTAINER AND GRAPH -->
+        <div [ngClass]="{'table__graph-container': showAll, 'page-wrapper':!showAll}">
+            <div *ngIf="showAll" class="graph">
+                <div class="graph-head">
+                    <h4>N 2,400,000</h4>
+                    <p>Total Wallet Payment</p>
+                </div>
+
+                <!-- TODO: Replace with donut graph -->
+                <app-charts></app-charts>
+                <!-- <img src="/assets/images/grapgh-mock.PNG" /> -->
+            </div>
+            <div class="table">
+                <div *ngIf="showAll" class="bfc-table-head">
+                    <h4>Wallet Top Up History</h4> <button mat-raised-button (click)="toogleViewAll()" color="green"
+                        class="light-green">View All</button>
+                </div>
+                <bfc-table horizontalVert
+                    [styles]="{paddingTop: '20px', paddingLeft:'20px', boxSizing: 'border-box', fontSize: '1em' }"
+                    minHeight="500px" [tableData]="tableData">
+                </bfc-table>
+            </div>
+        </div>
+        <!-- END OF TABLE CONTAINER AND GRAPH -->
+    </div>
+</div>

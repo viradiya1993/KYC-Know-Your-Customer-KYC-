@@ -1,0 +1,24 @@
+{
+    "bulkWiseTransaction":{
+        "bulkVerifications":[
+            {
+                "wrapper_pk":"960",
+                "transaction_pk":"39739937",
+                "verificationId":null,
+                "serviceUsed":"Seamfix BVN Service",
+                "transactionDate":"2021-03-30T11:02:24.981Z",
+                "amount":null,"transactionStatus":null,
+                "verificationStatus":"PENDING",
+                "paymentTime":"2021-03-30T11:02:24.981Z",
+                "responseTime":null,
+                "userName":"Brijesh Patel",
+                "bulkId":"861093",
+                "failureReason":null
+            }
+        ],
+        "totalCount":"1"
+    },
+    "email":"schemeaccnt@gmail.com",
+    "userId":"17047e0f-918c-4abf-aec3-90c06a3a80f7",
+    "code":0,
+    "description":"Bulk wise transaction histroy"}

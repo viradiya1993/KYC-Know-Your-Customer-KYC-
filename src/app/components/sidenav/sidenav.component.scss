@@ -1,0 +1,136 @@
+@import "color";
+@import "form-elements";
+@import "break-points";
+
+aside {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  text-align: center;
+  background: $white;
+  border-right: 1px solid $lightGrey;
+  z-index: 5;
+  @include transition(all 0.3s);
+  @include bp(sm-max){
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 9;
+    top: 50px;
+  }
+
+  ::ng-deep .main-menu & {
+    opacity: 1;
+    visibility: visible;
+  }
+  ::ng-deep ngx-simplebar {
+    height: 100%;
+    .simplebar-content {
+      height: 100%;
+    }
+    .simplebar-track.simplebar-horizontal {
+      display: none;
+    }
+  }
+  .inner-content {
+    padding: 21px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    @include bp(sm-max){
+      padding: 15px 0;
+    }
+  }
+  .disable-pointer {
+    pointer-events:none;
+  }
+  .logo {
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 66px;
+    @include bp(sm-max){
+      display: none;
+    }
+  }
+  ul {
+    li {
+      @include bp(sm-max){
+        text-align: left;
+        border-bottom: 1px solid rgba(0,0,0,0.101);
+        padding-bottom: 10px;
+        &:last-child{
+          padding-bottom: 0;
+          border: 0;
+        }
+      }
+      + li {
+        margin-top: 47px;
+        @include bp(sm-max){
+          margin-top: 10px;
+        }
+      }
+      a {
+        color: $menuColor;
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        @include bp(sm-max){
+          display: inline-flex;
+          align-items: center;
+          padding: 0 16px;
+          font-size: 14px;
+        }
+        span {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @include bp(sm-max){
+            padding-left: 15px;
+          }
+        }
+        em {
+          display: block;
+          margin-bottom: 5px;
+          @include bp(sm-max){
+            margin-bottom: 0;
+          }
+          img {
+            display: block;
+            margin: 0 auto;
+            &.rollover {
+              display: none;
+            }
+            @include bp(sm-max){
+              max-width: 23px;
+              margin-bottom: 0;
+            }
+          }
+        }
+        &:hover,
+        &.active {
+          color: $primaryGreen;
+          em {
+            img {
+              display: none;
+              &.rollover {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .aside-bottom {
+    margin-top: 100px;
+    @include bp(sm-max){
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<div class="user__wrapper">
+  <base-user-dashboard-view
+    (login-router-event)="handleComponentRoute($event)"
+    (create-user-event)="openCreateUserForm($event)"
+    (edit-user-event)="openCreateUserForm($event)"
+    (open-role-management-dashboard)="gotoRoleManagement($event)"
+    [currentDisplay]="defaultDispplay"
+    [roles]="roles"
+    [data]="userDatas"
+    [metaData]="dataDetail"
+    [tableLabel]="tableLabel"
+    [hideUserGroupDashboard]="hideUserGroupDashboard"
+  ></base-user-dashboard-view>
+
+  <!-- Create and Edit User Modal -->
+  <div class="modal-container" *ngIf="showLoader">
+    <div class="popup-container" [ngClass]="showLoader ? 'open' : 'close'">
+      <div class="content-container">
+        <div
+          class="close-container"
+          (click)="closeCreateUserModal($event)"
+        ></div>
+        <div class="popup-content">
+          <loader-component></loader-component>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create and Edit User Modal -->
+
+  <ng-template #template>
+    <div class="d-flex flex-column create-user">
+      <div class="modal-header">
+        <div class="p-4 pl-5">
+          <div class="main-text font-weight-bold pb-2 large-text">
+            {{ formHeader }}
+          </div>
+        </div>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRef.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div
+        class="d-flex flex-column create-user__body"
+        id="create-organisation__body"
+        *ngIf="formStructure"
+      >
+        <sfx-form-preview
+          [externalLinkHeaders]="formExternalLinkHeaders"
+          #formPreview
+          [primaryColor]="primaryColor"
+          [language]="lang"
+          (formValues)="getFormValues($event)"
+          [preFilledValues]="preFilledValues"
+          [disabledControls]="disabledControls"
+          [customCardBody]="'col-lg-12'"
+          [customCol]="'col-lg-12 col-md-12 col-sm-12 sfx-org-creation p-0'"
+          #formPreview
+          [containerCard]="'card h-100 shadow-none border-0'"
+          [customClass]="'section d-flex align-items-center'"
+          [customRow]="'row justify-content-center'"
+          [formStructure]="formStructure"
+          hideActionButtons="true"
+          [mainContainer]="''"
+        >
+        </sfx-form-preview>
+        <div class="custom-padding">
+          <div class="d-flex w-100 justify-content-end align-items-center">
+            <div class="ml-2">
+              <button
+                (click)="formPreview.getValue()"
+                class="btn btn-base px-5 py-3 xsmall-text"
+                [disabled]="creating || editing"
+              >
+                {{
+                  formType.toLowerCase() == "create_user"
+                    ? createBtnText
+                    : editBtnText
+                }}
+                <span
+                  *ngIf="creating || editing"
+                  class="spinner-grow spinner-grow-sm pl-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

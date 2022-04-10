@@ -1,0 +1,222 @@
+<div class="wrapper">
+  <ng-template #filterNav>
+    <app-page-filters
+    (TransactionFilterEvent)='onChangeFilter($event)'
+      [billingServiceWrappers]="serviceNameValues"
+      (idProviderEvent)="getWrapperId($event)"
+      (serviceTypeEvent)="billingServicType($event)"
+      [childMessage]="totalCount"
+      [index]="index"
+      (ExportFile)="changeExportFile($event)"
+      (messageEvent)="receiveMessage($event)"
+    >
+    </app-page-filters>
+  </ng-template>
+
+  <div [ngClass]="{ 'page-wrapper': showAll }">
+    <div *ngIf="showAll" class="wallet-filter">
+      <app-date-ranges (TransactionFilterEvent)='onChangeFilter($event)'></app-date-ranges>
+    </div>
+    <div *ngIf="showAll; else filterNav" class="card-container">
+      <div class="card__black bg-img" id="main_card"> 
+        <div class="card__header">
+          <!-- <a (click)="openBalanceAlertDialog()">Set Low Balance Alert</a> -->
+          <!-- <a [routerLink]="['/billing/topup']">Topup Wallet</a> -->
+          <a id="main_card_topup" (click)="goToWalletComponent()" style="cursor: pointer;">{{"Go to Wallet" | translate}}</a>
+        </div>
+        <div class="d-flex first-card justify-content-between">
+        <div class="card__content">
+          <img src="/assets/images/billing-credit-cards-payment.svg" />
+          <p>₦ {{walletBalance || 0.00}}</p>
+          <sub>{{"Wallet Balance" | translate}}</sub>
+        </div>
+        
+        <div class="v-line low-bal"> </div>
+
+        <div class="low-bal"> 
+          <p>₦ 0.00</p>
+         <sub>{{"Low wallet balance" | translate}}</sub>
+       </div>
+       </div>
+      </div>
+
+      <div class="card">
+        <div class="card__header">
+          <a [routerLink]="['/transactions/all']">{{"View Request" | translate}}</a>
+        </div>
+        <div class="card__content">
+          <img src="/assets/images/billing-file-notebook-green.svg" />
+          <p>{{ totalRequest?.count }}</p>
+          <sub>{{"Total Request"|translate}}</sub>
+        </div>
+      </div>
+
+      <div class="card no__header">
+        <div class="card__content">
+          <img src="/assets/images/billing-service-desk.svg" />
+          <p>{{ mostUsedService?.wrapper_name }}</p>
+          <sub>{{"Most used service"|translate}}</sub>
+        </div>
+      </div>
+
+      <div class="card no__header">
+        <div class="card__content">
+          <img src="/assets/images/billing-file-notebook.svg" />
+          <p>{{ recentlyUserService?.wrapper_name }}</p>
+          <sub>{{"Recently used service"|translate}}: {{invocation_time?.date}} | {{invocation_time?.time}}</sub>
+        </div>
+      </div>
+    </div>
+
+    <div [ngClass]="{ 'view-all': !showAll }">
+      <div class="bfc-table-head">
+        <h4>{{"Billing Details" | translate}}</h4>
+        <button
+          (click)="toogleViewAll()"
+          mat-raised-button
+          color="green"
+          class="light-green"
+        >
+          {{ showAll ? "View All" : "View cards" }}
+        </button>
+      </div>
+
+      <div class="table-wrapper" id="step9_element_id">
+        <div *ngIf="totalCount > 0" class="table-body">
+          <div class="table-responsive">
+            <table
+              mat-table
+              [dataSource]="tableData"
+              class="text-center mobile-table"
+              *ngIf="tableData.length > 0"
+            >
+              <ng-container matColumnDef="serialNumber">
+                <th mat-header-cell *matHeaderCellDef width="55">#</th>
+                <td
+                  width="55"
+                  mat-cell
+                  *matCellDef="let element; let i = index"
+                  class="td-first"
+                >
+                  {{ i + 1 }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="serviceName">
+                <th mat-header-cell *matHeaderCellDef>
+                  {{ "wrapper_name" | translate }}
+                </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="'text-left'">
+                  {{ element.wrapper_name }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="service_type">
+                <th mat-header-cell *matHeaderCellDef>
+                  {{ "service_type" | translate }}
+                </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="'text-left'">
+                  {{ element.service_type }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef [ngClass]="'text-left'">
+                  {{ "billing_wrapper_description" | translate }}
+                </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="'text-left'" title="{{element?.wrapper_description}}">
+                  {{
+                    element?.wrapper_description?.length > 50
+                      ? element.wrapper_description.substr(0, 50) + " . . ."
+                      : element.wrapper_description
+                  }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="unitCost">
+                <th mat-header-cell *matHeaderCellDef>
+                  {{ "band_band_price" | translate }}
+                </th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  [ngClass]="'text-center'"
+                >
+                  {{ element.band_price }}
+                </td>
+              </ng-container>
+
+              <!-- <ng-container matColumnDef="totalRequest">
+                <th mat-header-cell *matHeaderCellDef>
+                  {{ "total_request" | translate }}
+                </th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  [ngClass]="'text-center'"
+                >
+                  {{ element.no_of_request }}
+                </td>
+              </ng-container> -->
+
+              <ng-container matColumnDef="bandLimit">
+                <th mat-header-cell *matHeaderCellDef>
+                  {{ "current_band" | translate }}
+                </th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  [ngClass]="'text-center'"
+                >
+                  {{ element.bandlimit }}
+                </td>
+              </ng-container>
+
+              <!-- <ng-container matColumnDef="verification_status">
+                <th mat-header-cell *matHeaderCellDef>
+                  {{ "verification_status" | translate }}
+                </th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  [ngClass]="'text-center'"
+                >
+                  {{ element.verification_status }}
+                </td>
+              </ng-container> -->
+               <ng-container matColumnDef="extraInfo">
+                <th mat-header-cell *matHeaderCellDef>{{ "" }}</th>
+                <td
+                  mat-cell
+                  *matCellDef="let element; let i = index"
+                  [ngClass]="'text-left table__action-menu'"
+                >
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="viewCost"
+                    class="transparent-bg" id="step12_element_{{i}}"
+                  >
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <mat-menu #viewCost="matMenu" class="custom-menu">
+                    <button (click)="getDetailEvent(element)" mat-menu-item>
+                      {{ "View Banded cost" | translate }}
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="totalCount == 0" class="text-center">
+        <div class="p-5 border h4 rounded">No Record Found</div>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<header>
+  <div class="top-header">
+    <div class="top-left-header">
+    <div class="menu-icon" (click)="toggleMenu()" id="menu-Main">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <h1>
+      <a *ngIf="whichPage === 'transactions-all' || whichPage === 'bulk-verification-record' || whichPage === 'bulk-verification-verify-user'" 
+          href="javascript:void(0)" class="back" (click)="onBack()">
+          <img src="assets/images/back-arrow.svg" alt=""> {{'Back' | translate}}
+      </a>
+          <span >{{heading | translate}}</span>
+    </h1>
+  </div>
+    <div class="top-right-header">
+      <div class="header-items">
+        <!-- <button mat-icon-button class="transparent-bg">
+          <img src="assets/images/notifications.svg" alt="notifications">
+        </button> -->
+
+      </div>
+      <div class="header-items">
+        <mat-form-field appearance="outline" class="filled-input has-language">
+          <mat-label>{{'Language' | translate}}</mat-label>
+          <mat-select [(ngModel)]="preferLn" (selectionChange)='onChangeLang()'>
+            <mat-option value='en'>English</mat-option>
+            <mat-option value='fr'>French</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <div class="header-items d-mobile-none">
+        <span class="name">{{currentOrgName | translate}}</span>
+        <p class="user-id">{{'User id' | translate}} : {{userId}}</p>
+      </div>
+      
+      <div class="header-items">
+        <button mat-button [matMenuTriggerFor]="menu" class="arrow-btn" id="menuButton">
+          <img src="assets/images/user-dp.png" alt="">
+        </button>
+        <mat-menu #menu="matMenu">
+          <!-- <button mat-menu-item>
+            <em class="icon"><img src="assets/images/ic-help.svg" alt=""></em> {{'Help' | translate}}
+          </button> -->
+          <button mat-menu-item>
+            <em class="icon"><img src="assets/images/ic-settings.svg" alt=""></em>{{'Account_settings' | translate}}
+          </button>
+          <!-- <button mat-menu-item>
+            <em class="icon"><img src="assets/images/ic-company.svg" alt=""></em>{{'Switch_company' | translate}}
+          </button> -->
+          <button mat-menu-item (click)="logOut()">
+            <em class="icon"><img src="assets/images/ic-logout.svg" alt=""></em>{{'Logout' | translate}}
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</header>

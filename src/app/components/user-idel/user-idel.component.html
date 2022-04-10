@@ -1,0 +1,13 @@
+<div class="custom-modal">
+  <div class="modal-body">
+    <div class="body-form">
+      <h3>{{'Session_Timeout' | translate}}</h3>
+      <p>{{ 'Session_timeout_warning' | translate }}</p> <br>
+      <p>{{ ('Session_timeout_interval_msg' | translate) }} {{ interval }} {{ 'seconds' | translate }} </p>
+      <div class="btn-block" style="margin-top: 15px;">
+        <button mat-raised-button color="green" (click)="closeModel('stay')">{{'Stay_login' | translate }}</button>
+        <button mat-raised-button (click)="closeModel('logout')">{{'Logout' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>

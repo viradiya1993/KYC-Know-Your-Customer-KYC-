@@ -1,0 +1,117 @@
+@import "break-points";
+@import "color";
+@import "mixins";
+
+
+.table-wrapper{
+    .table-body{
+        padding: 0;
+        @include bp(sm-max) {
+          padding: 50px 15px;
+        }
+    }
+}
+
+table {
+  &.mat-table {
+    .mat-cell {
+
+      &.td-first,
+      &.td-two,
+      &.td-three {
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+
+
+.mobile-table {
+  @include bp(sm-max) {
+    &.mat-table {
+      border-spacing: 0 16px;
+      border-collapse: separate;
+    }
+
+    tr {
+      &.mat-header-row {
+        @include bp(sm-max) {
+          height: 16px;
+        }
+      }
+    }
+
+    .mat-row {
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.062);
+
+      .mat-cell {
+        font-size: 14px;
+        font-weight: 400;
+        color: $lightGrey1;
+        @include border-radius(4px);
+
+        @include bp(sm-max) {
+          border: 0.4px solid rgba(5, 92, 193, 0.231);
+        }
+
+        &.td-first {
+          border-right: hidden;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          color: $lightGrey2;
+          pointer-events: all;
+        }
+
+        &.td-two {
+          border-right: hidden;
+          border-left: hidden;
+          @include border-radius(0);
+          color: $black;
+          font-weight: 500;
+          pointer-events: all;
+        }
+
+        &.td-three {
+          border-left: hidden;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          font-weight: 500;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
+
+
+table{
+  &.mat-table{
+    .mat-cell{
+      &.mode-detail{
+        position: relative;
+        padding: 0 20px;
+        &:after{
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          min-width: 10px;
+          line-height: 10px;
+          left: 4px;
+          top: 50%;
+          transform: translateY(-50%);
+          border-radius: 50px;
+          background-color: $lightGrey1;
+        }
+        &.text-success{
+          color: $primaryGreen !important;
+          &:after{
+            background-color: $primaryGreen;
+          }
+        }
+      }
+    }
+  }
+}

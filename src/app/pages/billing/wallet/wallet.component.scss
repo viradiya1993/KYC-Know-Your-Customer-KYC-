@@ -1,0 +1,198 @@
+@import "color";
+@import "break-points";
+@import "form-elements";
+
+.card-container{
+    display: grid;
+    grid-template-columns: 430px 430px 430px;
+    grid-gap: 20px;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    & > div{
+        border-radius: 10px;
+        height: 234px;  
+    }
+    .card__header {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+    a {
+        padding: 5px 15px;
+        font-size: 0.7em;
+        border-radius: 16px;
+        background-color: #DBE3EE;
+        margin-right: 5px;
+        color: $offBlack;
+        cursor: pointer;
+    }
+
+    .card__content {
+        margin-left: 30px;
+        margin-top: 100px;
+        & p {
+            font-size: 1.5em;
+            font-weight: bolder;
+        }
+        & sub {
+            font-weight: bold;
+            color: $darkGrey5;
+        }
+    }
+    
+    .card.no__header{
+        padding-top: 40px;
+    }
+
+    .card {
+        background-color: $white;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        &.bg-img1 {
+            background-image: url('/assets/images/wallet.svg');
+        }
+        &.bg-img2 {
+            background-image: url('/assets/images/fund-wallet2.svg');
+        }
+        p {
+            color: #001A03;
+        }
+    }
+
+    .card__black {
+        background-color: $offBlack2;
+       
+        .card__header {
+            & :nth-child(1) {
+                background-color: rgba(255, 166, 0, 0.185);
+                color: #F7991B;
+                border: 1px solid rgba(255, 166, 0, 0.705)
+            }
+            & :nth-child(2) {
+                color: $white;
+                background-color: $green3;
+            }
+        }
+
+        .card__content {
+            color: $white;
+            & img {
+                background-color: rgba(0, 204, 255, 0.116);
+            }
+            & sub {
+                color: $lightGreen;
+            }
+        }
+    }
+}
+
+
+@include bp("smd-max") {
+    .card-container {
+        grid-template-columns: 300px 300px; 
+    }
+}
+
+@include bp("xs-max") {
+    .card-container {
+        grid-template-columns: auto; 
+    }
+}
+
+.bfc-table-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $white;
+    align-items: center;
+    border-bottom: 1px solid $lightGrey;
+    & h4 {
+        font-weight: 600px;
+        color: #001A03;
+    }
+}
+
+.graph-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    height: 73px;
+    background-color: $white;
+    border-bottom: 1px solid $lightGrey;
+    & h4 {
+        font-weight: bolder;
+        color: #001A03;
+        margin-right: 20px;
+    }
+    & p {
+        color: $darkGrey5;
+        font-weight: 600px;
+    }
+}
+
+.table__graph-container {
+    display: grid;
+    grid-template-columns: auto 890px;
+    grid-gap: 20px;
+}
+
+.modal__header.bal-alert {
+    font-size: 1.5em;
+}
+
+.set-bal__modal-form {
+    p {
+        font-weight: bolder;
+        margin: 10px 0;
+    }
+
+    button.add-email{
+        width: 100%;
+        background-color: $primaryGreen;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: $white;
+        border: none;
+    }
+
+    div.action-btn{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 40px;
+        button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-left: 10px;
+            border: none;
+        }
+        :nth-child(1) {
+            background-color: $primaryGreen;
+            color: $white;
+        }
+    }
+
+    .custom__input{
+     display: flex;
+     align-items: center;
+     a {
+         cursor: pointer;
+         background-color: $offOrange;
+         border-radius: 50%;
+         margin: 0 0 15px 10px;
+         padding: 2px 4px;
+         display: block;
+         font-weight: bolder;
+         color: $red;
+     }
+    }
+}
+
+.wallet-filter {
+    display: flex;
+    justify-content: flex-end;
+    margin: -30px 5px 30px 0
+}

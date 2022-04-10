@@ -1,0 +1,49 @@
+@import "color";
+@import "break-points";
+@import "form-elements";
+
+.modal__view-request {
+    padding:  10px 50px 50px 50px;
+}
+
+.view__request {
+    padding: 10px 40px 40px 40px;
+    height: 400px;
+    overflow: auto;
+}
+
+.modal__header{
+    background-color: $lightGrey7;
+    min-height: 7vh;
+    width: 100%;
+    padding: 20px 50px 20px 50px;
+    font-weight: bold;
+    span {
+        display: block;
+        color: $lightGrey4;
+        font-size: 0.6em;
+    }
+}
+
+.view__request__content {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 20px;
+    border: 2px solid $lightGrey;
+    & .blue_tag {
+        color: $blue;
+        font-weight: bold;
+        padding: 5px;
+        background-color: rgba(0, 0, 255, 0.055);
+    }
+    & .orange_tag {
+        color: $yellow;
+        font-weight: bold;
+        padding: 5px;
+        background-color: rgba(0, 0, 255, 0.055);
+    }
+}

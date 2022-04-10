@@ -1,0 +1,16 @@
+<div id="step10_element_id">
+<h2 mat-dialog-title class="modal__header">{{ data[data.length -1] | translate}}<span>{{'Make_configuration_changes' | translate}}</span></h2>
+<div class="view__request">
+  <mat-grid-list cols="1" rowHeight="1:1">
+    <ng-container *ngFor="let datum of data">
+      <div *ngIf="datum.band_name !== undefined" class="view__request__content">
+        <div>
+          <h3>{{dataum?.band_name | translate}}</h3>
+          <p>{{datum?.band_min_units + " - " + datum?.band_max_units}} {{'Requests' | translate}}</p>
+        </div>
+        <p [ngClass]="{'blue_tag': datum?.band_price <= 200, 'orange_tag': datum?.band_price > 200 }">₦ {{datum?.band_price}}.00</p>
+      </div>
+    </ng-container>
+  </mat-grid-list>
+</div>
+</div>

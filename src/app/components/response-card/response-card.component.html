@@ -1,0 +1,522 @@
+<div class="card-wrapper">
+  <div class="card-inner" *ngIf="false">
+    <div class="card-left">
+      <div class="response-ribbon error">
+        <img src="../../../assets/images/response-error.svg" alt="error">
+      </div>
+      <div class="response-content">
+        <div class="content-small verified-message">
+          <p>{{'The BVN' | translate}} <span class="text-success">20192837489</span></p>
+          <p>{{'Is Confirmed to be valid' | translate}}</p>
+        </div>
+        <div class="match-score">
+          <p>{{'Demographics match score' | translate}}:<span>69%</span></p>
+        </div>
+        <div class="response-action">
+          <button type="button" class="btn btn-success">
+            <span>{{'Try again' | translate}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="result-label">
+        <p>{{'Result breakdown' | translate}}</p>
+      </div>
+      <div class="result-status">
+        <ul>
+          <li>
+            <div class="main-status">
+              <div class="status-label">
+                <p>User ID:<strong class="value">012345678984</strong></p>
+              </div>
+              <div class="status-tag">
+                <span class="response-message success">{{'MATCH' | translate}}</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="main-status">
+              <div class="status-label">
+                <p>{{'First Name' | tr}}:<strong class="value">{{'Johnson' | translate}}</strong></p>
+              </div>
+              <div class="status-tag">
+                <span class="response-message error">{{'NO MATCH' | translate}}</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="main-status">
+              <div class="status-label">
+                <p>{{'Middle Name' | translate}}:<strong class="value">{{'Orelouwa' | translate}}</strong></p>
+              </div>
+              <div class="status-tag">
+                <span class="response-message error">{{'NO MATCH' | translate}}</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="main-status">
+              <div class="status-label">
+                <p>{{'Last Name' | translate}}:<strong class="value">{{'Shazam' | translate}}</strong></p>
+              </div>
+              <div class="status-tag">
+                <span class="response-message success">{{'MATCH' | translate}}</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="main-status">
+              <div class="status-label">
+                <p>{{'Date of Birth' | translate}}:<strong class="value">20. 01. 2000</strong></p>
+              </div>
+              <div class="status-tag">
+                <span class="response-message error">{{'NO MATCH' | translate}}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- single html -->
+  <!-- success, verified-message for success -->
+  <!-- error, response-title, text-error for error -->
+  <!-- Face Match -->
+  <div class="card-single" *ngIf="false">
+
+    <div class="response-ribbon error" [ngClass]="{success: responseCardJSON.verificationStatus === 'VERIFIED'}">
+      <img src="../../../assets/images/response-error.svg" alt="error"
+        *ngIf="responseCardJSON.verificationStatus !== 'VERIFIED'">
+      <img src="../../../assets/images/Check.svg" alt="success"
+        *ngIf="responseCardJSON.verificationStatus === 'VERIFIED'">
+    </div>
+    <div class="response-content">
+      <div class="response-title" *ngIf="responseCardJSON.verificationStatus !== 'VERIFIED'">
+        <h4>{{'Not Found' | translate}}</h4>
+      </div>
+      <div class="content-small verified-message">
+        <ng-container *ngIf="responseCardJSON.verificationStatus !== 'VERIFIED'">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p>{{'Is Confirmed to be invalid' | translate}}</p>
+        </ng-container>
+        <ng-container *ngIf="responseCardJSON.verificationStatus === 'VERIFIED'">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p class="strong">{{'Is Confirmed to be verified' | translate}}</p>
+        </ng-container>
+      </div>
+      <div class="transition-block">
+        <div class="transtion-history" *ngIf="false">
+          <div class="history-left" *ngIf="responseCardJSON.faceMatchStatus === 'SUCCESSFUL'">
+            <p>{{'Face Match' | translate}}</p>
+            <p class="transition-status"><span class="text-success">{{responseCardJSON.faceMatchStatus}}</span></p>
+          </div>
+          <div class="history-left" *ngIf="responseCardJSON.faceMatchStatus !== 'SUCCESSFUL'">
+            <p>{{'Face Match' | translate}}</p>
+            <p class="status-error"><span class="text-success text-error">{{responseCardJSON.faceMatchStatus}}</span>
+            </p>
+          </div>
+          <div class="history-right">
+            <p>{{'Face Match Score' | translate}}</p>
+            <span class="text-success">{{responseCardJSON.faceMatchScore}}</span>
+          </div>
+        </div>
+        <div class="transition-message">
+          <p>{{'Transaction Reference Number' | translate}}</p>
+          <p class="text-strong">{{responseCardJSON.transactionReference}}</p>
+        </div>
+      </div>
+      <div class="response-action">
+        <button *ngIf="responseCardJSON.verificationStatus !== 'VERIFIED'" (click)="callTryAgain()" type="button"
+          class="btn btn-success">
+          <span>{{'Try again' | translate}}</span>
+        </button>
+        <button *ngIf="responseCardJSON.verificationStatus === 'VERIFIED'" (click)="goToServices()" type="button"
+          class="btn btn-success">
+          <span>{{'Okay' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-single"
+    *ngIf="(whichWrapperResponse === VerificationType.BVN_VERIFICATION || whichWrapperResponse === VerificationType.BVN_BOOLEAN_MATCH)">
+
+    <div class="response-ribbon error"
+      [ngClass]="{success: responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP }">
+      <img src="../../../assets/images/response-error.svg" alt="error"
+        *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED">
+      <img src="../../../assets/images/Check.svg" alt="success"
+        *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP">
+    </div>
+    <div class="response-content">
+      <div class="response-title" *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED">
+        <h4>{{'Not Found' | translate}}</h4>
+      </div>
+      <div class="content-small verified-message">
+        <ng-container
+          *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p>{{'Is Confirmed to be invalid' | translate}}</p>
+        </ng-container>
+        <ng-container *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p class="strong">{{'Is Confirmed to be verified' | translate}}</p>
+        </ng-container>
+        <ng-container *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p class="strong">{{'Is Confirmed to be pending' | translate}}</p>
+        </ng-container>
+      </div>
+      <div class="transition-block">
+        <div class="transition-message">
+          <p>{{'Transaction Reference Number' | translate}}</p>
+          <p class="text-strong">{{responseCardJSON.transactionReference}}</p>
+        </div>
+      </div>
+      <div class="response-action">
+        <button *ngIf="responseCardJSON.responseCode === '11' && this.responseJson.keyfrom === 'service'"
+          (click)="callTryAgain()" type="button" class="btn btn-success">
+          <span>{{'Try again' | translate}}</span>
+        </button>
+        <button *ngIf="responseCardJSON.responseCode !== '11' || this.responseJson.keyfrom === 'trasactions'"
+          (click)="goToServices()" type="button" class="btn btn-success">
+          <span>{{'Okay' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-single verification-done" *ngIf="whichWrapperResponse === 'BULK'">
+    <div class="verify-icon">
+      <img src="../../../assets/images/thumb.svg" alt="success">
+    </div>
+    <div class="verify-content">
+      <h1>{{'Bulk Verification underway' | translate}}</h1>
+      <p>{{'Your bulk verification with' | translate}} <span class="strong-text">{{'ID' | translate}}:
+          {{responseCardJSON.bulkJobId}}</span>{{' has started. A mail will be sent to
+        your email address once verification is completed' | translate}}</p>
+    </div>
+    <div class="verify-close">
+      <button type="button" class="btn btn-success" (click)="goToBulk()">
+        <span>{{'Done' | translate}}</span>
+      </button>
+    </div>
+  </div>
+  <div class="card-single"
+    *ngIf="(whichWrapperResponse === VerificationType.NIN_SEARCH || whichWrapperResponse === VerificationType.NIN_DEMOGRAPHIC_SEARCH || whichWrapperResponse === VerificationType.NIN_FINGER_SEARCH || whichWrapperResponse === VerificationType.NIN_PHONE_SEARCH) && (responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP) ">
+    <div class="response-ribbon error"
+      [ngClass]="{success: responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP }">
+      <img src="../../../assets/images/response-error.svg" alt="error"
+        *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED">
+      <img src="../../../assets/images/Check.svg" alt="success"
+        *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP">
+    </div>
+    <div class="response-content">
+      <div class="response-title" *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED">
+        <h4>{{'Not Found' | translate}}</h4>
+      </div>
+      <div class="content-small verified-message">
+        <ng-container
+          *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP">
+          <p>{{'The NIN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p>{{'Is Confirmed to be invalid' | translate}}</p>
+        </ng-container>
+        <ng-container *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING">
+          <p>{{'The NIN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p class="strong">{{'Is Confirmed to be pending' | translate}}</p>
+        </ng-container>
+      </div>
+      <div class="transition-block">
+        <div class="transition-message">
+          <p>{{'Transaction Reference Number' | translate}}</p>
+          <p class="text-strong">{{responseCardJSON.transactionReference}}</p>
+        </div>
+      </div>
+      <div class="response-action">
+        <button (click)="callTryAgain()"
+          *ngIf="responseCardJSON.responseCode === '11' && responseJson.keyfrom === 'service'" type="button"
+          class="btn btn-success">
+          <span>{{'Try again' | translate}}</span>
+        </button>
+        <button type="button" *ngIf="(responseJson.keyfrom === 'trasactions' || responseCardJSON.responseCode !== '11')"
+          class="btn btn-success" (click)="goToServices()">
+          <span>{{'Okay' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-single"
+    *ngIf="whichWrapperResponse === VerificationType.BVN_FUll_DETAILS && (responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP)">
+    <div class="response-ribbon error"
+      [ngClass]="{success: responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP }">
+      <img src="../../../assets/images/response-error.svg" alt="error"
+        *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED">
+      <img src="../../../assets/images/Check.svg" alt="success"
+        *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP">
+    </div>
+    <div class="response-content">
+      <div class="response-title" *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED">
+        <h4>{{'Not Found' | translate}}</h4>
+      </div>
+      <div class="content-small verified-message">
+        <ng-container
+          *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.FAILED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIED || responseCardJSON.verificationStatus === VerificationStatusEnum.NOT_VERIFIEDRMSP">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p>{{'Is Confirmed to be invalid' | translate}}</p>
+        </ng-container>
+        <ng-container *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.PENDING">
+          <p>{{'The BVN' | translate}} <span class="text-success">{{responseCardJSON.searchParameter}}</span></p>
+          <p class="strong">{{'Is Confirmed to be pending' | translate}}</p>
+        </ng-container>
+      </div>
+      <div class="transition-block">
+        <div class="transition-message">
+          <p>{{'Transaction Reference Number' | translate}}</p>
+          <p class="text-strong">{{responseCardJSON.transactionReference}}</p>
+        </div>
+      </div>
+      <div class="response-action">
+        <button (click)="callTryAgain()"
+          *ngIf="responseCardJSON.responseCode === '11' && responseJson.keyfrom === 'service'" type="button"
+          class="btn btn-success">
+          <span>{{'Try again' | translate}}</span>
+        </button>
+        <button type="button" *ngIf="(responseJson.keyfrom === 'trasactions' || responseCardJSON.responseCode !== '11')"
+          class="btn btn-success" (click)="goToServices()">
+          <span>{{'Okay' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="user-card full-details"
+  *ngIf="whichWrapperResponse === VerificationType.BVN_FUll_DETAILS && responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED">
+  <div class="user-profile">
+    <div class="user-dp bvn-full">
+      <!-- <img src="../../../assets/images/user-profile.png" alt="profile"> -->
+      <img src="{{'data:image/jpg;base64,' + responseCardJSON.imageBase64}}" width="150px" height="150px" />
+    </div>
+    <div class="user-info">
+      <!-- <p>James Hussein Kayanmata</p>
+      <p class="user-gender"><span>Gender:</span> Male</p> -->
+    </div>
+  </div>
+  <div class="user-detail bvn-full">
+    <img src="{{'data:image/jpg;base64,' + responseCardJSON.basicDetailBase64}}" />
+    <!-- <ul>
+            <li>
+                <div class="ineer-left">
+                    <p>User ID</p>
+                </div>
+                <div class="inner-right">
+                    <p>RC299304</p>
+                </div>
+            </li>
+            <li>
+                <div class="ineer-left">
+                    <p>Document Number</p>
+                </div>
+                <div class="inner-right">
+                    <p>08172635489</p>
+                </div>
+            </li>
+            <li>
+                <div class="ineer-left">
+                    <p>Phone Number</p>
+                </div>
+                <div class="inner-right">
+                    <p>08172635489</p>
+                </div>
+            </li>
+            <li>
+                <div class="ineer-left">
+                    <p>Address</p>
+                </div>
+                <div class="inner-right">
+                    <p>123, Seamfix road,</p>
+                    <P>Lekki Phase 1, Lagos</P>
+                </div>
+            </li>
+            <li>
+                <div class="ineer-left">
+                    <p>Registration Date</p>
+                </div>
+                <div class="inner-right">
+                    <p>21. 01. 2021</p>
+                </div>
+            </li>
+            <li>
+                <div class="ineer-left">
+                    <p>Expiry Date</p>
+                </div>
+                <div class="inner-right">
+                    <p>21. 01. 2026</p>
+                </div>
+            </li>
+        </ul> -->
+    <div class="user-action">
+      <button *ngIf="responseCardJSON.verificationStatus !== 'VERIFIED' && this.responseJson.keyfrom === 'service'"
+        (click)="callTryAgain()" type="button" class="btn btn-success">
+        <span>{{'Try again' | translate}}</span>
+      </button>
+      <button type="button"
+        *ngIf="(responseCardJSON.verificationStatus === 'VERIFIED' || this.responseJson.keyfrom === 'trasactions')"
+        class="btn btn-success" (click)="goToServices()">
+        <span>{{'Okay' | translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="user-card"
+  *ngIf="(whichWrapperResponse === VerificationType.NIN_SEARCH || whichWrapperResponse === VerificationType.NIN_DEMOGRAPHIC_SEARCH || whichWrapperResponse === VerificationType.NIN_FINGER_SEARCH || whichWrapperResponse === VerificationType.NIN_PHONE_SEARCH) && responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED">
+  <div class="user-profile">
+    <div class="user-dp">
+      <!-- <img src="../../../assets/images/user-profile.png" alt="profile"> -->
+      <img src="{{'data:image/png;base64,' + responseCardJSON.photo}}" width="88" height="88" />
+    </div>
+    <div class="user-info">
+      <p>{{responseCardJSON.firstname + " " + responseCardJSON.middlename + " " + responseCardJSON.surname}}</p>
+      <p class="user-gender"><span>Gender:</span> {{ (responseCardJSON.gender == 'm') ? 'Male' : 'Female' }}</p>
+    </div>
+  </div>
+  <div class="user-detail">
+    <ul>
+      <li>
+        <div class="ineer-left">
+          <p>{{'NIN Number' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.nin}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="ineer-left">
+          <p>{{'Email' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.email}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="ineer-left">
+          <p>{{'Phone Number'| translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.telephoneno}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="ineer-left">
+          <p>{{'Address' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.residence_AdressLine1}}</p>
+          <P>{{responseCardJSON.residence_AdressLine2}}</P>
+        </div>
+      </li>
+      <li>
+        <div class="ineer-left">
+          <p>{{'Birthdate' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.birthdate}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="ineer-left">
+          <p>{{'Signature' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <img src="{{'data:image/png;base64,' + responseCardJSON.signature}}" width="88" height="88" />
+        </div>
+      </li>
+      <!-- <li>
+                <div class="ineer-left">
+                    <p>Registration Date</p>
+                </div>
+                <div class="inner-right">
+                    <p>21. 01. 2021</p>
+                </div>
+            </li>
+            <li>
+                <div class="ineer-left">
+                    <p>Expiry Date</p>
+                </div>
+                <div class="inner-right">
+                    <p>21. 01. 2026</p>
+                </div>
+            </li> -->
+    </ul>
+    <div class="user-action">
+      <button type="button" class="btn btn-success" (click)="goToServices()">
+        <span>{{'Okay' | translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="user-card" *ngIf="(whichWrapperResponse === VerificationType.RC_VERIFICATION)">
+  <div class="user-detail">
+    <p *ngIf="responseCardJSON.responseCode === '18' || responseCardJSON.responseCode === '19'" class="error-msg">{{responseCardJSON.description}}</p>
+    <ul>
+      <li>
+        <div class="ineer-left">
+          <p>{{'RC_Number' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.searchParameter}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="ineer-left">
+          <p>{{'StatusNew' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p [ngClass]="{'error-msg': responseCardJSON.verificationStatus !== VerificationStatusEnum.VERIFIED}">{{responseCardJSON.verificationStatus}}</p>
+        </div>
+      </li>
+      <ng-container *ngIf="responseCardJSON.verificationStatus === VerificationStatusEnum.VERIFIED">
+        <li>
+          <div class="ineer-left">
+            <p>{{'Business_Name' | translate}}</p>
+          </div>
+          <div class="inner-right">
+            <p>{{responseCardJSON.companyName}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="ineer-left">
+            <p>{{'Business_Address'| translate}}</p>
+          </div>
+          <div class="inner-right">
+            <p>{{responseCardJSON.businessAddress}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="ineer-left">
+            <p>{{'Date_Of_Incorporation'| translate}}</p>
+          </div>
+          <div class="inner-right">
+            <p>{{responseCardJSON.dateOfIncorporation}}</p>
+          </div>
+        </li>
+      </ng-container>
+      <li>
+        <div class="ineer-left">
+          <p>{{'Transaction Reference Number' | translate}}</p>
+        </div>
+        <div class="inner-right">
+          <p>{{responseCardJSON.transactionReference}}</p>
+        </div>
+      </li>
+    </ul>
+    <div class="user-action">
+      <button type="button" class="btn btn-success" (click)="goToServices()">
+        <span>{{'Okay' | translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>

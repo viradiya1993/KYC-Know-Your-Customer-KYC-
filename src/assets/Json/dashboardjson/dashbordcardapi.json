@@ -1,0 +1,179 @@
+{
+    "dashboardResponse":
+        {
+            "smallCards":[
+            {
+                "label":"Total number of service Calls",
+                "logo":"/logo.png",
+                "menuItems":[
+                    {
+                        "label":"View details",
+                        "redirectionPath":"/transactions/all"
+                    }
+            ],
+                "active":true,
+                "value":"137"
+            },
+
+            {
+                "label":"Number of successful service Calls",
+                "logo":"/logo.png",
+                "menuItems":[
+                    {
+                        "label":"View details",
+                        "redirectionPath":"/transactions/all"
+                    }
+                ],
+                "active":true,
+                "value":"81"
+            },
+
+            {
+                "label":"Number of successful service Calls",
+                "logo":"/logo.png",
+                "menuItems":[
+                    {
+                        "label":"View details",
+                        "redirectionPath":"/transactions/all"
+                    }
+                ],
+                "active":true,
+                "value":"9"
+            },
+
+            {
+                "label":"Number of users",
+                "logo":"/logo.png",
+                "menuItems":[
+                    {
+                        "label":"View details",
+                        "redirectionPath":"/user"
+                    }
+                ],
+                "active":true,
+                "value":"310"
+            }
+            
+            ],
+
+            "bigCards":[
+                {
+                    "label":"Total wallet balance",
+                    "logo":"/logo.png",
+                    "menuItems":[],
+                    "active":true,
+                    "value":null
+                },
+                {
+                    "label":"Total Wallet Top-up",
+                    "logo":"/logo.png",
+                    "menuItems":[
+                        {
+                            "label":"View details",
+                            "redirectionPath":"/wallet"
+                        }
+                    ],
+                    "active":true,
+                    "value":null
+                },
+                {
+                    "label":"Total Wallet Debit",
+                    "logo":"/logo.png",
+                    "menuItems":[
+                        {
+                            "label":"View details",
+                            "redirectionPath":"/wallet"
+                        }
+                    ],
+                    "active":true,
+                    "value":null
+                }
+            ],
+
+            "barChart":[
+                {
+                    "cardName":"Service Request Distribution",
+                    "dataLabels":["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+                    "services":[
+                        {
+                            "name":"Seamfix BVN Service",
+                            "count":["0","0","0","0","0","0","0","0","0","0","0","0"]
+                        },
+                        {
+                            "name":"Bank Account Validation Service",
+                            "count":["0","0","0","0","0","0","0","0","0","0","0","0"]
+                        },
+                        {
+                            "name":"BVN Full Details Service",
+                            "count":["0","0","0","0","0","0","0","0","0","0","0","0"]
+                        },
+                        {
+                            "name":"BVN Validity Service",
+                            "count":["0","0","0","0","0","0","0","0","0","0","0","0"]
+                        },
+                        {
+                            "name":"NIMC NIN+FINGERPRINT Search",
+                            "count":["0","5","0","0","0","0","0","0","0","0","0","0"]
+                        }
+                    ],
+                    "active":true
+                }
+            ],
+            
+            "pieChart":[
+                {
+                    "cardName":"Service request log",
+                    "dataLabels":["Successful Request","Failed Request"],
+                    "counts":["81","9"],
+                    "active":true
+                }
+            ],
+            
+            "progressCharts":[
+
+                {
+                    "cardName":"percentage of completed verifications",
+                    "link":{
+                        "label":"View Details",
+                        "redirectionPath":"/bulk-verification/bulk-record"
+                    },
+                    
+                    "isShowProgress":true,
+                    "logo":"/logo.png",
+                    "label":"Number of completed bulk verifications",
+                    "value":"0",
+                    "valueInPer":"0",
+                    "chartLabel":"percentage of completed verifications",
+                    "active":true
+                },
+
+                {
+                    "cardName":"percentage of ongoing verifications",
+                    "link":{
+                        "label":"View Details",
+                        "redirectionPath":"/bulk-verification/bulk-record"
+                    },
+                    
+                    "isShowProgress":true,
+                    "logo":"/logo.png",
+                    "label":"Number of ongoing bulk verifications",
+                    "value":"4",
+                    "valueInPer":"100",
+                    "chartLabel":"percentage of ongoing verifications",
+                    "active":true
+                },
+                
+                {
+                    "link":{
+                        "label":"View Details",
+                        "redirectionPath":"/bulk-verification/bulk-record"
+                    },
+
+                    "isShowProgress":false,
+                    "logo":"/logo.png",
+                    "label":"Number of total bulk verifications",
+                    "active":true
+                }
+            ]
+        }
+}

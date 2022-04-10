@@ -1,0 +1,126 @@
+<div class="detail-main">
+  <div class="detail-header">
+    <div class="close-icon" (click)="popupClose()">
+        <img src="assets/images/close-white.svg" alt="close">
+    </div>
+    <div class="detail-inner">
+      <div class="detail-left">
+        <span>{{'Transaction_ID' | translate}}</span>
+        <p>{{trasactionsData?.transactionId}}</p>
+      </div>
+      <div class="detail-right">
+        <span>{{'Payment_time' | translate}}</span>
+        <p>{{trasactionsData?.paymentTime | tDateFormatPipe}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-content">
+    <div class="content-main">
+      <div class="detail-title">
+        <h2>{{'"Customer Information' | translate}}</h2>
+      </div>
+      <div class="detail-blcok">
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/mail-icon.svg" alt="mail">
+          </div>
+          <div class="block-content">
+            <span>{{'Email Address' | translate}}</span>
+            <p>{{trasactionsData?.email}}</p>
+          </div>
+        </div>
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/cell-phone.svg" alt="phone">
+          </div>
+          <div class="block-content">
+            <span>{{'Phone Number' | translate}}</span>
+            <p>{{trasactionsData?.phoneno}}</p>
+          </div>
+        </div>
+        <div class="block-inner">
+          <div class="block-image">
+            <img src="assets/images/user-icon.svg" alt="user">
+          </div>
+          <div class="block-content">
+            <span>{{'User ID' | translate}}</span>
+            <p>{{trasactionsData?.userid}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 2nd block -->
+    <div class="content-main">
+        <div class="detail-title">
+          <h2>{{'Transactions Information' | translate}}</h2>
+        </div>
+        <div class="detail-blcok">
+          <div class="block-inner">
+            <div class="block-image">
+              <img src="assets/images/payment-icon.svg" alt="payment">
+            </div>
+            <div class="block-content">
+              <span>{{'Amount' | translate}}</span>
+              <p>₦ {{trasactionsData?.amount !== null ? trasactionsData?.amount : 0}}</p>
+            </div>
+          </div>
+          <div class="block-inner">
+            <div class="block-image">
+              <img src="assets/images/travel-icon.svg" alt="travel">
+            </div>
+            <div class="block-content">
+              <span>{{'Service_used' | translate}}</span>
+              <p>{{trasactionsData?.serviceUsed}}</p>
+            </div>
+          </div>
+          <div class="block-inner">
+            <div class="block-image">
+              <img src="assets/images/bookmark-icon.svg" alt="bookmark">
+            </div>
+            <div class="block-content">
+              <span>{{'Transaction_status' | translate}}</span>
+              <p class="tag"
+               [ngClass]="{'danger': (trasactionsData?.transactionStatus === 'FAILED' || trasactionsData?.transactionStatus === null),
+               'warning': trasactionsData?.transactionStatus === 'REFUND'}">{{trasactionsData?.transactionStatus !== null ? trasactionsData?.transactionStatus: 'FALIED' | titlecase }}</p>
+             </div>
+          </div>
+          <div class="block-inner">
+            <div class="block-image">
+              <img src="assets/images/close-round.svg" alt="close">
+            </div>
+            <div class="block-content">
+              <span>{{'Failure Reason' | translate}}</span>
+              <p>{{trasactionsData?.failureReason !== null ? trasactionsData?.failureReason: '' }}</p>
+            </div>
+          </div>
+          <div class="block-inner">
+            <div class="block-image">
+              <img src="assets/images/alaram-icon.svg" alt="alaram">
+            </div>
+            <div class="block-content">
+              <span>{{'Payment_time' | translate}}</span>
+              <p>{{trasactionsData?.paymentTime | tDateFormatPipe}}</p>
+            </div> 
+          </div>
+          <div class="block-inner">
+            <div class="block-image">
+              <img src="assets/images/check-icon.svg" alt="check">
+            </div>
+            <div class="block-content">
+              <span>{{'Verification_status' | translate}}</span>
+              <p class="tag" *ngIf="trasactionsData?.verificationStatus !== null"
+              [ngClass]="{'danger': (trasactionsData.verificationStatus === 'NOT VERIFIED' ), 'warning': trasactionsData.verificationStatus === 'PENDING'}">
+              {{trasactionsData?.verificationStatus !== null ? trasactionsData?.verificationStatus : '' | titlecase}}</p>
+            </div>
+          </div>
+          <div class="block-inner">
+            <div class="block-image">&nbsp;</div>
+            <div class="block-content">
+              <span>{{'Transactions Reference' | translate}}</span>
+              <p>{{trasactionsData?.transactionId}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

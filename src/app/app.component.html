@@ -1,0 +1,20 @@
+<!-- <h2>{{tokens.card}}</h2>
+
+
+<div class="card" *ngFor="let product of products">
+  <img *ngIf="product.imageUrl != null" mat-card-image src="{{product?.imageUrl}}" width="50%">
+  <div class="container">
+    <h4><b>{{product.name}}</b></h4>
+    <p>{{product.price}}</p>
+  </div>
+</div> -->
+
+  <div *ngIf="isloggedIn">
+    <app-active-account-notification></app-active-account-notification>
+    <app-header></app-header>
+    <app-sidenav></app-sidenav>
+  </div>
+
+<app-loader></app-loader>
+<router-outlet></router-outlet>
+

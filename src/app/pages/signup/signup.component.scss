@@ -1,0 +1,18 @@
+@import "break-points";
+
+.signup{
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0 auto;
+    overflow-y: auto;
+    display: flex;
+    background-color: white;
+}
+.back-button {
+    position: absolute; 
+    top: 230px;
+
+    @include bp("xs-max") {
+        top: 400px
+    }
+}

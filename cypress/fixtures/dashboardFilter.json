@@ -1,0 +1,43 @@
+{
+    "dashboardResponse": {
+        "barChart": [
+            {
+                "cardName": "Service Request Distribution",
+                "dataLabels": [
+                    "jan",
+                    "feb",
+                    "mar",
+                    "apr",
+                    "may",
+                    "jun",
+                    "jul",
+                    "aug",
+                    "sep",
+                    "oct",
+                    "nov",
+                    "dec"
+                ],
+                "services": [
+                    {
+                        "name": "Seamfix BVN Service",
+                        "count": [
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ]
+                    }
+                ],
+                "active": true
+            }
+        ]
+    }
+}

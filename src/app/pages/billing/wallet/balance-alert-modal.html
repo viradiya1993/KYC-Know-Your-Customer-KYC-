@@ -1,0 +1,29 @@
+<p mat-dialog-title class="modal__header bal-alert">Set Low Balance Alert<span>We will you when your wallet balance
+        drops to your set threshold</span></p>
+<div class="modal__view-request set-bal__modal-form">
+    <mat-form-field appearance="outline">
+        <mat-label>Wallet Threshold</mat-label>
+        <input matInput placeholder=""  >
+        <span matPrefix>₦ &nbsp;</span>
+    </mat-form-field>
+    <p>Add alternate Emails to be notified</p>
+    <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input type="email" matInput placeholder="example@email.com" [[(ngModel)]="email" required >
+    </mat-form-field>
+    <ng-container *ngFor="let item of numOfEmailInputs">
+        <div class="custom__input">
+        <mat-form-field  appearance="outline">
+            <mat-label>Email Address</mat-label>
+           <input matInput placeholder="">
+        </mat-form-field>
+        <a (click)="handleRemoveInput(item.id)">X</a>
+    </div> 
+    </ng-container>
+    <button class="add-email" (click)="handleAddInput()">+ Add another Email Address</button>
+
+    <div mat-dialog-actions class="action-btn">
+        <button (click)="onSubmit()">Set Balance Alert</button>
+        <button (click)="onNoClick()">Cancel</button>
+    </div>
+</div>

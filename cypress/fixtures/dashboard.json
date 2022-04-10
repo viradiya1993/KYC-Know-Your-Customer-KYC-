@@ -1,0 +1,184 @@
+{
+    "dashboardResponse": {
+        "smallCards": [
+            {
+                "label": "Total number of service Calls",
+                "logo": "/notebook--reference-blue.svg",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/transactions/all"
+                    }
+                ],
+                "active": true,
+                "value": "2"
+            },
+            {
+                "label": "Number of successful service Calls",
+                "logo": "/notebook--reference.svg",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/transactions/all"
+                    }
+                ],
+                "active": true,
+                "value": "0"
+            },
+            {
+                "label": "Number of failed service Calls",
+                "logo": "/notebook--reference-red.svg",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/transactions/all"
+                    }
+                ],
+                "active": true,
+                "value": "0"
+            },
+            {
+                "label": "Number of users",
+                "logo": "/ic-users.svg",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/user"
+                    }
+                ],
+                "active": true,
+                "value": "1"
+            }
+        ],
+        "bigCards": [
+            {
+                "label": "Total wallet balance",
+                "logo": "/notes-white.svg",
+                "menuItems": [],
+                "active": true,
+                "value": 100
+            },
+            {
+                "label": "Total Wallet Top-up",
+                "logo": "/notes-green.svg",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/wallet"
+                    }
+                ],
+                "active": true,
+                "value": 10
+            },
+            {
+                "label": "Total Wallet Debit",
+                "logo": "/notes-green.svg",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/wallet"
+                    }
+                ],
+                "active": true,
+                "value": 20
+            }
+        ],
+        "barChart": [
+            {
+                "cardName": "Service Request Distribution",
+                "dataLabels": [
+                    "jan",
+                    "feb",
+                    "mar",
+                    "apr",
+                    "may",
+                    "jun",
+                    "jul",
+                    "aug",
+                    "sep",
+                    "oct",
+                    "nov",
+                    "dec"
+                ],
+                "services": [
+                    {
+                        "name": "Seamfix BVN Service",
+                        "count": [
+                            "0",
+                            "0",
+                            "2",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ]
+                    }
+                ],
+                "active": true
+            }
+        ],
+        "pieChart": [
+            {
+                "cardName": "Service request log",
+                "dataLabels": [
+                    "Successful Request",
+                    "Failed Request"
+                ],
+                "counts": [
+                    "75",
+                    "25"
+                ],
+                "active": true
+            }
+        ],
+        "progressCharts": [
+            {
+                "cardName": "Percentage of completed verifications",
+                "link": {
+                    "label": "View Details",
+                    "redirectionPath": "/bulk-verification"
+                },
+                "isShowProgress": true,
+                "logo": "/Completed-Bulk.svg",
+                "name": "Completed bulk verifications",
+                "label": "Number of completed bulk verifications",
+                "value": "0",
+                "valueInPer": "0",
+                "chartLabel": "Percentage of completed verifications",
+                "active": true
+            },
+            {
+                "cardName": "percentage of ongoing verifications",
+                "link": {
+                    "label": "View Details",
+                    "redirectionPath": "/bulk-verification"
+                },
+                "isShowProgress": true,
+                "logo": "/Ongoing-bulk.svg",
+                "name": "Ongoing bulk verifications",
+                "label": "Number of ongoing bulk verifications",
+                "value": "2",
+                "valueInPer": "100",
+                "chartLabel": "percentage of ongoing verifications",
+                "active": true
+            },
+            {
+                "link": {
+                    "label": "View Details",
+                    "redirectionPath": "/bulk-verification"
+                },
+                "isShowProgress": false,
+                "logo": "/Total-Bulk.svg",
+                "name": "Total bulk verifications",
+                "label": "Number of total bulk verifications",
+                "value": "2",
+                "active": true
+            }
+        ]
+    }
+}

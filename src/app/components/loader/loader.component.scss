@@ -1,0 +1,45 @@
+@import "color";
+@import "form-elements";
+@import "break-points";
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background: $bodyBg;
+  background: transparentize($color: $bodyBg, $amount: 0.3);
+  @include bp(sm-max) {
+    left: 0;
+  }
+  ::ng-deep .has-top-notification & {
+    top: 124px;
+    @include bp(sm-max) {
+      top: 0;
+    }
+  }
+  &.is-absolute {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .inner-loader {
+    text-align: center;
+  }
+  .loader-img {
+    margin-bottom: 30px;
+  }
+  p {
+    font-size: 12px;
+    line-height: 16px;
+    color: $offBlack2;
+    font-weight: 300;
+  }
+}
+

@@ -1,0 +1,205 @@
+<div class="page-filters">
+  <div class="count-wrapper">
+    <div class="left-info">
+      <h5>{{serviceTitle}}</h5>
+      <p class="total-count d-mobile-none">{{childMessage}} {{'Total' | translate}}</p>
+    </div>
+    <div class="right-info">
+      <ng-container *ngIf="whichPage === 'transactions-all' || whichPage === 'bulk-verification-record' || whichPage === 'billing'">
+        
+        <mat-form-field appearance="outline" class="filled-input export-dropdown">
+          <mat-label>{{'Export' | translate}}</mat-label>
+          <mat-select (selectionChange)="transactionFileChange()" [(ngModel)]="transactionFile" id="SelectExportFile">
+            <mat-option [value]="key" *ngFor="let key of getKeys(exportTypes)">
+              {{ exportTypes[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="inner-filter d-mobile-none">
+          <mat-form-field appearance="outline" class="filled-input records-per-page">
+            <mat-select (selectionChange)="transactionFilterChange()" [(ngModel)]="transactionFilter.pageSizeLimit" id="SelectPageLimit">
+              <mat-option [value]="limit" *ngFor="let limit of pageLimits">
+                {{ limit }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </ng-container>
+
+      <p>{{'Showing' | translate}}</p>
+
+      <mat-paginator [length]="childMessage" [pageSize]="pageSize" [hidePageSize]="true" (page)="getNext($event)"
+        [pageIndex]="index">
+      </mat-paginator>
+    </div>
+  </div>
+
+
+  <div class="header-filters">
+    
+    <ng-container *ngIf="whichPage === 'services'">
+      <div class="inner-filter lg">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-icon matSuffix (click)="search(searchValue)">search</mat-icon>
+          <mat-label>{{'Search_by_service_name' | translate}}</mat-label>
+          <input matInput [(ngModel)]="searchValue" value="searchValue" name="searchValue" id="searchByServiceId"
+            (keydown.enter)="search(searchValue)">
+        </mat-form-field>
+      </div>
+     
+
+      <div class="inner-filter " *ngIf="false">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Biometric_type' | translate}}</mat-label>
+          <mat-select multiple (selectionChange)="bioChange($event.value)" [(ngModel)]="bioMetric" id="searchByBiometricType">
+            <mat-option [value]="biometricTypes[key]" *ngFor="let key of getKeys(biometricTypes)">
+              {{ key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="inner-filter ">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Service_type' | translate}}</mat-label>
+          <mat-select (selectionChange)="serviceTypeChange($event.value)" [(ngModel)]="serviceType" id="searchByBiometricType">
+            <mat-option [value]="" > {{ 'None' }} </mat-option> 
+            <mat-option [value]="serviceTypes[key]" *ngFor="let key of getKeys(serviceTypes)">
+              {{ serviceTypes[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'ID_provider' | translate}}</mat-label>
+          <mat-select multiple (selectionChange)="idProvider($event.value)" [(ngModel)]="serviceId" id="searchByProviderId">
+            <mat-option *ngFor="let idProvider of serviceProvider" [value]=idProvider.pk>{{idProvider.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    
+    </ng-container>
+
+    <ng-container *ngIf="whichPage === 'transactions-all'">
+      <div class="inner-filter lg">
+        <mat-form-field appearance="outline" class="filled-input" title="Search using Transaction ID, User Name or Bulk ID">
+          <mat-icon matSuffix (click)="transactionFilterChange()">search</mat-icon>
+          <mat-label>{{'Search using Transaction ID, User Name or Bulk ID' | translate}}</mat-label>
+          <input matInput [(ngModel)]="transactionFilter.filterbySearchText" value="searchValue" name="searchValue"
+            (keydown.enter)="transactionFilterChange()" id="transactionSearchById">
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter">
+        <app-date-ranges  (TransactionFilterEvent)='dateFilter($event)'></app-date-ranges>
+      </div>
+
+      <div class="inner-filter">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Filter_by_Transaction_status' | translate}}</mat-label>
+          <mat-select (selectionChange)="transactionFilterChange($event.value)" [(ngModel)]="transactionFilter.filterByPaymentStatus" id="searchByTransactionStatus">
+            <mat-option [value]=''>None</mat-option>
+            <mat-option [value]="key" *ngFor="let key of getKeys(transactionStatus)">
+              {{ transactionStatus[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter ">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Filter by Verification status' | translate}}</mat-label>
+          <mat-select (selectionChange)="transactionFilterChange()" [(ngModel)]="transactionFilter.filterByVerificationStatus" id="searchByVerificationStatus">
+            <mat-option [value]=''>None</mat-option>
+            <mat-option [value]="key" *ngFor="let key of getKeys(verificationStatus)">
+              {{ verificationStatus[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter ">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Filter by Service Used' | translate}}</mat-label>
+          <mat-select multiple (selectionChange)="transactionFilterChange()" [(ngModel)]="transactionFilter.filterByService" id="searchByserviceUsed">
+            <mat-option *ngFor="let service of servicesUsed" [value]="service.pk">{{service.serviceUsed}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter ">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Filter by Type' | translate}}</mat-label>
+          <mat-select (selectionChange)="transactionFilterChange()" [(ngModel)]="transactionFilter.filterByTrasactionType" id="searchByTransactionType">
+            <mat-option [value]=''>None</mat-option>
+            <mat-option [value]="key" *ngFor="let key of getKeys(transactionType)">
+              {{ transactionType[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter ">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'MODE' | translate}}</mat-label>
+          <mat-select (selectionChange)="transactionFilterChange()" [(ngModel)]="transactionFilter.filterByMode" id="filterbyMode">
+            <mat-option [value]=''>None</mat-option>
+            <mat-option [value]="key" *ngFor="let key of getKeys(transactionMode)">
+              {{ transactionMode[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="whichPage === 'bulk-verification'">
+
+      <div class="inner-filter lg">
+        <mat-form-field appearance="outline" class="filled-input" title="Search using Transaction ID, User Name or Bulk ID">
+          <mat-icon matSuffix (click)="transactionFilterChange()">search</mat-icon>
+          <mat-label>{{'Search using Transaction ID, User Name or Bulk ID'}}</mat-label>
+          <input matInput [(ngModel)]="transactionFilter.filterbySearchText" value="searchValue" name="searchValue"
+            (keydown.enter)="transactionFilterChange()">
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Filter' | translate}}</mat-label>
+          <mat-select (selectionChange)="transactionFilterChange($event.value)" [(ngModel)]="transactionFilter.filterByPaymentStatus">
+            <mat-option [value]=''>None</mat-option>
+            <mat-option [value]="key" *ngFor="let key of getKeys(bulkverification)">
+              {{ bulkverification[key] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="whichPage === 'billing'">
+      <div class="inner-filter">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Services' | translate}}</mat-label>
+          <mat-select (selectionChange)="idProvider($event.value)" [(ngModel)]="serviceId" id="searchByProviderId" >
+            <mat-option [value]=''>{{'None' | translate}}</mat-option>
+            <mat-option *ngFor="let serviceId of billingServiceWrappers" [value]=serviceId.wrapper_id>{{serviceId.wrapper_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inner-filter ">
+        <mat-form-field appearance="outline" class="filled-input">
+          <mat-label>{{'Service_type' | translate}}</mat-label>
+          <mat-select (selectionChange)="serviceTypeChange($event.value)" [(ngModel)]="serviceType" id="searchByBiometricType">
+            <mat-option [value]="null" > None </mat-option> 
+            <mat-option [value]="'BOOLEAN MATCH'" > BOOLEAN MATCH </mat-option> 
+            <mat-option [value]="'FULL DETAILS'" > FULL DETAILS</mat-option> 
+            <mat-option [value]="'BIOMETRICS'" > BIOMETRICS </mat-option> 
+              </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="mobile-filters">
+  <div class="mobile-inner">
+    <div class="lg">
+      <mat-form-field appearance="outline" class="filled-input" title="Search using Transaction ID, User Name or Bulk ID">
+        <mat-icon matSuffix (click)="transactionFilterChange()">search</mat-icon>
+        <mat-label>{{'Search using Transaction ID, User Name or Bulk ID' | translate}}</mat-label>
+        <input matInput [(ngModel)]="transactionFilter.filterbySearchText" value="searchValue" name="searchValue"
+          (keydown.enter)="transactionFilterChange()" id="transactionSearchById">
+      </mat-form-field>
+    </div>
+    <div class="select">
+      <mat-form-field appearance="outline" class="filled-input records-per-page">
+        <mat-select value="Filter">
+          <mat-option value="Filter">Filter</mat-option>
+          <mat-option value="services">services</mat-option>
+          <mat-option value="status">status</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

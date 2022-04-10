@@ -1,0 +1,58 @@
+{
+    "bulkWiseTransaction":{
+        "pendingCount":[
+            {
+                "noOfPendingTransaction":"1",
+                "perNoOfPendingTransaction":"100"
+            }
+        ],
+
+        "failedCount":[
+            {
+                "noOfFailedTransaction":"0",
+                "perNoOfFailedTransaction":"0"
+            }
+        ],
+
+        "successCount":[
+            {
+                "noOfSuccessfulTransaction":"0",
+                "perNoOfSuccessTransaction":"0"
+            }
+        ],
+        
+        "totalCount":[
+            {
+                "noOfTotalTransaction":"1"
+            }
+        ],
+
+        "verifiedCount":[
+            {
+                "noOfVerifiedTransaction":"0"
+            }
+        ],
+
+        "unverifiedCount":[
+            {
+                "noOfUnverifiedTransaction":"0"
+            }
+        ],
+
+        "perVerifiedCount":[
+            {
+                "perNoOfVerifiedTransaction":"0"
+            }
+        ],
+        
+        "perUnverifiedCount":[
+            {
+                "perNoOfUnVerifiedTransaction":"0"
+            }
+        ]
+    },
+    "email":"schemeaccnt@gmail.com",
+    "userId":"17047e0f-918c-4abf-aec3-90c06a3a80f7",
+    "code":0,
+    "description":"Transaction statistics"
+}

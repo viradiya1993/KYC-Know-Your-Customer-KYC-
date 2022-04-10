@@ -1,0 +1,432 @@
+@import "color";
+@import "break-points";
+@import "mixins";
+
+.wrapper {
+  padding-top: 50px;
+  .dashboard-wrapper{
+      @include bp(sm-max){
+          padding: 0;
+      }
+  }
+
+  .page-banner {
+    background-position: calc(100% - 27px) bottom;
+    @include border-radius(20px);
+    &.dashboard-banner{
+        @include bp(sm-max){
+            position: static;
+            background-image: none !important;
+            @include border-radius(0);
+            padding: 80px 0;
+            text-align: center;
+            justify-content: center;
+        }
+        .dashboard-inner{
+            display: none;
+            margin-bottom: 55px;
+            @include bp(sm-max){
+                display: block;
+            }
+        }
+    }
+  }
+
+  .card-block {
+    margin-bottom: 13px;
+
+    @include bp(sm-max) {
+      margin-bottom: 2px;
+      padding: 0 15px;
+      margin-top: 14px;
+    }
+
+    .row {
+      >div {
+        margin-bottom: 17px;
+      }
+
+      .card {
+        padding: 0;
+        padding-top: 18px;
+        padding-bottom: 29px;
+        @include border-radius(4px);
+        border: 0.4px solid rgba(5, 92, 193, 0.231);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        height: 100%;
+
+        .card-buttton {
+          text-align: right;
+          padding-right: 18px;
+
+          span {
+            width: 6px;
+            height: 6px;
+            @include border-radius(50px);
+            line-height: 6px;
+            min-width: 6px;
+            background-color: $black;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 3px;
+          }
+        }
+
+        .card-content-main {
+          padding-left: 35px;
+          padding-right: 36px;
+          display: flex;
+          align-items: center;
+          margin-top: 21px;
+
+          @include bp(xlg-max) {
+            padding: 0 25px;
+          }
+
+          @include bp(mlg-max) {
+            padding: 0 15px;
+          }
+
+          @include bp(sm-max) {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 0;
+          }
+
+          .card-image {
+            width: 69px;
+            height: 69px;
+            @include border-radius(50%);
+            line-height: 69px;
+            min-width: 69px;
+            text-align: center;
+            background-color: rgba(18, 117, 232, 0.1);
+
+            @include bp(sm-max) {
+              width: 53px;
+              height: 53px;
+              min-width: 53px;
+              line-height: 53px;
+              margin-bottom: 23px;
+            }
+
+            &.blue-round {
+              background-color: rgba(18, 117, 232, 0.1);
+            }
+
+            &.green-round {
+              background-color: rgba(83, 199, 97, 0.101);
+            }
+
+            &.red-round {
+              background-color: rgba(218, 65, 103, 0.1);
+            }
+
+            &.grey-round {
+              background-color: $offBlack5;
+            }
+          }
+
+          .card-content {
+            margin-left: 21px;
+
+            @include bp(xlg-max) {
+              margin-left: 15px;
+            }
+
+            @include bp(mlg-max) {
+              margin-left: 10px;
+            }
+
+            h3 {
+              font-size: 24px;
+              font-weight: 600;
+              letter-spacing: -0.48px;
+              color: $offBlack3;
+              margin-bottom: 4px;
+
+              @include bp(xlg-max) {
+                font-size: 21px;
+              }
+
+              @include bp(mlg-max) {
+                font-size: 18px;
+              }
+            }
+
+            p {
+              font-size: 16px;
+              font-weight: 500;
+              color: $lightGrey9;
+              letter-spacing: -0.16px;
+
+              @include bp(xlg-max) {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.secondary-card {
+      margin: 0;
+
+      .row {
+        .card {
+          &.card-green {
+            background-color: $offBlack2;
+            border: 0;
+            box-shadow: 0 3px 30px rgba(0, 0, 0, 0.05);
+
+            .card-buttton {
+              opacity: 0;
+              visibility: hidden;
+            }
+
+            .card-content {
+              .text-white {
+                color: $white;
+              }
+
+              P {
+                color: $white;
+              }
+            }
+          }
+
+          .card-content-main {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .card-image {
+              background-color: rgba(245, 255, 248, 0.06);
+
+              @include bp(sm-max) {
+                margin-bottom: 16px;
+              }
+
+              &.offwhite-round {
+                background-color: rgba(245, 255, 248, 0.06);
+              }
+
+              &.silver-round {
+                background-color: rgba(219, 227, 238, 0.18);
+              }
+            }
+
+            .card-content {
+              margin-left: 18px;
+              margin-top: 15px;
+
+              @include bp(sm-max) {
+                margin-left: 0;
+                margin-top: 15px;
+              }
+
+              h3 {
+                color: $offBlack2;
+                font-size: 32px;
+                letter-spacing: -0.64px;
+
+                @include bp(sm-max) {
+                  font-size: 18px;
+                  letter-spacing: normal;
+                }
+              }
+
+              P {
+                letter-spacing: normal;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.chart {
+      margin-top: 0;
+
+      .card {
+        .card-main {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid $lightGrey;
+          margin: 0 34px 0 23px;
+          padding-bottom: 18px;
+          &.service-duration{
+            padding-bottom: 0;
+            .header-right{
+              display: flex;
+              justify-content: flex-end;
+              .mat-form-field{
+                width: 60%;
+                .mat-form-field-wrapper{
+                  margin: 0;
+                  .mat-form-field-flex{
+                    margin-top: 0;
+                    > div{
+                      border: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          @include bp(sm-max) {
+            margin: 0 12px;
+            padding-bottom: 10px;
+          }
+
+          &.pie-chart-header {
+            border: 0;
+            margin: 0 0 0 25px;
+          }
+
+          .header-left {
+            h3 {
+              color: $offBlack2;
+              font-size: 14px;
+              letter-spacing: 0.39px;
+              font-weight: 500;
+
+              @include bp(sm-max) {
+                letter-spacing: normal;
+              }
+            }
+          }
+        }
+
+        .chart-body {
+          padding: 0 34px 0 23px;
+        }
+      }
+    }
+
+    &.bulk-verify {
+      margin-top: 0;
+
+      .card {
+        .card-main {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid $lightGrey;
+          padding: 0 38px 21px 29px;
+
+          @include bp(sm-max) {
+            padding: 0 12px 10px 12px;
+          }
+
+          .header-left {
+            h3 {
+              color: $offBlack2;
+              font-size: 14px;
+              letter-spacing: 0.14px;
+              font-weight: 500;
+            }
+          }
+
+          .header-right {
+            a {
+              font-size: 12px;
+              font-weight: 500;
+              color: #1275E8;
+            }
+          }
+        }
+
+        .bulk-body {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 39px;
+          // padding-left: 35px;
+          padding-right: 52px;
+
+          @include bp(sm-max) {
+            flex-direction: column;
+            padding: 0 20px;
+          }
+          .body-left {
+          }
+          .body-right {
+            // margin-left: 48px;
+
+            @include bp(sm-max) {
+              margin-left: 20px;
+              display: flex;
+              align-items: center;
+              margin-top: 35px;
+            }
+
+            &.no-chart {
+              margin-left: 25px;
+
+              @include bp(sm-max) {
+                margin-left: 20px;
+              }
+            }
+
+            .body-icon {
+              background-color: rgba(72, 185, 113, 0.1);
+              width: 61px;
+              height: 61px;
+              line-height: 61px;
+              min-width: 61px;
+              text-align: center;
+              @include border-radius(50%);
+
+              &.green {
+                background-color: rgba(72, 185, 113, 0.1);
+              }
+
+              &.blue {
+                background-color: rgba(18, 117, 232, 0.1);
+              }
+
+              &.grey {
+                background-color: $lightGrey6;
+              }
+            }
+
+            .body-heading {
+              margin-top: 14px;
+              @include bp(sm-max){
+                  margin-top: 0;
+                  margin-left: 20px;
+              }
+
+              h4 {
+                color: $primaryGreen;
+                font-size: 28px;
+                font-weight: 600;
+                letter-spacing: 0.28px;
+                margin-bottom: 13px;
+
+                &.text-blue {
+                  color: $blue2;
+                }
+
+                &.text-black {
+                  color: $offBlack2;
+                }
+              }
+              p {
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: -0.16px;
+                color: $black3;
+                @include bp(sm-max){
+                    font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

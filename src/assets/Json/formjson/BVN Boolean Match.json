@@ -1,0 +1,199 @@
+{
+    "_id": "60147869e74c242b7de38e51",
+    "pId": "849336ad-45ce-4ed9-abca-0e3f82586384",
+    "cId": "bff441ec-3ea0-469d-bde7-075ed508f7c8",
+    "version": 1.0,
+    "published": true,
+    "modified": 1611954746935,
+    "brandingConfig": {
+        "themeColor": "#56aee1",
+        "backgroundColor": "#F7FAFD",
+        "backgroundStyle": false,
+        "fontType": "Choose...",
+        "required": false,
+        "validation": false,
+        "skipReasons": [
+
+        ]
+    },
+    "demoConfigs": [{
+        "pageName": "First Page",
+        "layouts": [{
+                "name": "layout-e11f8c1d-29c4-442e-b2d4-2eb41a66d586",
+                "label": "Number",
+                "layoutLocked": true,
+                "icon": "exposure",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [{
+                    "grid": 12,
+                    "offset": 0,
+                    "order": 0,
+                    "children": [{
+                        "required": true,
+                        "name": "number-96a12358-552d-49f0-9fa5-6e8174a7db4a",
+                        "type": "number",
+                        "label": "BVN Number",
+                        "description": "",
+                        "placeholder": "Please input your 11 digit BVN number",
+                        "minlength": "11",
+                        "maxlength": "11",
+                        "subtype": "number",
+                        "currentDate": false,
+                        "isFieldDependent": false,
+                        "pushFieldLink": "",
+                        "disabled": false,
+                        "labelHidden": false
+                    }]
+                }]
+            },
+            {
+                "name": "layout_7dccedc1-6b1b-4db5-9b66-dfd63513060b",
+                "label": "Name",
+                "layoutLocked": true,
+                "icon": "people_outline",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [
+                    {
+                        "grid": 0,
+                        "offset": 0,
+                        "order": 0,
+                        "cssClasses": "col-6 col-sm-6 col-md mb-4",
+                        "children": [{
+                            "required": true,
+                            "name": "text_2a1d2fae-674f-4a28-b877-80f2c86e7271",
+                            "type": "text",
+                            "label": "First Name",
+                            "description": "",
+                            "minlength": "1",
+                            "maxlength": "500",
+                            "subtype": "text",
+                            "currentDate": false,
+                            "isFieldDependent": false,
+                            "pushFieldLink": "",
+                            "disabled": false,
+                            "labelHidden": false
+                        }]
+                    },
+                    {
+                        "grid": 0,
+                        "offset": 0,
+                        "order": 0,
+                        "cssClasses": "col-6 col-sm-6 col-md mb-4",
+                        "children": [{
+                            "required": true,
+                            "name": "text_939387c8-6082-4e7a-add4-ebdbcb7e427b",
+                            "type": "text",
+                            "label": "Last Name",
+                            "description": "",
+                            "minlength": "1",
+                            "maxlength": "500",
+                            "subtype": "text",
+                            "currentDate": false,
+                            "isFieldDependent": false,
+                            "pushFieldLink": "",
+                            "disabled": false,
+                            "labelHidden": false
+                        }]
+                    }
+                ]
+            },
+            {
+                "name": "layout-7a2431e7-6d72-4c4a-9fd0-65ce2be7c4d1",
+                "label": "Date",
+                "layoutLocked": true,
+                "icon": "date_range",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [{
+                    "grid": 12,
+                    "offset": 0,
+                    "order": 0,
+                    "children": [{
+                        "required": true,
+                        "name": "date-b7ee1d7c-ef3a-4a18-86b0-c5b818583be7",
+                        "type": "date",
+                        "label": "Date of Birth",
+                        "description": "",
+                        "minlength": "1",
+                        "maxlength": "500",
+                        "subtype": "date",
+                        "currentDate": false,
+                        "isFieldDependent": false,
+                        "pushFieldLink": "",
+                        "disabled": false,
+                        "labelHidden": false
+                    }]
+                }]
+            },
+            {
+                "name": "layout-a2ac96d9-6504-45a5-a4eb-b2fc92e1bdd8",
+                "label": "Phone",
+                "layoutLocked": true,
+                "icon": "local_phone",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [{
+                    "grid": 12,
+                    "offset": 0,
+                    "order": 0,
+                    "children": [{
+                        "required": true,
+                        "name": "phone-68b2a02d-61a3-4508-878f-3dab0538676b",
+                        "type": "phone",
+                        "label": "Phone Number",
+                        "description": "",
+                        "minlength": "1",
+                        "maxlength": "500",
+                        "subtype": "tel",
+                        "currentDate": false,
+                        "isFieldDependent": false,
+                        "pushFieldLink": "",
+                        "disabled": false,
+                        "labelHidden": false
+                    }]
+                }]
+            },
+            {
+                "name": "layout-8141e47c-8746-4dbc-b810-502ca7351ea6",
+                "label": "Email",
+                "layoutLocked": true,
+                "icon": "email",
+                "type": "layout",
+                "subtype": "layout",
+                "columns": [{
+                    "grid": 12,
+                    "offset": 0,
+                    "order": 0,
+                    "children": [{
+                        "name": "email-42d7981a-8780-43ba-8350-9897826a9507",
+                        "type": "email",
+                        "label": "Email",
+                        "description": "",
+                        "minlength": "1",
+                        "maxlength": "500",
+                        "subtype": "email",
+                        "currentDate": false,
+                        "isFieldDependent": false,
+                        "pushFieldLink": "",
+                        "disabled": false,
+                        "labelHidden": false
+                    }]
+                }]
+            }
+        ]
+    }],
+    "pushEnable": false,
+    "created": 1611954281120,
+    "active": true,
+    "deleted": false,
+    "autoResponderFieldId": "",
+    "bvnFields": null,
+    "compositeUniqueId": "",
+    "fingerConfig": null,
+    "ocrFieldLink": null,
+    "portraitConfigs": null,
+    "uniqueId": "",
+    "datePublished": 1611954746661
+}

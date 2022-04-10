@@ -1,0 +1,53 @@
+@import "break-points";
+.page-banner {
+  min-height: 228px;
+  @include bp(sm-max) {
+    position: fixed;
+    z-index: 2;
+  }
+}
+
+.no-record {
+  padding: 180px 15px 0;
+  text-align: center;
+}
+
+
+.button-tooltip {
+  position: relative;
+  z-index: 1;
+
+  @include bp(sm-max) {
+    margin: 15px 0;
+    font-size: 13px;
+  }
+
+  .tooltip-content {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 100%;
+    background: #000;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    opacity: 0;
+    visibility: hidden;
+    white-space: pre-wrap;
+    //@include transition(all 0.3s);
+
+    transition: all 0.3s;
+    @include bp(sm-max) {
+      left: 0;
+      
+    }
+  }
+  &:hover {
+    .tooltip-content {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

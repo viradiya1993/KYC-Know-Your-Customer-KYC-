@@ -1,0 +1,255 @@
+@import "color";
+@import "form-elements";
+@import "break-points";
+
+.page-filters {
+  background: $white;
+  position: sticky;
+  top: 80px;
+  z-index: 5;
+
+  ::ng-deep .has-top-notification & {
+    top: 75px !important;
+  }
+
+  @include bp(sm-max) {
+    position: fixed;
+    width: 100%;
+    top: 50px;
+  }
+
+  .count-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 32px;
+    border-bottom: 1px solid $lightGrey;
+
+    @include bp(md-max) {
+      padding: 15px;
+    }
+
+    @include bp(sm-max) {
+      padding: 5px 15px;
+      border: 0;
+    }
+
+    .left-info {
+      display: flex;
+      align-items: center;
+
+      .total-count {
+        position: relative;
+        margin-left: 37px;
+        font-size: 16px;
+        line-height: 1.2;
+        color: $lightGrey2;
+
+        @include bp(sm-max) {
+          margin-left: 20px;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: -14px;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          background: $lightGrey2;
+        }
+      }
+    }
+
+    .right-info {
+      display: flex;
+      align-items: center;
+
+      .mat-form-field {
+        margin-right: 16px;
+
+        &.records-per-page {
+          width: 75px;
+        }
+
+        &.export-dropdown {
+          width: 100px;
+        }
+      }
+
+      p {
+        white-space: nowrap;
+
+        @include bp(sm-max) {
+          display: none;
+        }
+      }
+
+      ::ng-deep .mat-paginator {
+        .mat-paginator-range-label {
+          margin: 0 32px 0 0;
+
+          @include bp(sm-max) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .header-filters {
+    display: flex;
+    border-bottom: 1px solid $lightGrey;
+    padding: 14px 32px 0;
+    flex-wrap: wrap;
+
+    // overflow: auto;
+    @include bp("md-max") {
+      padding: 14px 15px 0;
+    }
+
+    @include bp("sm-max") {
+      padding: 0 15px 15px;
+    }
+
+    .inner-filter {
+      width: 222px;
+      margin-bottom: 14px;
+      margin-right: 16px;
+      &:last-child{
+        margin-right: 0;
+      }
+
+      @include bp("md-max") {
+        width: 190px;
+      }
+
+      &.lg {
+        width: 364px;
+
+        @include bp("md-max") {
+          width: 220px;
+        }
+
+        @include bp("sm-max") {
+          width: 60%;
+        }
+      }
+
+      +.inner-filter {
+
+        @include bp(sm-max) {
+          width: calc(40% - 10px);
+
+          &:nth-child(3),
+          &:nth-child(5) {
+            margin-left: 0;
+            width: 50%;
+          }
+
+          &:nth-child(4),
+          &:nth-child(6) {
+            width: calc(50% - 10px);
+          }
+        }
+      }
+
+      .mat-stroked-button {
+        height: 35px;
+        line-height: 34px !important;
+        font-weight: 400;
+        max-width: 100%;
+
+        ::ng-deep .mat-button-wrapper {
+          max-width: 100%;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .has-arrow {
+          &:after {
+            top: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+::ng-deep .md-drppicker {
+  left: auto !important;
+  right: 0 !important;
+}
+
+::ng-deep .md-drppicker.shown {
+  background-color: $offBlack2;
+  border: 1px solid $darkGrey2;
+  box-shadow: none;
+  padding-right: 26px;
+}
+
+::ng-deep .md-drppicker .btn {
+  background-color: $primaryGreen !important;
+  color: $white !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .md-drppicker .ranges ul li button.active {
+  background-color: $white !important;
+  color: $offBlack2 !important;
+  @include border-radius(4px);
+}
+
+::ng-deep .md-drppicker .ranges ul li button {
+  color: $white !important;
+  padding: 8px 10px !important;
+}
+
+::ng-deep .md-drppicker .ranges ul li:hover button{
+  color: $offBlack2 !important;
+}
+
+.transaction-dashboard .transaction-filter {
+  display: block;
+  position: relative;
+  text-align: right;
+
+}
+
+::ng-deep .transaction-dashboard .transaction-filter .md-drppicker {
+  left: auto !important;
+  right: 0 !important;
+}
+
+::ng-deep .md-drppicker td.active,
+.md-drppicker td.active:hover {
+  background-color: $black !important;
+  border-color: transparent;
+  color: $white;
+}
+
+::ng-deep .md-drppicker .calendar {
+  margin: 10px 4px 4px;
+}
+
+::ng-deep .ranges {
+  color: $white !important;
+}
+
+::ng-deep .md-drppicker {
+  td {
+    border-radius: 4px !important;
+
+    &.available {
+      &:hover {
+        background-color: $lightGrey8;
+      }
+    }
+
+    &.active {
+      background-color: $primaryGreen !important;
+      opacity: 1 !important;
+    }
+  }
+}

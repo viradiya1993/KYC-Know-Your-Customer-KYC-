@@ -1,0 +1,105 @@
+{ 
+    "_id" : "60147b9c81459554a6dd4dcb", 
+    "pId" : "0574163c-9daf-4e88-a0b2-afce594d2b71", 
+    "cId" : "e1962b5b-76ad-4ead-a29d-29ce6fcf7e49", 
+    "version" : 1.0, 
+    "published" : true, 
+    "modified" : 1611955188016, 
+    "brandingConfig" : {
+        "themeColor" : "#56aee1", 
+        "backgroundColor" : "#F7FAFD", 
+        "backgroundStyle" : false, 
+        "fontType" : "Choose...", 
+        "required" : false, 
+        "validation" : false, 
+        "skipReasons" : [
+
+        ]
+    }, 
+    "demoConfigs" : [
+        {
+            "pageName" : "First Page", 
+            "layouts" : [
+                {
+                    "name" : "layout-fe6c621b-76a7-48c6-8156-589399648939", 
+                    "label" : "Number", 
+                    "layoutLocked" : true, 
+                    "icon" : "exposure", 
+                    "type" : "layout", 
+                    "subtype" : "layout", 
+                    "columns" : [
+                        {
+                            "grid" : 12, 
+                            "offset" : 0, 
+                            "order" :0, 
+                            "children" : [
+                                {
+                                    "required" : true, 
+                                    "name" : "number-7b09fa50-2e6c-4113-a9db-a05fa2d2c93d", 
+                                    "dataKey": "bvnNumber", 
+                                    "type" : "number", 
+                                    "label" : "BVN Number", 
+                                    "description" : "", 
+                                    "placeholder" : "Please input your 11 digit BVN number", 
+                                    "minlength" : "11", 
+                                    "maxlength" : "11", 
+                                    "subtype" : "number", 
+                                    "currentDate" : false, 
+                                    "isFieldDependent" : false, 
+                                    "pushFieldLink" : "", 
+                                    "disabled" : false, 
+                                    "labelHidden" : false
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name" : "layout-f9c43ad5-1c27-4b83-b723-30ab7743ffa9", 
+                    "label" : "Email", 
+                    "layoutLocked" : true, 
+                    "icon" : "email", 
+                    "type" : "layout", 
+                    "subtype" : "layout", 
+                    "columns" : [
+                        {
+                            "grid" : 12, 
+                            "offset" : 0, 
+                            "order" : 0, 
+                            "children" : [
+                                {
+                                    "required" : true, 
+                                    "name" : "email-b779b7d9-fbb5-4bcb-b459-e0355b8b4ec9",
+                                    "dataKey": "emailAddress", 
+                                    "type" : "email", 
+                                    "label" : "Email", 
+                                    "description" : "", 
+                                    "minlength" : "1", 
+                                    "maxlength" : "500", 
+                                    "subtype" : "email", 
+                                    "currentDate" : false, 
+                                    "isFieldDependent" : false, 
+                                    "pushFieldLink" : "", 
+                                    "disabled" : false, 
+                                    "labelHidden" : false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ], 
+    "pushEnable" : false, 
+    "created" :1611955100411, 
+    "active" : true, 
+    "deleted" : false, 
+    "autoResponderFieldId" : "", 
+    "bvnFields" : null, 
+    "compositeUniqueId" : "", 
+    "fingerConfig" : null, 
+    "ocrFieldLink" : null, 
+    "portraitConfigs" : null, 
+    "uniqueId" : "", 
+    "datePublished" :1611955187741
+}

@@ -1,0 +1,9 @@
+.role__wrapper {
+    margin: 100px 5px 0 100px;
+    height: 100%
+  }
+
+  .cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 99999 !important;
+}

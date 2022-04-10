@@ -1,0 +1,96 @@
+@import "color";
+@import "break-points";
+.detail-main{
+    .detail-header{
+        background-color: $blue2;
+        padding: 32px 46px 20px 51px;
+        .close-icon{
+            text-align: right;
+            img{
+                max-width: 10px;
+                cursor: pointer;
+            }
+        }
+        .detail-inner{
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            .detail-left, .detail-right{
+                width: 50%;
+                span{
+                    color: rgba($white, 0.6);
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+                p{
+                    color: $white;
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+            }
+            .detail-left{
+                padding-right: 30px;
+                p{
+                    word-break: break-all;
+                }
+            }
+            .detail-right{
+                text-align: right;
+            }
+        }
+    }
+    .detail-content{
+        margin-top: 35px;
+        padding: 0 15px;
+        .detail-title{
+            margin-bottom: 10px;
+            h2{
+                color: $darkGrey8;
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 0;
+                letter-spacing: 0.39px;
+            }
+        }
+        .detail-blcok {
+            border: 0.6px solid $offWhite1;
+            padding: 29px 17px 30px;
+            border-radius: 5px;
+            margin-bottom: 38px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            .block-inner{
+                display: flex;
+                margin-bottom: 24px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .block-content{
+                    margin-left: 13px;
+                    span{
+                        color: $darkGrey8;
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+                    p{
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: $offBlack4;
+                        margin-top: 5px;
+                        letter-spacing: 0.06px;
+                        &.tag{
+                            display: block;
+                            text-align: center;
+                            color: $green1;
+                            font-size: 12px;
+                            width: 91px;
+                            &.danger{
+                                color: $red;
+                                width: 78px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

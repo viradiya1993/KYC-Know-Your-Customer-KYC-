@@ -1,0 +1,191 @@
+{
+    "dashboardResponse": {
+        "smallCards": [
+
+            {
+                "label": "Total number of service Calls",
+                "logo": "/logo.png",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/transactions/all"
+                    }
+                ],
+                "active": true,
+                "value": 500000
+            },
+
+            {
+                "label": "Number of successful service Calls",
+                "logo": "/logo.png",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/transactions/all"
+                    }
+                ],
+                "active": true,
+                "value": 500000
+            },
+
+            {
+                "label": "Number of failed service Calls",
+                "logo": "/logo.png",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/transactions/all"
+                    }
+                ],
+                "active": true,
+                "value": 50000
+            },
+
+            {
+                "label": "No of users",
+                "logo": "/logo.png",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/user"
+                    }
+                ],
+                "active": true,
+                "value": 1000
+            }
+        ],
+
+        "bigCards": [
+            
+            {
+                "label": "Total wallet balance",
+                "logo": "/logo.png",
+                "active": true,
+                "value": 60000
+            },
+            
+            {
+                "label": "Total Wallet Top-up",
+                "logo": "/logo.png",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/wallet"
+                    }
+                ],
+                "active": true,
+                "value": 260000
+            },
+
+            {
+                "label": "Total Wallet Debit",
+                "logo": "/logo.png",
+                "menuItems": [
+                    {
+                        "label": "View details",
+                        "redirectionPath": "/wallet"
+                    }
+                ],
+                "active": true,
+                "value": 200000
+            }
+        ],
+
+        "barChart":{
+            "cardName":"Service Request Distribution",
+            "dataLabels":["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+            "services":[
+                {
+                    "name": "Seamfix IDQR",
+                    "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+                },
+                {
+                    "name": "BVN Validity Service",
+                    "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+                },
+                {
+                    "name": "Seamfix VIN Service",
+                    "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+                },
+                {
+                    "name": "Seamfix IDQR",
+                    "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+                },
+                {
+                    "name": "BVN Validity Service",
+                    "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+                },
+                {
+                    "name": "Seamfix VIN Service",
+                    "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+                },
+                {
+                    "name": "Seamfix IDQR",
+                    "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+                },
+                {
+                    "name": "BVN Validity Service",
+                    "counts":[150,20,80,30,25,35,95,65,43,10,78,50]
+                },
+                {
+                    "name": "Seamfix VIN Service",
+                    "counts":[50,60,70,80,75,65,55,45,40,20,55,90]
+                }
+            ],
+            "active": true
+        },
+
+        "pieChart":{
+            "cardName":"Service request log",
+            "dataLabels":["Successful Request","Failed Request"],
+            "counts":[900,300],
+            "active": true
+        },
+
+        "progressCharts":[
+
+            {
+                "cardName":"Completed bulk verifications",
+                "link": {
+                    "label": "View Details",
+                    "redirectionPath": "/bulk-verification/bulk-record"
+                },
+                "isShowProgress":true,
+                "logo":"/logo.png",
+                "label":"Number of completed bulk verifications",
+                "value": 105000,
+                "valueInPer": 55,
+                "chartLabel":"percentage of completed verifications",
+                "active": true
+            },
+
+            {
+                "cardName":"Ongoing bulk verifications",
+                "link": {
+                    "label": "View Details",
+                    "redirectionPath": "/bulk-verification/bulk-record"
+                },
+                "isShowProgress":true,
+                "logo":"/logo.png",
+                "label":"Number of completed bulk verifications",
+                "value": 86000,
+                "valueInPer": 45,
+                "chartLabel":"percentage of ongoing verifications",
+                "active": true
+            },
+
+            {
+                "cardName":"Total bulk verifications",
+                "link": {
+                    "label": "View Details",
+                    "redirectionPath": "/bulk-verification/bulk-record"
+                },
+                "isShowProgress":false,
+                "logo":"/logo.png",
+                "label":"Number of total bulk verifications",
+                "value": 191000,
+                "active": true
+            }
+        ]
+    }
+}

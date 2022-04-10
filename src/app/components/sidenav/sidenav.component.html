@@ -1,0 +1,25 @@
+<aside data-simplebar>
+  <ngx-simplebar>
+    <div class="inner-content" [ngClass]="{'disable-pointer': isDisablePointerEvent === true}">
+      <div>
+        <a href="javascript:void(0)" class="logo">
+          <img src="assets/images/logo.svg" alt="">
+        </a>
+        <ul>
+          <li *ngFor="let menu of mainMenuItems;let i=index">
+            <a [routerLink]="[menu.link]" routerLinkActive="active" id="{{menu.id}}" (click)="navigate()" *ngIf="menu.isavailable">
+              <em>
+                <img src={{menu.defaultIcon}} alt="" />
+                <img class="rollover" src={{menu?.activeIcon}} alt="" />
+              </em>
+              <span>{{menu?.title | translate}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="aside-bottom">
+        <img src="assets/images/gdpr-compliant.svg" alt="">
+      </div>
+    </div>
+  </ngx-simplebar>
+</aside>

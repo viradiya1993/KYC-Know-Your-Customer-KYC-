@@ -1,0 +1,90 @@
+<div class="custom-modal">
+  <div class="modal-header">
+    <div class="modal-header-left">
+      <em class="thumb"><img src="{{'data:image/png;base64,' + service.thumb}}" alt=""></em>
+      <div class="title">
+        <h3>{{service.name}}</h3>
+        <p>{{service.header_description}}</p>
+      </div>
+    </div>
+    <ng-container *ngIf="!service?.isRC">
+      <div class="test-mode" *ngIf="service.isLive === false">
+        <em><img src="assets/images/danger.svg" alt=""></em>{{'Test_mode' | translate}}
+        <div class="test-mode-tooltip">{{'service_in_test_mode' | translate}}
+        </div>
+      </div>
+      <div class="test-mode" *ngIf="service.isLive === true">
+        <em><img src="assets/images/danger.svg" alt=""></em>{{'Live_mode' | translate}}
+        <div class="test-mode-tooltip">{{'service_in_live_mode' | translate}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="modal-body">
+    <div class="body-form">
+      <sfx-form-preview #formPreview [formStructure]='configJSON' [preFilledValues]='previewValue' (formValues)='getFormValues($event)' [customCardBody]="'col-lg-12'" [customCol]="'ol-lg-12 col-md-12 col-sm-12 sfx-org-creationc p-0'" #formPreview [containerCard]="'card h-100 shadow-none border-0 row'" [customClass]="'section d-flex align-items-center'" [customRow]="' justify-content-center width-100'" hideActionButtons="true" [mainContainer]="'width-100'"></sfx-form-preview>
+      <!-- <sfx-form-preview #formPreview [formStructure]='formJSON' [preFilledValues]='previewValue' (formValues)='getFormValues($event)' [customCardBody]="'col-lg-12'" [customCol]="'ol-lg-12 col-md-12 col-sm-12 sfx-org-creationc p-0'" #formPreview [containerCard]="'card h-100 shadow-none border-0 row'" [customClass]="'section d-flex align-items-center'" [customRow]="' justify-content-center width-100'" hideActionButtons="true" [mainContainer]="'width-100'"></sfx-form-preview> -->
+      <!-- <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'Enter_your_NIN' | translate }}</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'First_name' | translate}}</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'Last_name' | translate}}</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'Date_of_birth' | translate}}</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()">
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="file-upload">
+            <button mat-stroked-button color="green" class="is-upload">{{'Upload_facial_capture' | translate}}
+              <input type="file" class="file-input">
+            </button>
+            <p>{{'PDF_format_only' | translate}}</p>
+          </div>
+          <div class="file-upload">
+            <button mat-stroked-button color="green" class="is-upload">{{'Upload_picture_of_NIN_ID_Card' | translate}}
+              <input type="file" class="file-input">
+            </button>
+            <p>{{'PDF_format_only' | translate}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-block">
+        <button mat-raised-button color="green">{{'Validate' | translate}}</button>
+        <button mat-raised-button mat-dialog-close>{{'Cancel' | translate}}</button>
+      </div> -->
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="btn-block">
+            <button mat-raised-button color="green" (click)="formPreview.getValue()">{{'Validate' | translate}}</button>
+            <button mat-raised-button mat-dialog-close>{{'Cancel' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

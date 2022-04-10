@@ -1,0 +1,24 @@
+<div id="login">
+  <base-config #baseConfigRef></base-config>
+  <bfc-lazy-loader *ngIf="showLazyloader"></bfc-lazy-loader>
+  <!-- [loginContainerStyles]="{ backgroundColor: '#fff' }" -->
+  <base-login-module
+    *ngIf="isAvaliable"
+    [productName]="'Verified.ng'"
+    (login-router-event)="handleComponentRoute($event)"
+    (translation-changed)="languageChangeEvent($event)"
+    [appTranslation]="translation"
+    [loginInputs]="loginInputs"
+    [loginConfigData]="loginConfigData"
+    [socialButtons]="socialButtons"
+    [loginButtonText]="loginButtonText"
+    [countryImagesList]="countryImagesList"
+    [landingConfig]="langingPageConfig"
+    (nav-router-event)="handleComponentRoute($event)"
+    [handleSuccesLoginData]="true"
+    [logo]="logo"
+    [logoUrl]="logoUrl"
+    [productId]="productId"
+  ></base-login-module>
+</div>
+

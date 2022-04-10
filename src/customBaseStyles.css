@@ -1,0 +1,276 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css2?family=Muli:wght@400;500;600;700&display=swap);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+:root {
+  --primary-color: #48b971;
+  --dark-primary-color: #051f11;
+  --light-primary-color: #05a74d;
+  --lighter-primary-color: #c2e1d0;
+  --lightest-primary-color: #f2f9f5;
+
+  --dark-tertiary-color:#121212;
+  --light-tertiary-color:#626262;
+  --lighter-tertiary-color:#CBCBCB;
+  --lightest-tertiary-color:#F6F6F6;
+
+  /* --base-primary-color:#00833A; */
+  --google-primary: #296ad6;
+  --base-font: Muli, Regular;
+  --google-color-shadow: #a7c7fa;
+  --base-text-color: #596b71;
+  --primary-danger-color: #fa235d;
+  --opaq-text-color: #94a1a5;
+  --sign-in-text-color: #486973;
+  --basic-white: #fff;
+  --basic-black: #06232c;
+  --primary-blue-shade: #554dff;
+  --dashboard-bg: var(--lightest-tertiary-color);
+  --seperator-color: #707070;
+  --option-color: #717171;
+  --bfc-primary-font: Muli, Regular;
+  --billable-dropdown-color: var(--dark-primary-color,#121212);
+  --billable-dropdown-bgcolor: #ecfbff 0% 0% no-repeat padding-box;
+  --billable-dropdown-bordercolor: var(--lighter-tertiary-color,#cbcbcb);
+
+  --bfc-basic-black: #06232c;
+  --btn-file-select: #00833a1c;
+
+  --bfc-opaq-text-color: rgb(157, 164, 175);
+  --base-modal-border: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+span {
+  font-family: var(--base-font);
+}
+
+sfx-form-builder .sfx-fbStyle-form-properties {
+  height: calc(83vh - 50px) !important;
+}
+
+sfx-form-builder button.active-page {
+  padding: 6px 8px !important;
+}
+
+main.sfx-fbStyle-form-properties form {
+  padding-bottom: 3rem;
+}
+
+.small-text {
+  font-size: 0.95rem;
+}
+
+.xsmall-text {
+  font-size: 0.82rem;
+}
+
+.large-text {
+  font-size: 1.4rem;
+}
+
+.medium-text {
+  font-size: 1.2rem !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.custom-action-tooltip {
+  background-color: white !important;
+  color: black !important;
+  padding: 0.35rem 2rem !important;
+  margin-top: 0.5rem !important;
+  font-weight: bold;
+  box-shadow: 8px 6px 12px #0000000d !important;
+  border: 0.1rem solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.progress-bar {
+  background-color: var(--base-primary-color) !important;
+}
+
+.custom-progressbar.progress {
+  border-radius: 12px !important;
+}
+.custom-progressbar .progress-bar {
+  background-color: var(--base-primary-color) !important;
+  border-radius: 12px !important;
+}
+.custom-progressbar .progress-bar {
+  background-color: var(--base-primary-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--base-primary-color) !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.btn-primary-outline {
+  color: var(--base-primary-color) !important;
+  outline: none !important;
+  border-color: var(--base-primary-color) !important;
+  background-color: transparent !important;
+}
+#submitBtn {
+  background-color: var(--base-primary-color);
+  border-color: var(--base-primary-color);
+}
+
+/* for form capnture inputs */
+@media (max-width: 480px) {
+  div.offset-0.col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.outline-none {
+  outline: none;
+}
+.back-button {
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #486973;
+}
+
+.back-button:focus {
+  outline: none !important;
+}
+
+.custom-stepper {
+  width: 100%;
+  height: 4px;
+  display: flex;
+}
+
+.custom-stepper .custom-step {
+  display: flex;
+  flex: 1;
+  opacity: 0.2;
+  background-color: var(--base-primary-color);
+}
+
+/* @media (min-width: 768px){
+  .custom-stepper .custom-step{
+  background-color: transparent !important;
+   }
+} */
+.custom-stepper .custom-step::after {
+  content: attr(aria-label);
+  margin-top: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+.custom-stepper .custom-step.active::after {
+  color: var(--base-primary-color);
+}
+.custom-stepper .custom-step.done::after {
+  color: var(--base-primary-color);
+  opacity: 0.4;
+}
+
+.custom-stepper .custom-step.active {
+  opacity: 1 !important;
+  height: inherit;
+  background-color: var(--base-primary-color) !important;
+}
+@media (max-width: 767px) {
+  /* .custom-stepper .custom-step{
+  background-color: transparent !important;
+   } */
+  /* .custom-stepper .custom-step.active{
+    background-color: transparent !important;
+  } */
+  /* .custom-stepper .custom-step:not(.active){
+    visibility: hidden !important;
+  } */
+  .custom-stepper .custom-step:not(.active)::after {
+    visibility: hidden !important;
+  }
+  .custom-stepper .custom-step.done::after {
+    visibility: hidden !important;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .custom-padding.card-body {
+    padding: 0rem 4.4rem !important;
+  }
+}
+
+sfx-form-preview .sfx-org-creation h4 {
+  font-size: 1.02rem !important;
+  text-transform: uppercase !important;
+  color: #486973 !important;
+  margin-bottom: -22px !important;
+  margin-top: 10px !important;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 20px;
+}
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 46%;
+  }
+}
+.modal-header {
+  -webkit-box-align: none !important;
+  align-items: none !important;
+  -webkit-box-pack: none !important;
+  justify-content: none !important;
+  padding: 0 !important;
+  border-bottom: none !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .modal-header .close {
+    padding: none !important;
+    margin: -1.5rem -2.8rem -1rem auto !important;
+    color: white !important ;
+    outline: none !important;
+    font-weight: 200 !important;
+    font-size: 2rem !important;
+  }
+}
+@media (max-width: 767px) {
+  .modal-header .close {
+    margin: 0 !important;
+  }
+}
+.custom-modal .modal-header {
+  width: 100%;
+  -webkit-border-top-left-radius: var(--base-modal-border, 2rem) !important;
+  -webkit-border-top-right-radius: var(--base-modal-border, 2rem) !important;
+  -moz-border-radius-topleft: var(--base-modal-border, 2rem) !important;
+  -moz-border-radius-topright: var(--base-modal-border, 2rem) !important;
+  background-color: #f4f6fa !important;
+  border-top-left-radius: var(--base-modal-border, 2rem) !important;
+  border-top-right-radius: var(--base-modal-border, 2rem) !important;
+}
+/* .cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 99999 !important;
+} */
+
+/* Form builder save and populate modal */
+.formbuilder-modal {
+  max-width: 400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

@@ -1,0 +1,121 @@
+{ 
+    "_id" : "60147a75e74c242b7de38e55", 
+    "pId" : "e158cd51-3984-4936-967b-22bfb052d48f", 
+    "cId" : "d1bc2bbe-0f85-470e-a2df-dc62705596bb", 
+    "version" : 1.0, 
+    "published" : true, 
+    "modified" : 1611955044034, 
+    "brandingConfig" : {
+        "themeColor" : "#56aee1", 
+        "backgroundColor" : "#F7FAFD", 
+        "backgroundStyle" : false, 
+        "fontType" : "Choose...", 
+        "required" : false, 
+        "validation" : false, 
+        "skipReasons" : [
+
+        ]
+    }, 
+    "demoConfigs" : [
+        {
+            "pageName" : "First Page", 
+            "layouts" : [
+                {
+                    "name" : "layout-aa653ba8-3dca-4ba3-b9f5-cb182e8849eb", 
+                    "label" : "Number", 
+                    "layoutLocked" : true, 
+                    "icon" : "exposure", 
+                    "type" : "layout", 
+                    "subtype" : "layout", 
+                    "columns" : [
+                        {
+                            "grid" : 12, 
+                            "offset" : 0, 
+                            "order" : 0, 
+                            "children" : [
+                                {
+                                    "required" : true, 
+                                    "name" : "number-fab749c1-96c7-49f4-8732-5c6aa5a2a755", 
+                                    "type" : "number", 
+                                    "label" : "BVN Number", 
+                                    "description" : "", 
+                                    "placeholder" : "Please input your 11 digit BVN number", 
+                                    "minlength" : "11", 
+                                    "maxlength" : "11", 
+                                    "subtype" : "number", 
+                                    "currentDate" : false, 
+                                    "isFieldDependent" : false, 
+                                    "pushFieldLink" : "", 
+                                    "disabled" : false, 
+                                    "labelHidden" : false
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name" : "layout-be162896-e0e9-4ead-9b9e-30e847e0dbda", 
+                    "label" : "File Upload", 
+                    "layoutLocked" : true, 
+                    "icon" : "cloud_upload", 
+                    "type" : "layout", 
+                    "subtype" : "layout", 
+                    "columns" : [
+                        {
+                            "grid" : 12, 
+                            "offset" : 0, 
+                            "order" : 0, 
+                            "children" : [
+                                {
+                                    "required" : true, 
+                                    "name" : "file-7264ecd1-a22e-4940-8146-f1982488a3ee", 
+                                    "type" : "file", 
+                                    "label" : "Picture", 
+                                    "description" : "", 
+                                    "subtype" : "file", 
+                                    "maxSize" : "500", 
+                                    "currentDate" : false, 
+                                    "isFieldDependent" : false, 
+                                    "pushFieldLink" : "", 
+                                    "disabled" : false, 
+                                    "labelHidden" : false, 
+                                    "expectedFormat" : ".png,.jpg,.gif", 
+                                    "images" : true, 
+                                    "pdf" : false, 
+                                    "documentSource" : "both", 
+                                    "scanOptions" : "single"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ], 
+    "pushEnable" : false, 
+    "created" : 1611954805369, 
+    "active" : true, 
+    "deleted" : false, 
+    "autoResponderFieldId" : "", 
+    "bvnFields" : null, 
+    "compositeUniqueId" : "", 
+    "fingerConfig" : null, 
+    "ocrFieldLink" : null, 
+    "portraitConfigs" : [
+        {
+            "fieldId" : "portrait8e68cfd7-fb91-a358-3648-171589ea9ca0", 
+            "type" : "HUMAN PORTRAIT", 
+            "thresholdRange" : 0, 
+            "livenessEnabled" : false, 
+            "required" : true, 
+            "name" : "Picture", 
+            "validation" : false, 
+            "skipReasons" : [
+
+            ], 
+            "skip" : false
+        }
+    ], 
+    "uniqueId" : "", 
+    "datePublished" : 1611955043759
+}

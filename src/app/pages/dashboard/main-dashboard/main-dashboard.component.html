@@ -1,0 +1,179 @@
+<div class="wrapper">
+  <div class="page-wrapper dashboard-wrapper" id="step_two_element_id">
+    <div class="page-banner dashboard-banner" *ngIf="false"
+      style="background-image: url(assets/images/dashboard-back.svg);">
+      <div class="dashboard-inner">
+        <img src="assets/images/dashboard-back.svg" alt="dashboard">
+      </div>
+      <div class="page-content">
+        <h2>{{'Welcome_to_verified' | translate}}</h2>
+        <p style="max-width: 580px;">{{'dashboard_discription' | translate}}</p>
+        <button mat-stroked-button
+          style="margin-top: 30px;background: #48B971 !important;color: #ffffff !important;">{{'get_started' |
+          translate}}</button>
+      </div>
+    </div>
+    <!-- first card-block -->
+    <div class="card-block">
+      <div class="row" id="step_three_element_id">
+        <div class="col-lg-3 col-md-6 col-6" *ngFor="let smallcard of smallcards;let i=index">
+          <div class="card">
+
+            <div class="card-buttton">
+              <button *ngIf="i !== 3" mat-icon-button [matMenuTriggerFor]="menu" id="smallcard_menu_button_{{i}}"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <button *ngIf="i === 3" mat-icon-button aria-label="Example icon-button with a menu"
+                style="cursor: default;">
+
+              </button>
+              <mat-menu #menu="matMenu">
+                <menu mat-menu-item *ngFor="let menu of smallcard.menuItems" [routerLink]="menu?.redirectionPath">
+                  {{menu?.label | translate}}</menu>
+              </mat-menu>
+            </div>
+            <div class="card-content-main">
+              <div class="card-image blue-round">
+                <img src="{{'assets/images' + smallcard.logo}}" alt="note">
+              </div>
+              <div class="card-content">
+                <h3 id="smallcard_h_{{i}}">{{smallcard?.value | number}}</h3>
+                <!-- <p>{{'Total_number_of_service_calls' | translate}}</p> -->
+                <p id="smallcard_l_{{i}}">{{smallcard?.label | translate}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- second card-block -->
+
+    <div class="card-block secondary-card">
+      <div class="row">
+        <div class="col-lg-4 col-md-12" *ngFor="let bigcard of bigcards; let i = index">
+          <div class="card" [ngClass]="{'card-green':  i == 0}">
+            <div class="card-buttton" *ngIf="i !== 0 ">
+              <button mat-icon-button [matMenuTriggerFor]="menu" id="bigcard_menu_button_{{i}}"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <menu mat-menu-item *ngFor="let menu of bigcard.menuItems"
+                  (click)="bigCardsNavigation(menu?.redirectionPath)">
+                  {{menu?.label | translate}}</menu>
+              </mat-menu>
+            </div>
+            <div class="card-content-main">
+              <div class="card-image offwhite-round">
+                <img src="{{'assets/images' + bigcard.logo}}" alt="note">
+              </div>
+              <div class="card-content">
+                <h3 [ngClass]="{'text-white':  i == 0}" id="bigcard_h_{{i}}">{{(!bigcard?.value ? 0 : bigcard?.value )|
+                  currency:"₦"}}
+                </h3>
+                <!-- <h3 class="text-white">{{bigcard?.value | currency:"₦"}}</h3> -->
+                <!-- <p>{{'Total_wallet_balance' | translate}}</p> -->
+                <p id="bigcard_l_{{i}}">{{bigcard?.label | translate}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- third card-block -->
+    <div class="card-block chart">
+      <div class="row">
+        <div class="col-lg-8 col-md-12" id="step_four_element_id">
+          <div class="card">
+            <div class="card-main service-duration">
+              <div class="header-left">
+                <h3 id="colChart_h_0">{{'Service_request_distribution' | translate}}</h3>
+              </div>
+              <div class="header-right">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{'Select Year'}}</mat-label>
+                  <mat-select (selectionChange)="yearChnage($event.value)" [(ngModel)]="selectYear"
+                    id="chartSelectYear">
+                    <!-- <mat-option [value]= ''>Select Year</mat-option> -->
+                    <mat-option [value]="year" *ngFor="let year of allYears">
+                      {{ year }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="chart-body">
+              <app-column-chart [chartData]="columnChartData" [chartLabels]="columnChartLabels">
+              </app-column-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+            <div class="card-main pie-chart-header">
+              <div class="header-left">
+                <h3 id="pieChart_h_0">{{'Service_request_log' | translate}}</h3>
+              </div>
+            </div>
+            <div class="chart-body">
+              <app-pie-chart [chartData]="pieChartData" [chartLabels]="pieChartLabels"></app-pie-chart>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- fourth card block -->
+    <div class="card-block bulk-verify">
+      <div class="row">
+        <div class="col-lg-4 col-md-12" *ngFor="let progressChart of progressCharts; let i = index ">
+          <div class="card">
+            <div class="card-main">
+              <div class="header-left">
+                <!-- <h3>{{'Completed_bulk_verifications' | translate}}</h3> -->
+                <h3 id="pregress_h_{{i}}">{{progressChart?.name | translate}}</h3>
+                <!-- <h3 *ngIf="i === 2 ">{{'Total_bulk_verifications' | translate}}</h3> -->
+              </div>
+              <div class="header-right">
+                <button mat-icon-button [matMenuTriggerFor]="menu" id="progress_menu_button_{{i}}"
+                  aria-label="Example icon-button with a menu">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <menu mat-menu-item [routerLink]="progressChart?.link?.redirectionPath">{{progressChart?.link?.label |
+                    translate}}
+                  </menu>
+                </mat-menu>
+              </div>
+            </div>
+
+            <div class="bulk-body">
+
+              <div class="body-left" *ngIf="progressChart.isShowProgress === true">
+                <app-progress-bar-chart [chartData]="progressChart?.completedProgressData"></app-progress-bar-chart>
+              </div>
+
+              <div class="body-right" [ngClass]="{'no-chart': progressChart.isShowProgress === false}">
+                <div class="body-icon green">
+                  <img src="{{'assets/images' + progressChart.logo}}" alt="note">
+                </div>
+                <div class="body-heading">
+                  <h4 [ngStyle]="{'color': i === 0 ? '#48B971' : '#3476E0' }" id="pregress_value_{{i}}">
+                    {{(!progressChart?.value) ? 0 : progressChart?.value | number}}</h4>
+                  <p id="pregress_l_{{i}}">{{progressChart?.label | translate}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

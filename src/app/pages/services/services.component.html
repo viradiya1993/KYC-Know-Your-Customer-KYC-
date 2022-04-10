@@ -1,0 +1,86 @@
+<div class="wrapper">
+  <app-page-filters
+    (bioMetricEvent)="receiveBioMetric($event)"
+    (idProviderEvent)="receiveIdprovider($event)"
+    [serviceProvider]='seriveProvider'
+    (searchEvent)="receiveSearchValue($event)"
+    [childMessage]='length'
+    [index]="index"
+    (messageEvent)="receiveMessage($event)"
+    (serviceTypeEvent)="changeService($event)">
+  </app-page-filters>
+  
+
+<div class="page-wrapper">
+  <div class="page-banner" style="background-image: url(assets/images/services-illustration.svg);">
+    <div class="page-content">
+      <h2>{{ 'Verify_identities_in_Real_time' | translate }}
+        <span>{{'Creating trust one identity at a time' | translate}}</span>
+      </h2>
+      <p>{{'Access all our available verification modules below and select what you will like to do.' | translate}} </p>
+    </div>
+  </div>
+
+  <div class="services-listing-wrapper" *ngIf="length > 0" id="step4_element_id">
+    <div class="listing-outer" *ngFor="let service of serviceListing;let i=index" >
+      <div class="listing-inner" id="service_id_{{i}}">
+          <div class="service-title" id="openDetailsDialog_{{i}}">
+            <div class="service-thumb">
+              <img src="{{'data:image/png;base64,' + service.thumb}}" alt=''>
+            </div>
+            <div class="inner-title">
+              <h5>{{service.name}}</h5>
+              <p *ngIf="service.lastInvocation !== undefined && service.lastInvocation !== null">{{'Last invocation by'}}, {{service.lastInvocation | dateFormatPipe}}</p>
+            </div>
+          </div>
+          <div class="body-content">
+            <p>{{service.description}}</p>
+            <div class="tooltip-content">{{service.description}}</div>
+          </div>
+          <div class="face-match">
+            <div class="face-match-inner" *ngIf="service.biometricEnabled">
+              <em><img src="assets/images/ic-fingerprint.png" alt=""></em> {{'Face Match available' | translate}}
+            </div>
+          </div>
+          <p class="unit-cost">{{'Unit cost' | translate}}: <strong>{{'N'}}{{service.charge}}</strong></p>
+          <div class="api-key" *ngIf="false">
+            <div class="key-block">
+              <p><span>{{'API key' | translate}}</span> {{service.apiKey}}</p>
+              <button mat-icon-button class="sm" color="green" (click)="copyText(service.apiKey)"><img
+                  src="assets/images/copy.svg" alt="">
+              </button>
+            </div>
+            <button mat-icon-button class="sm" color="grey"><img src="assets/images/code.svg" alt=""></button>
+          </div>
+          <div class="bottom-btns">
+            <mat-slide-toggle class="text-switch" title="{{service.useLiveToggleError}}" [(ngModel)]="service.isLive" [disabled]="hasLivePrivilage(service)" (change)="changeAPICallMode(service)" id="{{'slide-toggle' + service.pk}}" class="slide_toggle_{{i}}">
+              
+            </mat-slide-toggle>
+              <div class="right-btns">
+                <button mat-raised-button class="button-tooltip"
+                  id="openUseServiceDialog_{{i}}"
+                  color="green" (click)="useService(service)"
+                  disabled="{{hasPrivilages(service)}}">
+                  {{'Use Service' | translate}}
+                  <span class="tooltip-content" *ngIf="hasPrivilages(service)">{{service.useButtonError}}</span>
+                </button>
+               
+                <button mat-icon-button [matMenuTriggerFor]="moreServices" class="transparent-bg">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                
+                <mat-menu #moreServices="matMenu">
+                  <button [routerLink]="['/transactions/all']" mat-menu-item>{{'View Transaction History' | translate}}</button>
+                  <button mat-menu-item (click)="changeAPICallModeFromMenu(service)" title="{{service.useLiveToggleError}}" [disabled]="hasLivePrivilage(service)">{{ (service.isLive) ? ('Switch to test mode' | translate) : 'Switch to live mode' | translate}}</button>
+                  <button mat-menu-item (click)="copyAPIKEY(service)">{{'Copy API keys' | translate}}</button>
+                  <a href="{{service.apiDocUrl}}" *ngIf="service.apiDocUrl !== null"   target="_blank" mat-menu-item>{{'Read API documentation' | translate}}</a>
+                </mat-menu>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="length == 0" class="no-record">
+    <div class="p-5 border h4 rounded">{{'No_Record_Found' | translate}}</div>
+  </div>
+</div>

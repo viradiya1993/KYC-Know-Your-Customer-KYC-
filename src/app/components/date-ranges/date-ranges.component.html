@@ -1,0 +1,16 @@
+<mat-form-field appearance="outline" class="filled-input">
+    <input matInput
+        ngxDaterangepickerMd
+        startKey="start"
+        endKey="end"
+        [ranges]="ranges"
+        [showCustomRangeLabel]="true"
+        [locale]="{applyLabel: 'apply', format: 'MMMM DD, YYYY'}"
+        [(ngModel)]="selected"
+        (change)="onDateChange($event)" 
+        id="DateRange" 
+        readonly > 
+</mat-form-field>
+
+    
+    

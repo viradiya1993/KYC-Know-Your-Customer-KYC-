@@ -1,0 +1,155 @@
+<div class="wrapper">
+  <div class="page-wrapper bulk-dashboard">
+
+    <div class="card-container">
+
+      <div class="page-banner" id="step14_element_id">
+        <div class="page-content">
+          <h2>{{'Bulk_Verifications' | translate}}</h2>
+          <p>{{'Verify_multiple_individuals_at_once_using_our_bulk_system' | translate}}</p>
+          <div class="d-mobile-flex">
+            <button mat-flat-button style="background-color: #48B971; color: #ffffff;" class="button-tooltip"
+              [routerLink]="['/bulk-verification/verify-users']" id="verifyuser" [disabled]="useBulk === false">{{'Verify_Users' | translate}}
+              <span class="tooltip-content" *ngIf="useBulk === false">{{'You don\'t have the USE_BULK privileges '}}</span>
+            </button>
+            <button mat-flat-button style="background-color: #7CDCFF67; color: #1275E8;"
+              (click)="onBulkScroll()">{{'Veiw_Verifications_Status' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-block">
+        <div class="card-one">
+          <div class="card">
+            <div class="card__header d-mobile-none">
+              <a href="javascript:void(0)" (click)="onBulkScroll()">{{'View_verifications' | translate}}</a>
+            </div>
+            <div class="card__content">
+              <span class="image-round">
+                <img src="/assets/images/notebook--reference.svg" />
+              </span>
+              <p id="bulkcount">{{toalOnGoingVerification}}</p>
+              <span>{{'No_of_ongoing_verifications' | translate}}</span>
+            </div>
+            <div class="card__header mobile-block">
+              <a href="javascript:void(0)" (click)="onBulkScroll()">{{'View_verifications' | translate}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card no__header">
+            <div class="card__content">
+              <span class="image-round">
+                <img src="/assets/images/billing-service-desk.svg" />
+              </span>
+              <p id="servicename">{{mostUsedService}}</p>
+              <span>{{'Most_used_service' | translate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="bfc-table-head" id="bulkscroll">
+      <h4>{{'Bulk_Verifications' | translate}}</h4>
+      <div class="right-info">
+        <div class="inner-filter">
+          <mat-form-field appearance="outline" class="filled-input">
+            <mat-icon matSuffix (click)="searchClick(searchValue)">search</mat-icon>
+            <mat-label>{{'Search_using_verification_id' | translate}}</mat-label>
+            <input matInput [(ngModel)]="searchValue" value="searchValue" name="searchValue"
+              (keydown.enter)="search($event.target.value)" id="bulkverificationid">
+          </mat-form-field>
+        </div>&nbsp;
+        <div class="inner-filter">
+          <mat-form-field appearance="outline" class="filled-input">
+            <mat-label>{{'Filter' | translate}}</mat-label>
+            <mat-select (selectionChange)="bulkJobStatus($event.value)" [(ngModel)]="bulk" id="verificationStatus">
+              <mat-option>None</mat-option>
+              <mat-option [value]="key" *ngFor="let key of getKeys(bulkVerifications)">
+                {{ bulkVerifications[key] }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <div class="table-body">
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z0 mobile-table" *ngIf="totalCount > 0">
+
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef> # </th>
+              <td mat-cell *matCellDef="let element;  let i = index;" class="td-first"> {{i+1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="UserName">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'d-mobile-none'">{{'USER_NAME' | translate}}</th>
+              <td mat-cell *matCellDef="let element" [ngClass]="'d-mobile-none'">
+                {{element.userName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="BulkVerificationid">
+              <th mat-header-cell *matHeaderCellDef>{{'BULK_VERIFICATION_ID' | translate}}</th>
+              <td mat-cell (click)="getBulkID(element.bulkJobId)" *matCellDef="let element" class="td-two" id="bulkid">
+                <span class="notCompleted" [ngClass]="{'running': (element.bulkJobId)}">{{element.bulkJobId}}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="noverification">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'d-mobile-none'">{{'NO_VERIFICATION' | translate}}</th>
+              <td mat-cell *matCellDef="let element" [ngClass]="'d-mobile-none'"> {{element.noOfTransaction}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="dateinitiated">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'d-mobile-none'">{{'DATE_TIME_INITIATED' | translate}}
+              </th>
+              <td mat-cell *matCellDef="let element" [ngClass]="'d-mobile-none'">
+                {{element.bulkInitiatedDate | tDateFormatPipe}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="datecomleted">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'d-mobile-none'">{{'DATE_TIME_COMPLETED' | translate}}
+              </th>
+              <td mat-cell *matCellDef="let element" [ngClass]="'d-mobile-none'">
+                {{element.modifiedDate | tDateFormatPipe}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>{{'BULK_VERIFICATION_STATUS' | translate}}</th>
+              <td mat-cell *matCellDef="let element" class="td-three">
+                <span class="tag"
+                  [ngClass]="{'running': (element.status === 'Running'), 'completed': (element.status === 'Completed')}">
+                  {{element.status | titlecase}}
+                </span>
+              </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="verificationprogress">
+                <th mat-header-cell *matHeaderCellDef> {{'VERIFICATION_PROGRESS' | translate}} </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="notCompleted"
+                        [ngClass]="{'completed': (element.verificationProgress === 'Completed')}">{{element.verificationProgress}}</span>
+                </td>
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="totalCount == 0" class="text-center ">
+      <div class="p-5 border h4 rounded">{{'No_Record_Found' | translate}}</div>
+    </div>
+
+
+  </div>
+</div>
